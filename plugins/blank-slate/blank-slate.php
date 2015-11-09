@@ -35,9 +35,11 @@ require_once 'admin/new-user-email.php';
 require_once 'admin/media.php';
 
 // THEME
-require_once 'theme/general.php';
 require_once 'theme/head.php';
+require_once 'theme/scripts.php';
 require_once 'theme/excerpt.php';
+require_once 'theme/content.php';
+require_once 'theme/classes.php';
 require_once 'theme/support.php';
 require_once 'theme/images.php';
 require_once 'theme/widgets.php';
@@ -131,7 +133,6 @@ final class BS_Core {
 		BS_Admin_TinyMCE::initialize();
 
 		// THEME
-		BS_Theme_General::initialize();
 		BS_Theme_Support::initialize();
 		BS_Theme_Images::initialize();
 		BS_Theme_Widgets::initialize();
