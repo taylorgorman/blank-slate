@@ -16,7 +16,7 @@
 ** Constants
 */
 
-define('BS_IS	_LOCAL', $_SERVER['SERVER_NAME'] == 'localhost');
+define('BS_IS_LOCAL', $_SERVER['SERVER_NAME'] == 'localhost');
 define('BS_PATH', plugin_dir_path(__FILE__));
 define('BS_URL', plugin_dir_url(__FILE__));
 
