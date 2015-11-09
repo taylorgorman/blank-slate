@@ -11,7 +11,6 @@
 	<meta name="author"      content="<? global $post; echo get_the_author_meta('display_name', $post->post_author); ?>">
 	<meta name="description" content="<? bs_description(); ?>">
 
-	<link rel="icon" href="<?= bs_theme_url('img/fav.ico') ?>">
 	<?/*<link rel="alternate" type="application/rss+xml" href="<?= esc_attr(get_option('rss_url', get_bloginfo('rss2_url'))) ?>">*/?>
 
 	<? wp_head(); ?>

@@ -36,6 +36,7 @@ require_once 'admin/media.php';
 
 // THEME
 require_once 'theme/general.php';
+require_once 'theme/head.php';
 require_once 'theme/excerpt.php';
 require_once 'theme/support.php';
 require_once 'theme/images.php';

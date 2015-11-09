@@ -6,28 +6,6 @@
 final class BS_Theme_General {
 
 //-----------------------------------------------------------------------------
-// WP-HEAD ACTION MANIPULATIONS
-//-----------------------------------------------------------------------------
-
-	protected static $wp_head_actions_to_remove = array(
-		array('feed_links_extra', 3),
-		array('wp_generator'),
-		array('rsd_link'),
-		array('wlwmanifest_link'),
-		array('index_rel_link'),
-		array('start_post_rel_link', 10, 0),
-		array('adjacent_posts_rel_link_wp_head', 10, 0)
-	);
-
-	public static function remove_wp_head_actions() {
-		$actions = apply_filters('bs_wp_head_actions_to_remove', static::$wp_head_actions_to_remove);
-		foreach($actions as $action) {
-			array_unshift($action, 'wp_head');
-			call_user_func_array('remove_action', $action);
-		}
-	}
-
-//-----------------------------------------------------------------------------
 // JQUERY
 //-----------------------------------------------------------------------------
 
@@ -88,13 +66,6 @@ final class BS_Theme_General {
 		return $classes;
 	}
 
-//-----------------------------------------------------------------------------
-// EXCERPT FUNCTIONS
-//-----------------------------------------------------------------------------
-
-	public static function excerpt_length($length) { return 35; }
-
-	public static function excerpt_more($more) { return '…'; }
 
 //-----------------------------------------------------------------------------
 // INITIALIZATION
@@ -106,12 +77,9 @@ final class BS_Theme_General {
 	 */
 	public static function initialize() {
 		$cls = __CLASS__;
-		add_action('bs_ready',           array($cls, 'remove_wp_head_actions'));
 		add_action('wp_enqueue_scripts', array($cls, 'jquery'));
 		add_filter('body_class',         array($cls, 'body_class'));
 		add_filter('post_class',         array($cls, 'post_class'));
-		add_filter('excerpt_more',       array($cls, 'excerpt_more'));
-		add_filter('excerpt_length',     array($cls, 'excerpt_length'));
 	}
 
 }
