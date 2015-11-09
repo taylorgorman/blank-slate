@@ -36,6 +36,7 @@ require_once 'admin/media.php';
 
 // THEME
 require_once 'theme/general.php';
+require_once 'theme/excerpt.php';
 require_once 'theme/support.php';
 require_once 'theme/images.php';
 require_once 'theme/widgets.php';
@@ -63,7 +64,6 @@ require_once 'users/roles.php';
 require_once 'functions/ancestor.php';
 require_once 'functions/author.php';
 require_once 'functions/meta.php';
-require_once 'functions/excerpt.php';
 require_once 'functions/media.php';
 require_once 'functions/menus.php';
 require_once 'functions/pagination.php';

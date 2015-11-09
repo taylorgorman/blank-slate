@@ -8,8 +8,11 @@ add_filter( 'excerpt_more', function(){ return '&hellip;'; }, 999 );
 
 add_filter( 'the_excerpt', function( $excerpt ){
 
+	// Activate shortcodes
 	$excerpt = shortcode_unautop( $excerpt );
 	$excerpt = do_shortcode( $excerpt );
+
+	// Wrap in .excerpt div
 	return '<div class="excerpt">'. $excerpt .'</div>';
 
 } );
