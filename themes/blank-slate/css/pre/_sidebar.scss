@@ -1,0 +1,10 @@
+
+nav.section {
+	ul {@extend %nostyle_list;}
+	a {display: block;}
+	ul ul {display: none;}
+
+	.current_page_item, .current_page_ancestor, .current-cat, .current_page_ancestor .current_page_item {
+		.children {display: block;}
+	}
+}

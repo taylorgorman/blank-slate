@@ -1,0 +1,77 @@
+/*
+** Change any value,
+** But not variable names,
+** OR 123DEATH!
+*/
+
+/* ``````````````````````````````````````````````````
+** Grid
+*/
+$grid_column_count: 12;
+$max_width: 1200px;
+$row_pad_v: 0em;
+$row_pad_h: 1em;
+$col_pad_v: 1em;
+$col_pad_h: 1em;
+
+
+/* ``````````````````````````````````````````````````
+** Media queries
+**
+** List in descending order
+** Largest (thus, first) will be just min-width
+*/
+$break_points: (
+	'dklg' 1200px
+,	'tbsm' 950px
+,	'mblg' 700px
+,	'mbsm' 450px
+);
+
+// Name of default breakpoint
+// Styles between first and second widths defined in $break_points
+$bp_default: 'dk';
+
+// Name of breakpoint in $break_points to start stacking columns
+$bp_stack_columns: 'mblg';
+
+
+/* ``````````````````````````````````````````````````
+** Typography
+*/
+$fz: 16px;
+$input_pad: .75em;
+
+@import url(//fonts.googleapis.com/css?family=Droid+Sans);
+%f_sans {font-family: 'Droid Sans', sans-serif;}
+$fw_sans_b: 700;
+$fw_sans_n: 400;
+$fw_sans_l: 300;
+
+@import url(//fonts.googleapis.com/css?family=Droid+Serif);
+%f_serif {font-family: 'Droid Serif', serif;}
+$fw_serif_b: 700;
+$fw_serif_n: 400;
+$fw_serif_l: 300;
+
+%f_body { @extend %f_serif; }
+$fw_b: $fw_serif_b;
+$fw_n: $fw_serif_n;
+$fw_l: $fw_serif_l;
+
+%f_header { @extend %f_sans; }
+$fw_h_b: $fw_sans_b;
+$fw_h_n: $fw_sans_n;
+$fw_h_l: $fw_sans_l;
+
+
+/* ``````````````````````````````````````````````````
+** Colors
+*/
+$blue: blue;
+$red: red;
+
+$c_body: #555;
+$c_header: darken($c_body, 10);
+$c_link: $blue;
+$c_link_hover: $red;

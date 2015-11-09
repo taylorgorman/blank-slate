@@ -1,0 +1,81 @@
+/*
+** Media queries
+** built from $break_points in _settings.
+** And display classes.
+*/
+
+// Start with a blank list
+$media_queries: ();
+
+// Loop through break points defined in _settings.scss
+@each $bp in $break_points {
+
+	// Initialize variables
+	$max: '';
+	$and: '';
+	$min: '';
+	$index: index($break_points, $bp);
+
+	// First in the list is the largest
+	// for infinity and beyond!
+	@if $index == 1 {
+		$min: 'min-width: #{ nth($bp, 2) }';
+	}
+
+	// But all the others..
+	@else {
+
+		// Start with a max-width
+		$max: 'max-width: #{ nth($bp, 2) }';
+
+		/*
+		** Got rid of this because
+		** I needed mblg styles to cascade down to mbsm.
+		** There might be a way around it.
+		** Or maybe this is just unnecessary.
+		*/
+		// Checks that we're not at the end of the list yet
+		// The last breakpoint doesn't have a min-width
+		//@if $index != length($break_points) {
+		//  $and: ') and (';
+		//  $min: 'min-width: #{ nth(nth($break_points, $index + 1), 2) - 1 }';
+		//}
+	}
+
+	// Build media query
+	// $and was broken out for reasons that may not be necessary any more
+	// but might come in handy in the future
+	$mq: $max + $and + $min;
+
+	// Add this media query to the list
+	$media_queries: append($media_queries, nth($bp, 1) $mq);
+}
+
+/*
+** Show/hide classes
+**
+** Hopefully all these !importants won't do too much damage..
+** This won't work properly on elements that are being set to an unnatural display,
+** like CSS tables.
+*/
+%d-n {display: none !important;}
+
+@each $mq in $media_queries {
+
+	.show-on-#{ nth($mq, 1) }, .hide-on-#{ $bp_default } {
+		@extend %d-n;
+	}
+
+	@media (nth($mq, 2)) {
+		.hide-on-#{ nth($mq, 1) }, .show-on-#{ $bp_default } {
+			display: none !important;
+		}
+		.show-on-#{ nth($mq, 1) }, .hide-on-#{ $bp_default } {
+			display: inherit !important;
+		}
+		table.show-on-#{ nth($mq, 1) }, table.hide-on-#{ $bp_default } {
+			display: table !important;
+		}
+	}
+
+}
