@@ -33,7 +33,7 @@ function bs_post_class( $classes ){
 }
 
 /*
-** Used above
+** Creates "taxonomy-term" classes
 **
 ** $term     object
 ** $classes  array
