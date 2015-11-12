@@ -133,7 +133,6 @@ final class BS_Core {
 		BS_Admin_TinyMCE::initialize();
 
 		// THEME
-		BS_Theme_Support::initialize();
 		BS_Theme_Images::initialize();
 		BS_Theme_Widgets::initialize();
 
