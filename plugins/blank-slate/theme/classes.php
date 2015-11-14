@@ -1,5 +1,7 @@
 <?php
-
+/*
+** Add classes to body_class
+*/
 add_filter( 'body_class', function( $classes ){
 
 	global $wp_query;
@@ -14,6 +16,9 @@ add_filter( 'body_class', function( $classes ){
 
 } );
 
+/*
+** Add classes to post_class
+*/
 add_filter( 'post_class', 'bs_post_class' );
 function bs_post_class( $classes ){
 
