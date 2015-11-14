@@ -16,6 +16,10 @@ add_action( 'after_setup_theme', function(){
 	// Allow site core plugin to modify features
 	$features = apply_filters( 'bs_theme_support', $default_features );
 
+	// Bail if no features
+	if ( empty($features) || ! is_array($features) )
+		return;
+
 	// Add theme supports
 	foreach ( $features as $feature => $args ) {
 		if ( is_array($args) ) add_theme_support( $feature, $args );
