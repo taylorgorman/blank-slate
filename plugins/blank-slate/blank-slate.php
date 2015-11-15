@@ -108,7 +108,6 @@ final class BS_Core {
 	*/
 
 	public static function activation() {
-		add_action('shutdown', array('BS_Theme_Images', 'override_image_sizes'));
 		BS_Users_Roles::manipulate_roles();
 	}
 
@@ -133,7 +132,6 @@ final class BS_Core {
 		BS_Admin_TinyMCE::initialize();
 
 		// THEME
-		BS_Theme_Images::initialize();
 		BS_Theme_Widgets::initialize();
 
 		// POST TYPES
@@ -155,13 +153,47 @@ final class BS_Core {
 	}
 
 }
+BS_Core::initialize();
 
 
 /*
-** Plugin Initialization
+** Plugin activation
 */
+function bs_activation_hook(){
 
-register_activation_hook(__FILE__, array('BS_Core', 'activation'));
-register_deactivation_hook(__FILE__, array('BS_Core', 'deactivation'));
-register_uninstall_hook(__FILE__, array('BS_Core', 'uninstall'));
-BS_Core::initialize();
+	if ( ! current_user_can( 'activate_plugins' ) ) return;
+	$plugin = isset( $_REQUEST['plugin'] ) ? $_REQUEST['plugin'] : '';
+	check_admin_referer( "activate-plugin_{$plugin}" );
+
+	do_action('bs_activation');
+
+}
+register_activation_hook( __FILE__, 'bs_activation_hook' );
+
+/*
+** Plugin deactivation
+*/
+function bs_deactivation_hook(){
+
+	if ( ! current_user_can( 'activate_plugins' ) ) return;
+	$plugin = isset( $_REQUEST['plugin'] ) ? $_REQUEST['plugin'] : '';
+	check_admin_referer( "deactivate-plugin_{$plugin}" );
+
+	do_action('bs_deactivation');
+
+}
+register_deactivation_hook( __FILE__, 'bs_deactivation_hook' );
+
+/*
+** Plugin uninstall
+*/
+function bs_uninstall_hook(){
+
+	if ( ! current_user_can( 'activate_plugins' ) ) return;
+	check_admin_referer( 'bulk-plugins' );
+	if ( __FILE__ != WP_UNINSTALL_PLUGIN ) return;
+
+	do_action('bs_uninstall');
+
+}
+register_uninstall_hook( __FILE__, 'bs_uninstall_hook' );
