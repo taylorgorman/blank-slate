@@ -1,12 +1,41 @@
 <?php
+/*
+** Add new image sizes
+*/
+add_action( 'after_setup_theme', function(){
 
-class BS_Theme_Images {
+	$default_sizes = array(
+		'small' => array(
+			'width'  => 300
+		,	'height' => 0
+		,	'crop'   => false
+		)
+	);
 
-	/**
-	 * Size overrides for the reserved image intermediate sizes
-	 * @var array
-	 */
-	private static $image_size_overrides = array(
+	// Allow site core plugin to modify
+	$sizes = apply_filters( 'bs_image_sizes', $default_sizes );
+
+	// Bail if no sizes
+	if ( empty($sizes) || ! is_array($sizes) )
+		return;
+
+	foreach ( $sizes as $name => $args ) {
+		$args = wp_parse_args( $args, array(
+			'width'  => 0
+		,	'height' => 0
+		,	'crop'   => false
+		) );
+		add_image_size( $name, $args['width'], $args['height'], $args['crop'] );
+	}
+
+} );
+
+/*
+** Modify default image sizes
+*/
+add_action( 'bs_activation_hook', function(){
+
+	$default_sizes = array(
 		'thumbnail' => array(
 			'width'  => 150,
 			'height' => 150,
@@ -24,84 +53,47 @@ class BS_Theme_Images {
 		)
 	);
 
-	/**
-	 * New image sizes to be available to the theme
-	 * @var array
-	 */
-	private static $image_sizes = array(
-		'small' => array(
-			'width'  => 300,
-			'height' => 0,
-			'crop'   => false
-		)
-	);
+	// Allow site core plugin to modify
+	$wp_sizes = apply_filters( 'bs_wp_image_sizes', $default_sizes );
 
-	/**
-	 * Default values for a sizing array
-	 * @var array
-	 */
-	private static $image_size_default = array(
-		'width'  => 0,
-		'height' => 0,
-		'crop'   => false
-	);
+	// Bail if no sizes
+	if ( empty($wp_sizes) || ! is_array($wp_sizes) )
+		return;
 
-	/**
-	 * Overrides the pre-existing image sizes for WordPress.
-	 * THIS FUNCTION IS RUN IN THE ACTIVATE HOOK OF BLANK SLATE!
-	 * @access public
-	 */
-	public static function override_image_sizes() {
-		$sizes = apply_filters('bs_override_image_sizes', static::$image_size_overrides);
-		foreach ($sizes as $size => $args) {
-			$args = wp_parse_args($args, static::$image_size_default);
-			update_option("{$size}_size_w", absint($args['width']));
-			update_option("{$size}_size_h", absint($args['height']));
-			update_option("{$size}_crop", (bool)$args["crop"]);
-		}
-	}
-
-	/**
-	 * Adds new image sizes to WordPress.
-	 * @access public
-	 */
-	public static function add_image_sizes() {
-		$sizes = apply_filters('bs_image_sizes', static::$image_sizes);
-		foreach ($sizes as $size => $args) {
-			$args = wp_parse_args($args, static::$image_sizes);
-			add_image_size($size, $args['width'], $args['height'], $args['crop']);
-		}
+	foreach ( $sizes as $name => $args ) {
+		$args = wp_parse_args( $args, array(
+			'width'  => 0
+		,	'height' => 0
+		,	'crop'   => false
+		) );
+		update_option("{$name}_size_w", absint($args['width']));
+		update_option("{$name}_size_h", absint($args['height']));
+		update_option("{$name}_crop", (bool)$args["crop"]);
 	}
 
 	/*
-	** Removes <style> before galleries.
-	** Because WTF WORDPRESS
+	** Prevent auto-linking image
+	** I know having it here is a bit messy,
+	** but it'd be silly to add another bs_activation_hook action
 	*/
-	public static function use_default_gallery_style() {
-		return false;
-	}
+	update_option('image_default_link_type','none');
 
-	public static function img_caption_shortcode($x=null, $attr, $content) {
-		extract(shortcode_atts(array(
-			'id'       => '',
-			'align'    => 'alignnone',
-			'width'    => '',
-			'caption'  => ''
-		), $attr));
+} );
 
-		if ( 1 > (int) $width || empty($caption) ) return $content;
-		if ( $id ) $id = 'id="' . $id . '" ';
+/*
+** Removes <style> before galleries.
+** Because WTF WORDPRESS
 
-		return '<div ' . $id . 'class="wp-caption ' . $align . '">'
-		. $content . '<p class="wp-caption-text">' . $caption . '</p></div>';
-	}
+add_filter( 'use_default_gallery_style', function(){
+	return false;
+} );
+*/
 
-	public static function initialize() {
-		add_action('bs_ready', array(__CLASS__, 'add_image_sizes'));
-		add_filter('use_default_gallery_style', array(__CLASS__, 'use_default_gallery_style'));
-		add_filter('img_caption_shortcode', array(__CLASS__, 'img_caption_shortcode'), 10, 3);
+/*
+** Removes inline style on caption blocks
+** Because WTF WORDPRESS
 
-		update_option('image_default_link_type','none'); // remove auto-linking image code
-	}
-
-}
+add_filter( 'img_caption_shortcode_width', function(){
+	return false;
+} );
+*/
