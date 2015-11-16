@@ -21,7 +21,6 @@ add_action( 'add_meta_boxes', function() {
 
 } );
 
-
 /*
 ** Meta box content
 */

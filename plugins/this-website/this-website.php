@@ -71,4 +71,3 @@ add_filter( 'bs_wp_image_sizes', function( $sizes ){
 
 } );
 */
-
