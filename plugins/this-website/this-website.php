@@ -41,7 +41,7 @@ add_filter( 'bs_theme_support', function( $features ){
 
 /*
 ** Modify new image sizes
-**
+
 add_filter( 'bs_image_sizes', function( $sizes ){
 
 	// Prevent Blank Slate's default sizes
@@ -62,7 +62,7 @@ add_filter( 'bs_image_sizes', function( $sizes ){
 
 /*
 ** Modify default image sizes
-**
+
 add_filter( 'bs_wp_image_sizes', function( $sizes ){
 
 	$sizes['thumbnail']['width']  = 200;
