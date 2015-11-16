@@ -18,6 +18,7 @@
 ### Blank Slate plugin ###
 
 - Make new image sizes visible in WordPress UI
+- Finish format meta box
 - Reorganize files to folders that make more sense.
 - Ditch all the objects?
 - blank-slate / admin / contact.php / bs_get_social_urls()
