@@ -1,8 +1,6 @@
 <?php
 /*
 ** Add new image sizes
-**
-** TO DO: Make this visible in WordPress UI
 */
 add_action( 'after_setup_theme', function(){
 
