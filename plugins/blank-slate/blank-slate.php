@@ -42,7 +42,6 @@ require_once 'theme/content.php';
 require_once 'theme/classes.php';
 require_once 'theme/support.php';
 require_once 'theme/images.php';
-require_once 'theme/widgets.php';
 require_once 'theme/format-meta.php';
 /*
 if ( $activate_layouts )
@@ -130,9 +129,6 @@ final class BS_Core {
 		BS_Admin_Bar::initialize();
 		BS_Admin_Menu::initialize();
 		BS_Admin_TinyMCE::initialize();
-
-		// THEME
-		BS_Theme_Widgets::initialize();
 
 		// POST TYPES
 		BS_Post_Post_Type::initialize();
