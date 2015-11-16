@@ -13,9 +13,25 @@
 
 /*
 ** Do something here to fail activation if Blank Slate isn't activated
+** Create require_blank_slate() function in Blank Slate? Make it a filter here?
 */
+function require_blank_slate(){
 
-// Modify theme supports
+	if ( ! current_user_can( 'activate_plugins' ) ) return;
+	$plugin = isset( $_REQUEST['plugin'] ) ? $_REQUEST['plugin'] : '';
+	check_admin_referer( "activate-plugin_{$plugin}" );
+
+	if ( ! function_exists('blank_slate_active') ) {
+		// kill this plugin activation
+	}
+
+}
+//register_activation_hook( __FILE__, 'require_blank_slate' );
+
+
+/*
+** Modify theme supports
+*/
 add_filter( 'bs_theme_support', function( $features ){
 
 	$features['post-formats'] = array('link', 'gallery', 'quote');
