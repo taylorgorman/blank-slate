@@ -6,8 +6,8 @@ if (have_posts()) { while (have_posts()) { the_post(); ?>
 	<article <? post_class(); ?> role="article" aria-labelledby="article-<? the_id(); ?>-title">
 
 		<?
-		get_template_part('postdata', $post->post_type);
-		get_template_part('content', $post->post_type);
+		get_template_part('parts/postdata', $post->post_type);
+		get_template_part('parts/content', $post->post_type);
 		?>
 
 	</article>
