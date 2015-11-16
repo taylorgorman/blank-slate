@@ -15,6 +15,7 @@ add_filter( 'the_excerpt', function( $excerpt ){
 
 } );
 
+
 /*
 ** Enforce trimming and stripping regardless of excerpt or content
 **
