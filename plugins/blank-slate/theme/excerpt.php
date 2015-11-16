@@ -2,55 +2,45 @@
 /*
 ** Filter WordPress defaults
 */
-add_filter( 'excerpt_length', function(){ return 35; }, 999 );
+add_filter( 'excerpt_length', function(){ return 35; } );
+add_filter( 'excerpt_more', function(){ return '&hellip;'; } );
 
-add_filter( 'excerpt_more', function(){ return '&hellip;'; }, 999 );
+// Activate shortcodes
+add_filter( 'the_excerpt', 'do_shortcode' );
 
+// Wrap in .excerpt div
 add_filter( 'the_excerpt', function( $excerpt ){
 
-	// Activate shortcodes
-	$excerpt = shortcode_unautop( $excerpt );
-	$excerpt = do_shortcode( $excerpt );
-
-	// Wrap in .excerpt div
 	return '<div class="excerpt">'. $excerpt .'</div>';
 
 } );
 
 /*
-** Functions
+** Enforce trimming and stripping regardless of excerpt or content
 **
-** Look into using wp_trim_excerpt here. Most of this is replicating that.
+** get_the_excerpt() will trim the content, but not the excerpt, so you won't have consistent lengths if one post has a giant excerpt.
+** get_the_excerpt() doesn't allow setting length on the fly
+** I can't do this with filters because I'd need new parameters for the_excerpt() or get_the_excerpt()
+**
+** @param reqired  int           $length  Maximum number of words. Falls back to excerpt_length filter
+** @param          object | int  $post    Post object or post ID. Allows to work outside the loop. Falls back to global $post object.
 */
-function bs_get_excerpt( $post = false, $max_words = false, $truncate = true ) {
+function get_trimmed_excerpt( $length = false, $post = null ) {
 
-	if ( !is_object($post) )
-		global $post;
+	// Get post object or bail
+	$post = get_post($post);
+	if ( empty($post) )
+		return false;
 
-	// Set max words
-	if ( !$max_words )
-		$max_words = apply_filters('excerpt_length', true);
+	// Get and strip excerpt text
+	$excerpt = $post->post_excerpt ? $post->post_excerpt : $post->post_content;
+	$excerpt = strip_tags( strip_shortcodes( $excerpt ) );
 
-	// Get excerpt text
-	$has_excerpt = true;
-	$excerpt = $post->post_excerpt;
-	if (!$excerpt) {
-		$excerpt = strip_tags(strip_shortcodes($post->post_content));
-		$has_excerpt = false;
-	}
-
-	// Return full excerpt
-	if (!$truncate && $has_excerpt)
-		return $excerpt;
-
-	// Truncate
-	$words = explode(' ', $excerpt);
-	if (count($words) > $max_words) {
-		array_splice($words, $max_words);
-		$excerpt = implode(' ', $words) . apply_filters('excerpt_more', true);
-	}
+	// Get length
+	if ( empty($length) || ! is_int($length) )
+		$length = apply_filters( 'excerpt_length', 55 );
 
 	// Return truncated
-	return $excerpt;
+	return wp_trim_words( $excerpt, $length, apply_filters( 'excerpt_more', '&hellip;' ) );
 
 }
