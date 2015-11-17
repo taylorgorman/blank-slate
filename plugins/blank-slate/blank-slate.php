@@ -34,7 +34,10 @@ require_once 'admin/tinymce.php';
 require_once 'admin/new-user-email.php';
 require_once 'admin/media.php';
 
-// THEME
+require_once 'post-types/post-type.php';
+require_once 'abstraction/post-type.php';
+require_once 'abstraction/taxonomy.php';
+
 require_once 'theme/head.php';
 require_once 'theme/scripts.php';
 require_once 'theme/excerpt.php';
@@ -47,11 +50,6 @@ require_once 'theme/format-meta.php';
 if ( $activate_layouts )
 	require_once 'theme/layouts.php';
 */
-
-// POST TYPES
-require_once 'post-types/post-type.php';
-require_once 'post-types/post.php';
-require_once 'post-types/page.php';
 
 // DASHBOARD
 require_once 'dashboard/general.php';
@@ -129,10 +127,6 @@ final class BS_Core {
 		BS_Admin_Bar::initialize();
 		BS_Admin_Menu::initialize();
 		BS_Admin_TinyMCE::initialize();
-
-		// POST TYPES
-		BS_Post_Post_Type::initialize();
-		BS_Page_Post_Type::initialize();
 
 		// DASHBOARD
 		BS_Dashboard_General::initialize();

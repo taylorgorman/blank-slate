@@ -1,69 +1,38 @@
 <?php
 
-/**
- * Helper class for defining and managing functionality for a custom post type
- * @see http://codex.wordpress.org/Function_Reference/register_post_type
- */
-abstract class BS_Post_Type {
-
-//-----------------------------------------------------------------------------
-// REGISTRATION
-//-----------------------------------------------------------------------------
-
-	/**
-	 * The name of the post type used in registering and accessing this CPT.
-	 * Maximum 20 charaacters, can not contain capital letters or spaces.
-	 * @var string
-	 */
-	protected static $id = null;
-
-	/**
-	 * Registration arguments for this post type. The values set here will override
-	 * any other registration args defined in this class
-	 * @var array
-	 */
-	protected static $args = null;
-
-	/**
-	 * An array of labels for this post type.
-	 * @var array
-	 */
-	protected static $labels = null;
-
-	/**
-	 * An array of features to add to the post type
-	 * @var array
-	 */
-	protected static $add_supports = null;
-
-	/**
-	 * An array of features to remove from the post type
-	 * @var array
-	 */
-	protected static $remove_supports = null;
-
-	/**
-	 * An array of capabilities for this post type
-	 * @var array
-	 */
-	protected static $capabilities = null;
-
-	/**
-	 * An array of taxonomies that should be applied to this post type
-	 * @var array
-	 */
-	protected static $taxonomies = null;
+abstract class bs_post_type {
 
 	/*
-	** Default registration arguments that should be applied to all post types
-	** unless overwritten
+	** Registration
 	*/
+	protected static $ID = null;
+	protected static $singular_name = null;
+	protected static $plural_name = null;
+	protected static $labels = null;
+	protected static $add_supports = null;
+	protected static $remove_supports = null;
+	protected static $arguments = null;
+
 
 	/*
 	** Registers the post type with WordPress. This method
 	** should not be called directly.
 	*/
 	public static function register() {
+
+		// Singular name is essential
+		if ( empty($singular_name) )
+			return false;
+
+		// ID can set itself
+		if ( empty($v['ID']) )
+			$v['ID'] = $v['singular_name'];
+
+		// Uppercase names
+		if ( empty($v['singular_name_uppercase']) )
+			$v['singular_name_uppercase'] = ucwords($v['singular_name']);
+		if ( empty($v['plural_name_uppercase']) )
+			$v['plural_name_uppercase'] = ucwords($v['plural_name']);
 
 		// Default register_post_type arguments
 		$defaults = array(
@@ -135,7 +104,7 @@ abstract class BS_Post_Type {
 		if (!isset($args['labels']['not_found_in_trash']))
 			$args['labels']['not_found_in_trash'] = 'No '.$args['labels']['plural_name'].' found in trash';
 
-		register_post_type(static::$id, $args);
+		register_post_type(static::$ID, $args);
 	}
 
 
@@ -150,7 +119,7 @@ abstract class BS_Post_Type {
 	public static function add_supports() {
 		if (!is_array(static::$add_supports)) return;
 		foreach(static::$add_supports as $feature)
-			add_post_type_support(static::$id, $feature);
+			add_post_type_support(static::$ID, $feature);
 	}
 
 	/**
@@ -160,7 +129,7 @@ abstract class BS_Post_Type {
 	public static function remove_supports() {
 		if (!is_array(static::$remove_supports)) return;
 		foreach(static::$remove_supports as $feature)
-			remove_post_type_support(static::$id, $feature);
+			remove_post_type_support(static::$ID, $feature);
 	}
 
 
@@ -286,8 +255,8 @@ abstract class BS_Post_Type {
 		if (!static::is_this_cpt()) return;
 		if (is_array(static::$meta_boxes_to_remove))
 			foreach(static::$meta_boxes_to_remove as $box) {
-				remove_meta_box($box, static::$id, 'normal');
-				remove_meta_box($box, static::$id, 'side');
+				remove_meta_box($box, static::$ID, 'normal');
+				remove_meta_box($box, static::$ID, 'side');
 			}
 	}
 
@@ -303,7 +272,7 @@ abstract class BS_Post_Type {
 				'revisionsdiv',
 				'Revisions',
 				'post_revisions_meta_box',
-				static::$id,
+				static::$ID,
 				'side',
 				'low'
 			),
@@ -311,7 +280,7 @@ abstract class BS_Post_Type {
 				'authordiv',
 				'Author',
 				'post_author_meta_box',
-				static::$id,
+				static::$ID,
 				'side',
 				'high'
 			),
@@ -319,7 +288,7 @@ abstract class BS_Post_Type {
 				'slugdiv',
 				'Slug',
 				'post_slug_meta_box',
-				static::$id,
+				static::$ID,
 				'side',
 				'high'
 			)
@@ -330,8 +299,8 @@ abstract class BS_Post_Type {
 		if (!static::$move_slug_meta_box) unset($relocations['slug']);
 
 		foreach($relocations as $support => $args) {
-			if ('slug' !== $support && !post_type_supports(static::$id, $support)) continue;
-			remove_meta_box($args[0], static::$id, 'normal');
+			if ('slug' !== $support && !post_type_supports(static::$ID, $support)) continue;
+			remove_meta_box($args[0], static::$ID, 'normal');
 			call_user_func_array('add_meta_box', $args);
 		}
 	}
@@ -354,7 +323,7 @@ abstract class BS_Post_Type {
 
 		// Not admin, post type check
 		if (is_admin()) return;
-		if ($query->get('post_type') != static::$id) return;
+		if ($query->get('post_type') != static::$ID) return;
 
 		if ( is_post_type_hierarchical($query->get('post_type')) ) {
 			$query->set('orderby', 'menu_order');
@@ -381,7 +350,7 @@ abstract class BS_Post_Type {
 	 */
 	protected static function is_this_cpt() {
 		global $post_type;
-		return $post_type == static::$id;
+		return $post_type == static::$ID;
 	}
 
 //-----------------------------------------------------------------------------
@@ -394,15 +363,16 @@ abstract class BS_Post_Type {
 	 * @access public
 	 */
 	public static function ready() {
+
 		$cls = get_called_class();
-		$id = static::$id;
+		$ID = static::$ID;
 
 		add_action('init', array($cls, 'register'));
 		add_action('init', array($cls, 'add_supports'));
 		add_action('init', array($cls, 'remove_supports'));
 
-		add_filter("manage_edit-{$id}_columns", array($cls, 'manage_columns'));
-		add_action("manage_{$id}_posts_custom_column", array($cls, 'column_values'), 10, 2);
+		add_filter('manage_edit-'.static::$ID.'_columns', array($cls, 'manage_columns'));
+		add_action('manage_'.static::$ID.'_posts_custom_column', array($cls, 'column_values'), 10, 2);
 
 		add_filter('enter_title_here', array($cls, 'enter_title_here'));
 
