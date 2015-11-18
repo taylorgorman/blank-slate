@@ -34,9 +34,11 @@ require_once 'admin/tinymce.php';
 require_once 'admin/new-user-email.php';
 require_once 'admin/media.php';
 
-require_once 'post-types/post-type.php';
 require_once 'abstraction/post-type.php';
 require_once 'abstraction/taxonomy.php';
+
+require_once 'structure/post.php';
+require_once 'structure/page.php';
 
 require_once 'theme/head.php';
 require_once 'theme/scripts.php';

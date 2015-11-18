@@ -1,22 +1,17 @@
-<?
+<?php
 /*
 ** Register all the things
 */
-class capability extends bs_post_type {
+class project extends bs_post_type {
 
-	protected static $ID = 'capability';
-
-	protected static $args = array(
-		'label' => 'Capabilities'
-	,	'labels' => array(
-			'singular_name' => 'Capability'
-		)
-	,	'menu_icon' => 'dashicons-clipboard'
+	protected static $singular_name = 'project';
+	protected static $plural_name   = 'projects';
+	protected static $arguments     = array(
+		'menu_icon'    => 'dashicons-clipboard'
 	,	'hierarchical' => true
 	);
 
-}
-capability::initialize();
+} project::initialize();
 
 /*
 add_action( 'init', function(){
