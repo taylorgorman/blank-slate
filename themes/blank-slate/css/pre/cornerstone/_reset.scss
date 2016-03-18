@@ -118,8 +118,11 @@ textarea {
 .table {
 	@extend %table;
 }
+@mixin trow {
+	display: table-row;
+}
 %trow {
-	display:table-row;
+	@include trow;
 }
 .trow {
 	@extend %trow;
@@ -162,12 +165,18 @@ textarea {
 .ta-r {
 	text-align: right;
 }
-.to-e {
+@mixin to-e {
 	max-width: 100%;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
 	display: inline-block;
+}
+%to-e {
+	@include to-e;
+}
+.table {
+	@extend %to-e;
 }
 
 /*
