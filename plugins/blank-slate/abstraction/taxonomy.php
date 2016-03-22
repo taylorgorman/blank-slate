@@ -28,7 +28,7 @@ function bs_register_taxonomy( $args ) {
 		$v['plural_name_uppercase'] = ucwords($v['plural_name']);
 
 	// Labels
-	$labels = wp_parse_args( $v['labels'], array(
+	$v['labels'] = wp_parse_args( $v['labels'], array(
 		'name'                       => $v['plural_name_uppercase']
 	,	'singular_name'              => $v['singular_name_uppercase']
 	,	'search_items'               => 'Search '.$v['plural_name_uppercase']
@@ -49,13 +49,15 @@ function bs_register_taxonomy( $args ) {
 	) );
 
 	// Register taxonomy arguments
-	$register_args = wp_parse_args( $v['arguments'], array(
-		'labels'            => $labels
+	$v['arguments'] = wp_parse_args( $v['arguments'], array(
+		'labels'            => $v['labels']
 	,	'hierarchical'      => true
 	,	'show_admin_column' => true
 	) );
 
 	// Go go gadget
-	register_taxonomy( $v['ID'], $v['post_types'], $register_args );
+	add_action( 'init', function($v) use ($v){
+		register_taxonomy( $v['ID'], $v['post_types'], $v['arguments'] );
+	});
 
 }

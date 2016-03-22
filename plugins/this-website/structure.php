@@ -13,7 +13,17 @@ class project extends bs_post_type {
 
 } project::initialize();
 
-/*
+bs_register_taxonomy(array(
+	'post_types'    => 'project'
+,	'singular_name' => 'poop'
+,	'plural_name'   => 'poops'
+));
+
+
+/* This would be my original idea for registering post types
+** but I think it's not possible because we can't add filters or actions
+** inside these functions. That would be functions inside functions.
+**
 add_action( 'init', function(){
 
 	bs_register_post_type(array(
@@ -25,12 +35,6 @@ add_action( 'init', function(){
 		'ID'            => 'news'
 	,	'singular_name' => 'article'
 	,	'plural_name'   => 'news'
-	));
-
-	bs_register_taxonomy(array(
-		'post_types'    => 'project'
-	,	'singular_name' => 'client'
-	,	'plural_name'   => 'clients'
 	));
 
 } );
