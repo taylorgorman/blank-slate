@@ -46,6 +46,7 @@ require_once 'admin/media.php';
 
 require_once 'abstraction/post-type.php';
 require_once 'abstraction/taxonomy.php';
+require_once 'abstraction/scheduled.php';
 
 require_once 'structure/post.php';
 require_once 'structure/page.php';
