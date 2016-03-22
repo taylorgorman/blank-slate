@@ -1,7 +1,9 @@
 <?php
 /*
 ** Register all the things
-*/
+**
+** Old method with object
+**
 class project extends bs_post_type {
 
 	protected static $singular_name = 'project';
@@ -12,6 +14,16 @@ class project extends bs_post_type {
 	);
 
 } project::initialize();
+*/
+
+bs_register_post_type(array(
+	'singular_name' => 'project'
+,	'plural_name'   => 'projects'
+,	'arguments'     => array(
+		'menu_icon'    => 'dashicons-clipboard'
+	,	'hierarchical' => true
+	)
+));
 
 bs_register_taxonomy(array(
 	'post_types'    => 'project'
