@@ -1,12 +1,12 @@
 # Blank Slate #
 
-## Description ##
+#### What's in the box ####
 
-- Blank Slate plugin configures WordPress to be better.
-- This Website plugin is for WordPress configurations that should still be available if ever the theme changes. Also needs a cleverer name.
-- Blank Slate theme is a starting point for development. Rename it and go forth.
+- Blank Slate **plugin** configures WordPress to be better universally.
+- This Website **plugin** configures WordPress for this site. Settings go here so the site doesn't fall apart if the theme changes. Also needs a cleverer name.
+- Blank Slate **theme** is a starting point for development. Rename it and go forth.
 
-### What does Blank Slate plugin do? ###
+#### What it does ####
 
 - Hides Links
 - Hide Theme Edit
@@ -17,6 +17,28 @@
 
 ### Blank Slate plugin ###
 
+- Move Excerpt box above Content
+- Create Blank Slate Settings screen
+    - Toggle Post Formats
+    - Toggle scheduled post types
+- Post Formats Meta
+    - Load according to post format, then listen to post format radiobox changing to switch out without waiting for save.
+    - Link: Source URL, Source Name
+    - Quote: Source Name, Source Details
+- Blank Slate activation
+    - Delete sample comment, post, page
+    - Create Home and Blog pages
+    - Set front page to Home, posts page to Blog
+    - Set permalinks
+    - Uninstall Hello Dolly and Akismet plugins
+    - Uninstall 2010-2014 themes
+    - Clear tagline (general settings)
+    - Change timezone to New York
+    - Week starts on Sunday
+    - Do not convert emoticons to graphics
+    - Medium image size to 320
+    - Large image size to 800
+    - Do not organize uploads into folders
 - Make new image sizes visible in WordPress UI
 - Finish format meta box
 - Reorganize files to folders that make more sense.
