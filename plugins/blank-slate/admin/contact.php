@@ -14,7 +14,32 @@ add_action('admin_init', function(){
 **
 ** This should be a global Blank Slate tool and should be moved elsewhere.
 ** Need layout for side-by-side labels and inputs like WordPress default. Could just detect whether any fields have cols set.
+**
+** Proposed changes to allow markup exceptions
+**
+		field_markup(array(
+			'before_fields' => '<div class="mycoolthing">'
+		,	'during_fields' => '<h2>%1$s</h2><div class="whaaaaat">%2$s</div>'
+		,	'after_fields'  => '</div>'
+		,	'fieldgroup'    => 'contact_info' // Will make field names "fieldgroup[id]"
+		,	'fields'        => array(
+				array(
+					'type' => 'text'
+				,	'label' => 'Get At This'
+				,	'name' => 'contact_info[get-at-this]'
+				,	'id' => 'get-at-this'
+				,	'placeholder' => 'Default poop'
+				,	'desc' => 'Type something, dummy'
+				,	'cols' => 2
+				)
+			,	array(
+					'label' => 'Or This'
+				)
+		)
+		));
+**
 */
+
 function field_markup( $fields ) {
 
 	// Markup before fields
@@ -137,30 +162,6 @@ add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish
 		settings_fields('contact_info_settings');
 		$v = get_option('contact_info');
 
-		/* Proposed changes to allow markup exceptions
-		**
-		field_markup(array(
-			'before_fields' => '<div class="mycoolthing">'
-		,	'during_fields' => '<h2>%1$s</h2><div class="whaaaaat">%2$s</div>'
-		,	'after_fields'  => '</div>'
-		,	'fieldgroup'    => 'contact_info' // Will make field names "fieldgroup[id]"
-		,	'fields'        => array(
-				array(
-					'type' => 'text'
-				,	'label' => 'Get At This'
-				,	'name' => 'contact_info[get-at-this]'
-				,	'id' => 'get-at-this'
-				,	'placeholder' => 'Default poop'
-				,	'desc' => 'Type something, dummy'
-				,	'cols' => 2
-				)
-			,	array(
-					'label' => 'Or This'
-				)
-		)
-		));
-		*/
-
 		field_markup(array(
 			array(
 				'label' => 'Company Name'
@@ -182,9 +183,8 @@ add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish
 		<p class="description">Save Changes to update number of fields below.</p>
 
 		<?
-		$fields = array();
 		for ( $i=1; $i<=get_contactinfo('locations-count'); $i++ ) {
-			$fields = array(
+			field_markup(array(
 				array(
 					'label' => 'Location '.$i.' Name'
 				,	'name' => 'location-name-'.$i
@@ -220,8 +220,7 @@ add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish
 				,	'name' => 'fax-'.$i
 				,	'cols'  => 2
 				)
-			);
-			field_markup( $fields );
+			));
 		}
 		?>
 
