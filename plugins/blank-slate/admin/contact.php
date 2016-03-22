@@ -188,7 +188,7 @@ function bs_contact_info_screen() {
 		<?
 		$fields = array();
 		for ( $i=1; $i<=get_contactinfo('locations-count'); $i++ ) {
-			$fields = array_merge($fields, array(
+			$fields = array(
 				array(
 					'label' => 'Location '.$i.' Name'
 				,	'name' => 'location-name-'.$i
@@ -224,9 +224,9 @@ function bs_contact_info_screen() {
 				,	'name' => 'fax-'.$i
 				,	'cols'  => 2
 				)
-			));
+			);
+			field_markup( $fields );
 		}
-		field_markup( $fields );
 		?>
 
 		<h3>Social Networks</h3>
