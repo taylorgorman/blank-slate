@@ -22,8 +22,18 @@ define('BS_URL', plugin_dir_url(__FILE__));
 
 
 /*
+** Settings
+*/
+
+$bs_settings = get_option('blank_slate_settings');
+
+
+/*
 ** Include files
 */
+
+// SCREENS
+require_once 'screens/settings-blank-slate.php';
 
 // ADMIN
 require_once 'admin/general.php';
@@ -48,10 +58,7 @@ require_once 'theme/classes.php';
 require_once 'theme/support.php';
 require_once 'theme/images.php';
 require_once 'theme/format-meta.php';
-/*
-if ( $activate_layouts )
-	require_once 'theme/layouts.php';
-*/
+if ( ! empty($bs_settings['layout_classes']) ) require_once 'theme/layouts.php';
 
 // DASHBOARD
 require_once 'dashboard/general.php';
