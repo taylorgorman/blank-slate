@@ -34,12 +34,12 @@ $bs_settings = get_option('blank_slate_settings');
 
 // SCREENS
 require_once 'screens/settings-blank-slate.php';
+require_once 'screens/settings-contact.php';
 
 // ADMIN
 require_once 'admin/general.php';
 require_once 'admin/bar.php';
 require_once 'admin/menu.php';
-require_once 'admin/contact.php';
 require_once 'admin/tinymce.php';
 require_once 'admin/new-user-email.php';
 require_once 'admin/media.php';
