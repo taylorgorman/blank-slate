@@ -18,7 +18,7 @@
 ### Blank Slate plugin ###
 
 - Move Excerpt box above Content
-- Create Blank Slate Settings screen
+- Add to Blank Slate Settings screen
     - Toggle Post Formats
     - Toggle scheduled post types
 - Post Formats Meta
