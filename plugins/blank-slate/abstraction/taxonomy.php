@@ -1,6 +1,6 @@
 <?
 /*
-** Register post type
+** Register taxonomy
 */
 function bs_register_taxonomy( $args ) {
 
@@ -9,17 +9,19 @@ function bs_register_taxonomy( $args ) {
 	,	'post_types'    => ''
 	,	'singular_name' => ''
 	,	'plural_name'   => ''
-	,	'arguments'     => array()
 	,	'labels'        => array()
+	,	'arguments'     => array()
 	) );
 
 	// Singular name and post_types are essential
 	if ( empty($v['singular_name']) || empty($v['post_types']) )
 		return false;
 
-	// ID can set itself
+	// ID and plural default to singular
 	if ( empty($v['ID']) )
 		$v['ID'] = $v['singular_name'];
+	if ( empty($v['plural_name']) )
+		$v['plural_name'] = $v['singular_name'];
 
 	// Uppercase names
 	if ( empty($v['singular_name_uppercase']) )
