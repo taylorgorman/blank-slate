@@ -1,17 +1,12 @@
 <?php
 
+/*** ADMIN **********************************************************/
+
 /*
 ** Register settings
 */
 add_action('admin_init', function(){
 	register_setting( 'contact_info_settings', 'contact_info' );
-});
-
-/*
-** Create subpage
-*/
-add_action('admin_menu', function(){
-	add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish_pages', 'contact-info', 'bs_contact_info_screen' );
 });
 
 /*
@@ -77,9 +72,10 @@ function field_markup( $fields ) {
 }
 
 /*
-** Markup for admin screen
+** Create subpage
 */
-function bs_contact_info_screen() {
+add_action( 'admin_menu', function(){
+add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish_pages', 'contact-info', function(){
 
 	?>
 	<style>
@@ -258,7 +254,10 @@ function bs_contact_info_screen() {
 	</div>
 	<?
 
-}
+} );
+} );
+
+/*** THEME **********************************************************/
 
 /*
 ** Just an easy way to echo get_contactinfo
