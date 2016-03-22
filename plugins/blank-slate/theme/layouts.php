@@ -65,7 +65,7 @@ function layouts_metabox_content( $post ) {
 	) as $class ) {
 
 		echo '<label>';
-		echo '<input type="checkbox" name="layouts[classes]['. $class .']" value="layouts-'. $class .'" '. checked($data['classes'][$class], 'layouts-'.$class, 0) .'>';
+		echo '<input type="checkbox" name="layouts[]" value="'. $class .'" '. checked( in_array($class, $data), true, 0 ) .'>';
 		echo ' '. $class .'</label><br>';
 
 	}
@@ -84,7 +84,10 @@ add_action( 'save_post', function( $post_id ) {
 	if ( ! current_user_can('edit_pages') ) return;
 
 	// Save data
-	update_post_meta( $post_id, '_layouts', $_POST['layouts'] );
+	if ( empty( $_POST['layouts'] ) )
+		delete_post_meta( $post_id, '_layouts' );
+	else
+		update_post_meta( $post_id, '_layouts', $_POST['layouts'] );
 
 } );
 
