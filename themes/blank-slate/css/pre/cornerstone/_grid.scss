@@ -33,10 +33,6 @@ $ctr_pad_h: calc(#{$row_pad_h} + #{$col_pad_h});
 	float: left;
 	position: relative;
 	padding: $col_pad_v $col_pad_h;
-
-	&:last-child:not([class*='pull'], :first-child) {
-		float: right;
-	}
 }
 .nopad {
 	padding: 0;
@@ -108,10 +104,6 @@ $stack_columns_index: index_from_key($break_points, $bp_stack_columns);
 	  .column {
 	  	width: 100%;
 	  	float: none;
-
-	  	&, &:last-child:not([class*='pull'], :first-child) {
-		  	float: none;
-		  }
 	  }
 
 		// CSS Tables
@@ -146,10 +138,6 @@ $stack_columns_index: index_from_key($break_points, $bp_stack_columns);
 		.#{ nth($mq, 1) }-#{ $x } {
 			width: floor($x / $grid_column_count * 100%);
 			float: left;
-
-			&:last-child:not([class*='pull'], :first-child) {
-				float: right;
-			}
 		}
 
 		// Don't float full-width columns
