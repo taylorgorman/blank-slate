@@ -13,6 +13,16 @@
 
 
 /*
+** Prevent update from WordPress Plugin Repo
+*/
+
+add_filter( 'site_transient_update_plugins', function ( $value ) {
+	unset( $value->response['blank-slate/blank-slate.php'] );
+	return $value;
+} );
+
+
+/*
 ** Constants
 */
 
