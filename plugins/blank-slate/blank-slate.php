@@ -15,7 +15,6 @@
 /*
 ** Prevent update from WordPress Plugin Repo
 */
-
 add_filter( 'site_transient_update_plugins', function ( $value ) {
 	unset( $value->response['blank-slate/blank-slate.php'] );
 	return $value;
@@ -25,7 +24,6 @@ add_filter( 'site_transient_update_plugins', function ( $value ) {
 /*
 ** Constants
 */
-
 define('BS_IS_LOCAL', $_SERVER['SERVER_NAME'] == 'localhost');
 define('BS_PATH', plugin_dir_path(__FILE__));
 define('BS_URL', plugin_dir_url(__FILE__));
@@ -34,7 +32,6 @@ define('BS_URL', plugin_dir_url(__FILE__));
 /*
 ** Settings
 */
-
 $bs_settings = get_option('blank_slate_settings');
 
 
@@ -101,40 +98,13 @@ require_once 'sidebar/section-navigation.php';
 /*
 ** Root Plugin Class
 */
+BS_Admin_General::initialize();
+BS_Admin_Bar::initialize();
+BS_Admin_Menu::initialize();
+BS_Admin_TinyMCE::initialize();
 
-final class BS_Core {
-
-	/*
-	** Plugin-related Hooks
-	*/
-
-	public static function activation() {
-		BS_Users_Roles::manipulate_roles();
-	}
-
-	public static function ready() {
-		do_action('bs_ready');
-	}
-
-	public static function initialize() {
-
-		// ADMIN
-		BS_Admin_General::initialize();
-		BS_Admin_Bar::initialize();
-		BS_Admin_Menu::initialize();
-		BS_Admin_TinyMCE::initialize();
-
-		// DASHBOARD
-		BS_Dashboard_General::initialize();
-		BS_Right_Now_Widget::initialize();
-
-		// PLUGIN ACTIONS
-		add_action('after_setup_theme', array(__CLASS__, 'ready'), 999);
-
-	}
-
-}
-BS_Core::initialize();
+BS_Dashboard_General::initialize();
+BS_Right_Now_Widget::initialize();
 
 
 /*
