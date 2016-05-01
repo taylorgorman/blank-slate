@@ -170,4 +170,4 @@ class BS_Admin_Bar {
 		//add_action('wp_head', array(__CLASS__, 'change_admin_bar_logo_front_end'));
 	}
 
-}
+} BS_Admin_Bar::initialize();

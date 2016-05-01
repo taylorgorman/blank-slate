@@ -96,18 +96,6 @@ require_once 'sidebar/section-navigation.php';
 
 
 /*
-** Root Plugin Class
-*/
-BS_Admin_General::initialize();
-BS_Admin_Bar::initialize();
-BS_Admin_Menu::initialize();
-BS_Admin_TinyMCE::initialize();
-
-BS_Dashboard_General::initialize();
-BS_Right_Now_Widget::initialize();
-
-
-/*
 ** Load this plugin first, so its resources are available to everyone.
 */
 add_action( 'activated_plugin', function(){

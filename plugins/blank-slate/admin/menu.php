@@ -102,4 +102,4 @@ class BS_Admin_Menu {
 		add_action('admin_menu', array(__CLASS__, 'remove_menus'), 999);
 	}
 
-}
+} BS_Admin_Menu::initialize();

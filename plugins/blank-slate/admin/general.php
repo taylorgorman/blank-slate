@@ -49,4 +49,5 @@ class BS_Admin_General {
 		add_action('after_setup_theme', array(__CLASS__, 'hide_upgrade_notices'));
 		add_action('admin_enqueue_scripts', array(__CLASS__, 'enqueue_scripts'));
 	}
-}
+
+} BS_Admin_General::initialize();

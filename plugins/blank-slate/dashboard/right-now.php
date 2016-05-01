@@ -28,8 +28,8 @@ class BS_Right_Now_Widget extends BS_Dashboard_Widget {
 				<h4>Content</h4>
 				<table>
 					<tbody>
-						<?php foreach($post_types as $pt) { 
-							$counts = (array)wp_count_posts($pt->name, 'readable'); 
+						<?php foreach($post_types as $pt) {
+							$counts = (array)wp_count_posts($pt->name, 'readable');
 							$edit_link = $pt->name == 'attachment' ? 'upload.php' : 'edit.php?post_type='.$pt->name;
 							$draft_link = $edit_link.'&post_status=draft';
 							$pending_link = $edit_link.'&post_status=pending';
@@ -49,8 +49,8 @@ class BS_Right_Now_Widget extends BS_Dashboard_Widget {
 			<div class="right-now-block">
 				<h4>Details</h4>
 				<p id="right-now-details">
-					<b class="blog-name"><?php echo bloginfo('name'); ?></b> is running on 
-					<b class="wordpress-version">WordPress <?php echo $wp_version ?></b> with the 
+					<b class="blog-name"><?php echo bloginfo('name'); ?></b> is running on
+					<b class="wordpress-version">WordPress <?php echo $wp_version ?></b> with the
 					<b class="theme-name"><?php echo wp_get_theme(); ?> Theme</b>. There are
 					<b class="active-plugins"><?php echo $active_plugins ?> Active Plugins</b> of the <?php echo $total_plugins; ?> plugins installed.
 					This site is currently <b class="blog-public"><?php echo $public ? '' : 'NOT'; ?> indexable</b> by search engines and archivers.
@@ -79,4 +79,5 @@ class BS_Right_Now_Widget extends BS_Dashboard_Widget {
 		parent::initialize();
 		add_action('wp_ajax_bs_right_now', array(get_called_class(), 'ajax'));
 	}
-}
+
+} BS_Right_Now_Widget::initialize();

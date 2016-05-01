@@ -50,4 +50,4 @@ class BS_Dashboard_General {
 		add_action('wp_dashboard_setup', array(get_called_class(), 'remove_widgets'), 11);
 	}
 
-}
+} BS_Dashboard_General::initialize();

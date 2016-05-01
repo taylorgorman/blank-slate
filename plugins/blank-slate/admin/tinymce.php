@@ -25,9 +25,9 @@ class BS_Admin_TinyMCE {
 		"undo",
 		"redo",
 		"pastetext",
-		"pasteword", 
+		"pasteword",
 		"removeformat",
-		"charmap", 
+		"charmap",
 		"blockquote",
 		"wp_more"
 	);
@@ -40,15 +40,15 @@ class BS_Admin_TinyMCE {
 		return apply_filters('bs_tinymce_second_row_buttons', static::$second_row_buttons);
 	}
 
-	public static function add_editor_style() { 
+	public static function add_editor_style() {
 		$style = apply_filters('bs_tinymce_style', static::$editor_stylesheet);
-		add_editor_style($style); 
+		add_editor_style($style);
 	}
 
 	public static function initialize() {
 		add_filter('mce_buttons', array(get_called_class(), 'mce_buttons_first_row'));
 		add_filter('mce_buttons_2', array(get_called_class(), 'mce_buttons_second_row'));
-		add_action('admin_init', array(get_called_class(), 'add_editor_style'));	
+		add_action('admin_init', array(get_called_class(), 'add_editor_style'));
 	}
 
-}
+} BS_Admin_TinyMCE::initialize();
