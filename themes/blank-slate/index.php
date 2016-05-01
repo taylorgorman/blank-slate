@@ -12,7 +12,7 @@ if (have_posts()) { while (have_posts()) { the_post(); ?>
 
 	</article>
 
-<? } pagination(); } else { ?>
+<? } bs_paginate_links(); } else { ?>
 
 	<article <? post_class(); ?>>
 
