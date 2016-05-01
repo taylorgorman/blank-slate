@@ -43,16 +43,20 @@ require_once 'structure/page.php';
 require_once 'structure/roles.php';
 
 /*
-** Create new functions to add features or make WordPress things simpler
+** Make WordPress things simpler
 */
 require_once 'abstraction/post-type.php';
 require_once 'abstraction/taxonomy.php';
 require_once 'abstraction/scheduled.php';
 
-require_once 'functions/ancestor.php';
-require_once 'functions/author.php';
+/*
+** Standalone functions
+*/
 require_once 'functions/meta.php';
-require_once 'functions/media.php';
+
+require_once 'functions/highest_ancestor.php';
+require_once 'functions/get_author_posts_link.php';
+require_once 'functions/get_post_thumbnail_url.php';
 require_once 'functions/menus.php';
 require_once 'functions/pagination.php';
 require_once 'functions/paths.php';
