@@ -39,40 +39,18 @@ $bs_settings = get_option('blank_slate_settings');
 
 
 /*
-** Include files
+** Make changes to current WordPress structure
 */
-
-require_once 'admin/general.php';
-require_once 'admin/bar.php';
-require_once 'admin/menu.php';
-require_once 'admin/tinymce.php';
-require_once 'admin/new-user-email.php';
-require_once 'admin/media.php';
-require_once 'admin/users.php';
-require_once 'admin/settings-blank-slate.php';
-require_once 'admin/settings-contact.php';
-
-require_once 'abstraction/post-type.php';
-require_once 'abstraction/taxonomy.php';
-require_once 'abstraction/scheduled.php';
-
 require_once 'structure/post.php';
 require_once 'structure/page.php';
 require_once 'structure/roles.php';
 
-require_once 'theme/head.php';
-require_once 'theme/scripts.php';
-require_once 'theme/excerpt.php';
-require_once 'theme/content.php';
-require_once 'theme/classes.php';
-require_once 'theme/support.php';
-require_once 'theme/images.php';
-require_once 'theme/format-meta.php';
-if ( ! empty($bs_settings['layout_classes']) ) require_once 'theme/layouts.php';
-
-require_once 'dashboard/general.php';
-require_once 'dashboard/dashboard-widget.php';
-require_once 'dashboard/right-now.php';
+/*
+** Create new functions to add features or make WordPress things simpler
+*/
+require_once 'abstraction/post-type.php';
+require_once 'abstraction/taxonomy.php';
+require_once 'abstraction/scheduled.php';
 
 require_once 'functions/ancestor.php';
 require_once 'functions/author.php';
@@ -84,6 +62,36 @@ require_once 'functions/paths.php';
 require_once 'functions/schema.php';
 require_once 'functions/strings.php';
 require_once 'functions/time.php';
+
+/*
+** Modify admin screens
+*/
+require_once 'admin/general.php';
+require_once 'admin/bar.php';
+require_once 'admin/menu.php';
+require_once 'admin/tinymce.php';
+require_once 'admin/new-user-email.php';
+require_once 'admin/media.php';
+require_once 'admin/users.php';
+require_once 'admin/settings-blank-slate.php';
+require_once 'admin/settings-contact.php';
+
+require_once 'dashboard/general.php';
+require_once 'dashboard/dashboard-widget.php';
+require_once 'dashboard/right-now.php';
+
+/*
+** Modify theme output
+*/
+require_once 'theme/head.php';
+require_once 'theme/scripts.php';
+require_once 'theme/excerpt.php';
+require_once 'theme/content.php';
+require_once 'theme/classes.php';
+require_once 'theme/support.php';
+require_once 'theme/images.php';
+require_once 'theme/format-meta.php';
+if ( ! empty($bs_settings['layout_classes']) ) require_once 'theme/layouts.php';
 
 require_once 'media/featured-icon.php';
 
