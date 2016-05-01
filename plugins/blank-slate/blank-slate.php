@@ -42,17 +42,15 @@ $bs_settings = get_option('blank_slate_settings');
 ** Include files
 */
 
-// SCREENS
-require_once 'screens/settings-blank-slate.php';
-require_once 'screens/settings-contact.php';
-
-// ADMIN
 require_once 'admin/general.php';
 require_once 'admin/bar.php';
 require_once 'admin/menu.php';
 require_once 'admin/tinymce.php';
 require_once 'admin/new-user-email.php';
 require_once 'admin/media.php';
+require_once 'admin/users.php';
+require_once 'admin/settings-blank-slate.php';
+require_once 'admin/settings-contact.php';
 
 require_once 'abstraction/post-type.php';
 require_once 'abstraction/taxonomy.php';
@@ -60,6 +58,7 @@ require_once 'abstraction/scheduled.php';
 
 require_once 'structure/post.php';
 require_once 'structure/page.php';
+require_once 'structure/roles.php';
 
 require_once 'theme/head.php';
 require_once 'theme/scripts.php';
@@ -71,16 +70,10 @@ require_once 'theme/images.php';
 require_once 'theme/format-meta.php';
 if ( ! empty($bs_settings['layout_classes']) ) require_once 'theme/layouts.php';
 
-// DASHBOARD
 require_once 'dashboard/general.php';
 require_once 'dashboard/dashboard-widget.php';
 require_once 'dashboard/right-now.php';
 
-// USERS
-require_once 'users/general.php';
-require_once 'users/roles.php';
-
-// FUNCTIONS
 require_once 'functions/ancestor.php';
 require_once 'functions/author.php';
 require_once 'functions/meta.php';
@@ -92,10 +85,8 @@ require_once 'functions/schema.php';
 require_once 'functions/strings.php';
 require_once 'functions/time.php';
 
-// MEDIA
 require_once 'media/featured-icon.php';
 
-// SIDEBAR
 require_once 'sidebar/section-navigation.php';
 
 
@@ -106,34 +97,11 @@ require_once 'sidebar/section-navigation.php';
 final class BS_Core {
 
 	/*
-	** Enforce that this plugin is loaded before all other plugins.
-	** This ensures that the classes added here are immediately available to other plugins.
-	*/
-
-	public static function load_first() {
-		$plugin_url = plugin_basename(__FILE__);
-		$active_plugins = get_option('active_plugins', array());
-		$key = array_search($plugin_url, $active_plugins);
-		if (!$key) return;
-		array_splice($active_plugins, $key, 1);
-		array_unshift($active_plugins, $plugin_url);
-		update_option('active_plugins', $active_plugins);
-	}
-
-	/*
 	** Plugin-related Hooks
 	*/
 
 	public static function activation() {
 		BS_Users_Roles::manipulate_roles();
-	}
-
-	public static function deactivation() {
-		/* PLUGIN DEACTIVATION LOGIC HERE */
-	}
-
-	public static function uninstall() {
-		/* PLUGIN DELETION LOGIC HERE */
 	}
 
 	public static function ready() {
@@ -152,18 +120,27 @@ final class BS_Core {
 		BS_Dashboard_General::initialize();
 		BS_Right_Now_Widget::initialize();
 
-		// USERS
-		BS_Users_General::initialize();
-		BS_Users_Roles::initialize();
-
 		// PLUGIN ACTIONS
-		add_action('activated_plugin', array(__CLASS__, 'load_first'));
 		add_action('after_setup_theme', array(__CLASS__, 'ready'), 999);
 
 	}
 
 }
 BS_Core::initialize();
+
+
+/*
+** Load this plugin first, so its resources are available to everyone.
+*/
+add_action( 'activated_plugin', function(){
+	$plugin_url = plugin_basename(__FILE__);
+	$active_plugins = get_option('active_plugins', array());
+	$key = array_search($plugin_url, $active_plugins);
+	if (!$key) return;
+	array_splice($active_plugins, $key, 1);
+	array_unshift($active_plugins, $plugin_url);
+	update_option('active_plugins', $active_plugins);
+} );
 
 
 /*
