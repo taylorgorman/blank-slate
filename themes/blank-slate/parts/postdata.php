@@ -1,10 +1,3 @@
-<?
-// Conditions
-if ( is_page() && is_highest_ancestor() )
-	return false;
-
-// Markup
-?>
 
 <div class="post-data">
 
