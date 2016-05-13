@@ -41,7 +41,7 @@ function bs_description() {
 	$desc = '';
 
 	if ( is_singular() && !is_front_page() && !is_home() )
-		$desc = bs_get_excerpt( get_queried_object() );
+		$desc = get_trimmed_excerpt( get_queried_object() );
 
 	if ( strlen($desc) == 0 )
 		$desc = get_bloginfo('description', 'display');
