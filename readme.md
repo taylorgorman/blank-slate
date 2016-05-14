@@ -9,12 +9,12 @@
 ## Filters ##
 
 `apply_filters( 'bs_add_user_fields', array $fields )`  
-**Source file:** plugins/blank-slate/admin/users.php
+**Source file:** [plugins/blank-slate/admin/users.php](plugins/blank-slate/admin/users.php)
 
 $fields : Array of strings of field names. Inspect the inputs in the admin to get the names.
 
 `apply_filters( 'bs_remove_user_fields', array $fields )`  
-**Source file:** plugins/blank-slate/admin/users.php
+**Source file:** [plugins/blank-slate/admin/users.php](plugins/blank-slate/admin/users.php)
 
 $fields : Array keys are field names. Array values are fields' labels.
 
@@ -23,7 +23,7 @@ $fields : Array keys are field names. Array values are fields' labels.
 
 ## File Tour ##
 
-#### plugins/blank-slate/admin/users.php ####
+#### [plugins/blank-slate/admin/users.php](plugins/blank-slate/admin/users.php) ####
 
 - Filter `manage_users_columns` remove posts column from user list screen.
 - Filter `user_contactmethods` add and remove fields on user edit screen.
