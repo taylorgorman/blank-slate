@@ -25,12 +25,20 @@ $fields : Array of strings of field names. Inspect the inputs in the admin to ge
 
 $fields : Array keys are field names. Array values are fields' labels.
 
+`apply_filter( 'bs_description', string $description’ )`  
+**Source File:** plugins/blank-slate/functions/meta.php
+
 ## File Tour ##
 
 #### plugins/blank-slate/admin/users.php ####
 
-- Remove posts column from user list screen.
-- Add and remove fields on user edit screen.
+- Filter `manage_users_columns` remove posts column from user list screen.
+- Filter `user_contactmethods` add and remove fields on user edit screen.
+
+#### plugins/blank-slate/functions/meta.php ####
+
+- Filter `wp_title` add blog name, description, page number.
+- Function `bs_description` intended for description meta tag. Apply filter `bs_description`.
 
 ## To Do List ##
 

@@ -1,41 +1,32 @@
 <?php
-
 /*
-** Creates a nicely formatted and more specific title element text
-** for output in head of document, based on current view.
-**
-** @access public
-** @param  string $sep   Separator
-** @return string        Filtered title
+** Filter wp_title to add blog name, description, page number
 */
-function bs_title( $sep ) {
+add_filter( 'wp_title', function ( $title, $sep ) {
 
+	if ( is_feed() )
+		return $title;
+
+	// Add the site name.
+	$title .= get_bloginfo( 'name' );
+
+	// Add the site description for the home/front page.
+	if ( is_front_page() && $site_description = get_bloginfo( 'description', 'display' ) )
+		$title .= " $sep $description";
+
+	// Add a page number if necessary.
 	global $paged, $page;
-
-	$title = wp_title($sep, false, 'right');
-
-	// Add site name
-	$title .= get_bloginfo('name');
-
-	// Add site description on home page
-	if ( is_front_page() && $description = get_bloginfo('description', 'display') )
-		$title .= " $sep ". $description;
-
-	// Add a page number if necessary
 	if ( $paged >= 2 || $page >= 2 )
 		$title .= " $sep Page ". max($paged, $page);
 
-	echo $title;
+	return $title;
 
-}
+}, 10, 2 );
 
-
-/**
- * Returns an appropriate description for the current page. Can be modified
- * using the bs_description filter.
- *
- * @access public
- */
+/*
+** Returns an appropriate description for the current page.
+** Can be modified with bs_description filter.
+*/
 function bs_description() {
 
 	$desc = '';

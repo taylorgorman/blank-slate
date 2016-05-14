@@ -5,7 +5,7 @@
 	<meta charset="<? bloginfo('charset'); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title><? bs_title('-'); ?></title>
+	<title><? wp_title( '-', true, 'right' ); ?></title>
 
 	<meta name="viewport"    content="width=device-width,initial-scale=1">
 	<meta name="author"      content="<? global $post; echo get_the_author_meta('display_name', $post->post_author); ?>">
