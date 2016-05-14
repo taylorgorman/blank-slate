@@ -3,7 +3,7 @@
 class BS_Admin_General {
 
 	public static function add_favicon() {
-		$subdomain = bs_get_subdomain();
+		$subdomain = false;
 		$prefix = '';
 		$suffix = '';
 		if ( $subdomain == 'dev' ) {

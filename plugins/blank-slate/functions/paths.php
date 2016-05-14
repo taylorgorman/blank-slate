@@ -31,10 +31,3 @@ function bs_theme_path($path) {
 	$base = trailingslashit(get_stylesheet_directory());
 	return $base.$path;
 }
-
-function bs_get_subdomain() {
-	$http = $_SERVER['HTTP_HOST'];
-	$domain_array = explode(".", $http);
-	$subdomain = array_shift($domain_array);
-	return $subdomain;
-}
