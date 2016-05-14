@@ -53,12 +53,12 @@ require_once 'abstraction/scheduled.php';
 ** Standalone functions
 */
 require_once 'functions/meta.php';
+require_once 'functions/menus.php';
 
 require_once 'functions/highest_ancestor.php';
 require_once 'functions/get_author_posts_link.php';
 require_once 'functions/get_post_thumbnail_url.php';
-require_once 'functions/menus.php';
-require_once 'functions/pagination.php';
+require_once 'functions/bs_paginate_links.php';
 require_once 'functions/paths.php';
 require_once 'functions/schema.php';
 require_once 'functions/strings.php';
