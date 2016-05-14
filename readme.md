@@ -13,9 +13,28 @@
 - Hide Plugins Edit
 - Add Settings / Contact for globally available company data
 
-## To Do ##
+## Filters ##
 
-### Blank Slate plugin ###
+`apply_filter( 'bs_add_user_fields', array $fields )`
+Source File: plugins/blank-slate/admin/users.php
+
+$fields : Array of strings of field names. Inspect the inputs in the admin to get the names.
+
+`apply_filter( 'bs_remove_user_fields', array $fields )`
+Source File: plugins/blank-slate/admin/users.php
+
+$fields : Array keys are field names. Array values are fields' labels.
+
+## File Tour ##
+
+#### plugins/blank-slate/admin/users.php ####
+
+- Remove posts column from user list screen.
+- Add and remove fields on user edit screen.
+
+## To Do List ##
+
+#### Blank Slate plugin ####
 
 - Move Excerpt box above Content
 - Add to Blank Slate Settings screen
@@ -50,6 +69,6 @@
 - format-meta - Add Source Name. Save all format meta as one array?
 - Add Open Graph meta tags via wp_head hook
 
-### Blank Slate theme ###
+#### Blank Slate theme ####
 
 - Enhance toggle-class.js to work with form elements
