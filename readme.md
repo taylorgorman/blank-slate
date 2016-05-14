@@ -15,13 +15,13 @@
 
 ## Filters ##
 
-apply_filter( 'bs_add_user_fields', array $fields )
-Source File: plugins/blank-slate/admin/users.php
+`apply_filter( 'bs_add_user_fields', array $fields )`  
+**Source File:** plugins/blank-slate/admin/users.php
 
 $fields : Array of strings of field names. Inspect the inputs in the admin to get the names.
 
-`apply_filter( 'bs_remove_user_fields', array $fields )`
-Source File: plugins/blank-slate/admin/users.php
+`apply_filter( 'bs_remove_user_fields', array $fields )`  
+**Source File:** plugins/blank-slate/admin/users.php
 
 $fields : Array keys are field names. Array values are fields' labels.
 
