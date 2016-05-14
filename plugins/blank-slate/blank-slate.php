@@ -52,7 +52,6 @@ require_once 'abstraction/scheduled.php';
 /*
 ** Standalone functions
 */
-require_once 'functions/meta.php';
 require_once 'functions/menus.php';
 
 require_once 'functions/highest_ancestor.php';
@@ -84,7 +83,8 @@ require_once 'dashboard/right-now.php';
 /*
 ** Modify theme output
 */
-require_once 'theme/head.php';
+require_once 'theme/meta.php';
+require_once 'theme/wp_head.php';
 require_once 'theme/scripts.php';
 require_once 'theme/excerpt.php';
 require_once 'theme/content.php';
