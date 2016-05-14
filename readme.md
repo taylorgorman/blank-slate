@@ -25,7 +25,7 @@ $fields : Array keys are field names. Array values are fields' labels.
 `apply_filters( 'bs_description', string $description’ )`  
 **Source file:** [plugins/blank-slate/functions/meta.php](plugins/blank-slate/functions/meta.php)
 
-## File Tour ##
+## Tour de Files ##
 
 #### [plugins/blank-slate/admin/users.php](plugins/blank-slate/admin/users.php) ####
 
