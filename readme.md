@@ -6,13 +6,6 @@
 - This Website **plugin** configures WordPress for this site. Settings go here so the site doesn't fall apart if the theme changes. Also needs a cleverer name.
 - Blank Slate **theme** is a starting point for development. Rename it and go forth.
 
-#### What it does ####
-
-- Hides Links
-- Hide Theme Edit
-- Hide Plugins Edit
-- Add Settings / Contact for globally available company data
-
 ## Filters ##
 
 `apply_filters( 'bs_add_user_fields', array $fields )`  
