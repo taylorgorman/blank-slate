@@ -11,7 +11,7 @@ add_filter( 'wp_title', function ( $title, $sep ) {
 	$title .= get_bloginfo( 'name' );
 
 	// Add the site description for the home/front page.
-	if ( is_front_page() && $site_description = get_bloginfo( 'description', 'display' ) )
+	if ( is_front_page() && $description = get_bloginfo( 'description', 'display' ) )
 		$title .= " $sep $description";
 
 	// Add a page number if necessary.
