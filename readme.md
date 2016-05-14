@@ -28,7 +28,7 @@ $fields : Array keys are field names. Array values are fields' labels.
 - Filter `manage_users_columns` remove posts column from user list screen.
 - Filter `user_contactmethods` add and remove fields on user edit screen.
 
-#### plugins/blank-slate/functions/meta.php ####
+#### [plugins/blank-slate/functions/meta.php](plugins/blank-slate/functions/meta.php) ####
 
 - Filter `wp_title` add blog name, description, page number.
 - Function `bs_description` intended for description meta tag. Apply filter `bs_description`.
