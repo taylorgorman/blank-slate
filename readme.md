@@ -27,27 +27,27 @@
 
 ## Functions ##
 
-`bs_list_contextually( *mixed* $args )`
+`bs_list_contextually( *mixed* $args )`  
 **Source file:** [plugins/blank-slate/functions/bs_list_contextually.php](plugins/blank-slate/functions/bs_list_contextually.php)
 
 ---
 
-`bs_nav_menu( *string* $menu_name, *mixed* $args )`
+`bs_nav_menu( *string* $menu_name, *mixed* $args )`  
 **Source file:** [plugins/blank-slate/functions/bs_nav_menu.php](plugins/blank-slate/functions/bs_nav_menu.php)
 
 ---
 
-`lia2a( *string* $string )`
+`lia2a( *string* $string )`  
 **Source file:** [plugins/blank-slate/functions/bs_nav_menu.php](plugins/blank-slate/functions/bs_nav_menu.php)
 
 ---
 
-`bs_svg_sprite(  )`
+`bs_svg_sprite(  )`  
 **Source file:** [plugins/blank-slate/functions/bs_svg_sprite.php](plugins/blank-slate/functions/bs_svg_sprite.php)
 
 ---
 
-`bs_description(  )`
+`bs_description(  )`  
 **Source file:** [plugins/blank-slate/theme/meta.php](plugins/blank-slate/theme/meta.php)
 
 ## Files ##
