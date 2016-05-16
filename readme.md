@@ -11,14 +11,14 @@
 `apply_filters( 'bs_add_user_fields', array $fields )`  
 **Source file:** [plugins/blank-slate/admin/users.php](plugins/blank-slate/admin/users.php)
 
-`$fields` *array* : Keys are field names. Values are fields' labels.
+`$fields` *(array)* : Keys are field names. Values are fields' labels.
 
 ---
 
 `apply_filters( 'bs_remove_user_fields', array $fields )`  
 **Source file:** [plugins/blank-slate/admin/users.php](plugins/blank-slate/admin/users.php)
 
-`$fields` *array* : No keys. Values are field names. Inspect the inputs in the admin to get the names.
+`$fields` *(array)* : No keys. Values are field names. Inspect the inputs in the admin to get the names.
 
 ---
 
