@@ -36,7 +36,7 @@ add_action('wp_enqueue_scripts', function(){
 
 	wp_enqueue_script(
 		get_stylesheet().'-scripts'
-	,	bs_theme_url('/js/site-min.js')
+	,	get_stylesheet_directory_uri().'/js/site-min.js'
 	,	array( get_template().'-scripts' )
 	,	false
 	,	true

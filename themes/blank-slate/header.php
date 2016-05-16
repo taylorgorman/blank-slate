@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" <?php language_attributes(); ?> <? bs_schema_type('Product'); ?>>
+<html class="no-js" <?php language_attributes(); ?> itemscope itemtype="http://schema.org/Product">
 <head>
 
 	<meta charset="<? bloginfo('charset'); ?>">
@@ -17,12 +17,12 @@
 
 </head>
 
-<body <? bs_schema_type('WebPage'); ?> <? body_class(); ?>>
+<body itemscope itemtype="http://schema.org/WebPage" <? body_class(); ?>>
 
-<header class="global" <? bs_schema_type('WPHeader'); ?> role="banner">
+<header class="global" itemscope itemtype="http://schema.org/WPHeader" role="banner">
 
-	<div class="logo" <? bs_schema_type('Organization'); ?>>
-		<a itemprop="url" href="<?= home_url() ?>"><img itemprop="logo" src="<?= bs_theme_url('img/logo.svg') ?>" alt="<? bloginfo('name'); ?>"></a>
+	<div class="logo" itemscope itemtype="http://schema.org/Organization">
+		<a itemprop="url" href="<?= home_url() ?>"><img itemprop="logo" src="<?= get_stylesheet_directory_uri().'/img/logo.svg' ?>" alt="<? bloginfo('name'); ?>"></a>
 	</div>
 
 	<? bs_nav_menu('Main'); ?>
