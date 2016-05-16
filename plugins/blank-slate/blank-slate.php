@@ -59,7 +59,9 @@ require_once 'functions/bs_paginate_links.php';
 require_once 'functions/bs_list_contextually.php';
 require_once 'functions/bs_nav_menu.php';
 require_once 'functions/bs_svg_sprite.php';
-
+/*============
+STOPPING POINT
+============*/
 require_once 'functions/time.php';
 
 /*
