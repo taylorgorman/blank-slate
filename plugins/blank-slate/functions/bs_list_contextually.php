@@ -56,10 +56,10 @@ function bs_list_contextually( $args = array() ) {
 
 	}
 
-	// Return or echo
-	if ( $args['echo'] )
-		echo $list_items;
-	else
+	// Default echo or return if requested
+	if ( isset($args['echo']) && !$args['echo'] )
 		return $list_items;
+	else
+		echo $list_items;
 
 }

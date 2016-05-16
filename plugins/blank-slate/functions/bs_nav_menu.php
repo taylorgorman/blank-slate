@@ -27,11 +27,11 @@ function bs_nav_menu( $menu_name = '', $args = array() ) {
 	$menu = lia2a($menu);
 	$menu = trim($menu).PHP_EOL;
 
-	// Return or echo
-	if ( $args['echo'] )
-		echo $menu;
-	else
+	// Default echo or return if requested
+	if ( isset($args['echo']) && !$args['echo'] )
 		return $menu;
+	else
+		echo $menu;
 
 }
 
