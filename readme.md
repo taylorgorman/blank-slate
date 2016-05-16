@@ -32,9 +32,13 @@
 - Filter `manage_users_columns` to remove posts column from user list screen.
 - Filter `user_contactmethods` to add and remove fields on user edit screen.
 
+#### [plugins/blank-slate/functions/bs_list_contextually.php](plugins/blank-slate/functions/bs_list_contextually.php) ####
+
+- Function `bs_list_contextually` gets list items based on context. Acts like, and uses, `wp_list_pages` and `wp_list_categories`.
+
 #### [plugins/blank-slate/functions/bs_nav_menu.php](plugins/blank-slate/functions/bs_nav_menu.php) ####
 
-- Function `bs_nav_menu` calls wp_nav_menu with convenient defaults. Also strips `<ul>` and `<li>` tags.
+- Function `bs_nav_menu` calls `wp_nav_menu` with convenient defaults. Also strips `<ul>` and `<li>` tags.
 - Function `lia2a` removes `<li>` tags, moving attributes to child `<a>`. Used by `bs_nav_menu`.
 
 #### [plugins/blank-slate/functions/bs_svg_sprite.php](plugins/blank-slate/functions/bs_svg_sprite.php) ####
@@ -46,9 +50,13 @@
 - Filter `wp_title` to add blog name, description, page number.
 - Function `bs_description` intended for description meta tag. Apply filter `bs_description`.
 
+#### [plugins/blank-slate/widgets/section-navigation.php](plugins/blank-slate/widgets/section-navigation.php) ####
+
+- Widget Section Navigation makes list with `bs_list_contextually`.
+
 ## To Do List ##
 
-#### Blank Slate plugin ####
+##### plugins/blank-slate #####
 
 - Move Excerpt box above Content
 - Add to Blank Slate Settings screen
@@ -84,6 +92,6 @@
 - Add Open Graph meta tags via wp_head hook
 - bs_nav_menu : Add role="navigation" to <nav>
 
-#### Blank Slate theme ####
+##### themes/blank-slate #####
 
 - Enhance toggle-class.js to work with form elements
