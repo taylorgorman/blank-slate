@@ -105,13 +105,18 @@ if ( ! empty($bs_settings['layout_classes']) ) require_once 'theme/layouts.php';
 ** Load this plugin first, so its resources are available to everyone.
 */
 add_action( 'activated_plugin', function(){
-	$plugin_url = plugin_basename(__FILE__);
-	$active_plugins = get_option('active_plugins', array());
-	$key = array_search($plugin_url, $active_plugins);
-	if (!$key) return;
-	array_splice($active_plugins, $key, 1);
-	array_unshift($active_plugins, $plugin_url);
-	update_option('active_plugins', $active_plugins);
+
+	$plugin_url = plugin_basename( __FILE__ );
+	$active_plugins = get_option( 'active_plugins', array() );
+	$key = array_search( $plugin_url, $active_plugins );
+
+	if ( ! $key )
+		return;
+
+	array_splice( $active_plugins, $key, 1 );
+	array_unshift( $active_plugins, $plugin_url );
+	update_option( 'active_plugins', $active_plugins );
+
 } );
 
 
