@@ -25,9 +25,34 @@
 `apply_filters( 'bs_description', string $description’ )`  
 **Source file:** [plugins/blank-slate/functions/meta.php](plugins/blank-slate/functions/meta.php)
 
-## Tour de Files ##
+## Functions ##
 
-Files listed in the order they're `require_once`'d.
+`bs_list_contextually( *mixed* $args )`
+**Source file:** [plugins/blank-slate/functions/bs_list_contextually.php](plugins/blank-slate/functions/bs_list_contextually.php)
+
+---
+
+`bs_nav_menu( *string* $menu_name, *mixed* $args )`
+**Source file:** [plugins/blank-slate/functions/bs_nav_menu.php](plugins/blank-slate/functions/bs_nav_menu.php)
+
+---
+
+`lia2a( *string* $string )`
+**Source file:** [plugins/blank-slate/functions/bs_nav_menu.php](plugins/blank-slate/functions/bs_nav_menu.php)
+
+---
+
+`bs_svg_sprite(  )`
+**Source file:** [plugins/blank-slate/functions/bs_svg_sprite.php](plugins/blank-slate/functions/bs_svg_sprite.php)
+
+---
+
+`bs_description(  )`
+**Source file:** [plugins/blank-slate/theme/meta.php](plugins/blank-slate/theme/meta.php)
+
+## Files ##
+
+*Files listed in the order they're `require_once`'d.*
 
 #### [plugins/blank-slate/functions/bs_list_contextually.php](plugins/blank-slate/functions/bs_list_contextually.php) ####
 
