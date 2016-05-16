@@ -32,19 +32,19 @@
 - Filter `manage_users_columns` to remove posts column from user list screen.
 - Filter `user_contactmethods` to add and remove fields on user edit screen.
 
-#### [plugins/blank-slate/functions/meta.php](plugins/blank-slate/functions/meta.php) ####
+#### [plugins/blank-slate/functions/bs_nav_menu.php](plugins/blank-slate/functions/bs_nav_menu.php) ####
 
-- Filter `wp_title` to add blog name, description, page number.
-- Function `bs_description` intended for description meta tag. Apply filter `bs_description`.
+- Function `bs_nav_menu` calls wp_nav_menu with convenient defaults. Also strips `<ul>` and `<li>` tags.
+- Function `lia2a` removes `<li>` tags, moving attributes to child `<a>`. Used by `bs_nav_menu`.
 
 #### [plugins/blank-slate/functions/bs_svg_sprite.php](plugins/blank-slate/functions/bs_svg_sprite.php) ####
 
 - Function `bs_svg_sprite` generates HTML for SVG sprite with use tag.
 
-#### [plugins/blank-slate/functions/bs_nav_menu.php](plugins/blank-slate/functions/bs_nav_menu.php) ####
+#### [plugins/blank-slate/themes/meta.php](plugins/blank-slate/themes/meta.php) ####
 
-- Function `bs_nav_menu` calls wp_nav_menu with convenient defaults. Also strips `<ul>` and `<li>` tags.
-- Function `lia2a` removes `<li>` tags, moving attributes to child `<a>`. Used by `bs_nav_menu`.
+- Filter `wp_title` to add blog name, description, page number.
+- Function `bs_description` intended for description meta tag. Apply filter `bs_description`.
 
 ## To Do List ##
 
