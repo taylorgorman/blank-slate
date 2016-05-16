@@ -1,6 +1,7 @@
 <?php
-
-// Add "Occurs on" datepicker in Publish meta box
+/*
+** Add "Occurs on" datepicker in Publish meta box
+*/
 add_action( 'post_submitbox_misc_actions', function(){
 
 	// Hide for now
@@ -66,6 +67,9 @@ add_action( 'post_submitbox_misc_actions', function(){
 
 } );
 
+/*
+** Save data
+*/
 add_action( 'save_post', function( $post_id ){
 
 	// Safety first
@@ -84,10 +88,11 @@ add_action( 'save_post', function( $post_id ){
 
 } );
 
-
-// Sort posts by occur date
-// Ascending order
-// Date is higher than right now
+/*
+** Sort posts by occur date
+** Ascending order
+** Date is higher than right now
+*/
 add_filter( 'pre_get_posts', function( $query ){
 
 	/*
@@ -100,4 +105,6 @@ add_filter( 'pre_get_posts', function( $query ){
 
 } );
 
-// Add another date column for occurs date
+/*
+** Add another date column for occurs date on post type list screen
+*/

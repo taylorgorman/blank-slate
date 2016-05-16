@@ -2,7 +2,6 @@
 /*
 ** Register post type
 */
-
 function bs_register_post_type( $args ) {
 
 	$v = wp_parse_args( $args, array(
@@ -81,13 +80,15 @@ function bs_register_post_type( $args ) {
 	// Go go gadget
 	add_action( 'init', function($v) use ($v){
 		register_post_type( $v['ID'], $v['arguments'] );
-	});
+	} );
 
 }
 
 
-/* DO IT WITH AN OBJECT. Hope to phase this out. */
-
+/*
+** DO IT WITH AN OBJECT.
+** Keeping this around for a while just in case.
+*/
 abstract class bs_post_type {
 
 	/*
