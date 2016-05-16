@@ -16,7 +16,7 @@ function bs_nav_menu( $menu_name = '', $args = array() ) {
 	,	'items_wrap'      => PHP_EOL.'%3$s'
 	) );
 
-	// Force echo false for now.
+	// Force return for now
 	$vars['echo'] = false;
 
 	// If menu doesn't exist, bail
@@ -27,6 +27,7 @@ function bs_nav_menu( $menu_name = '', $args = array() ) {
 	$menu = lia2a($menu);
 	$menu = trim($menu).PHP_EOL;
 
+	// Return or echo
 	if ( $args['echo'] )
 		echo $menu;
 	else
