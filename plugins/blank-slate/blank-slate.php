@@ -62,7 +62,6 @@ require_once 'functions/bs_svg_sprite.php';
 /*============
 STOPPING POINT
 ============*/
-require_once 'functions/time.php';
 
 /*
 ** Modify admin screens
