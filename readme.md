@@ -11,14 +11,14 @@
 `apply_filters( 'bs_add_user_fields', array $fields )`  
 **Source file:** [plugins/blank-slate/admin/users.php](plugins/blank-slate/admin/users.php)
 
-$fields : Array of strings of field names. Inspect the inputs in the admin to get the names.
+`$fields` *array* : Keys are field names. Values are fields' labels.
 
 ---
 
 `apply_filters( 'bs_remove_user_fields', array $fields )`  
 **Source file:** [plugins/blank-slate/admin/users.php](plugins/blank-slate/admin/users.php)
 
-$fields : Array keys are field names. Array values are fields' labels.
+`$fields` *array* : No keys. Values are field names. Inspect the inputs in the admin to get the names.
 
 ---
 
@@ -40,6 +40,11 @@ $fields : Array keys are field names. Array values are fields' labels.
 #### [plugins/blank-slate/functions/bs_svg_sprite.php](plugins/blank-slate/functions/bs_svg_sprite.php) ####
 
 - Function `bs_svg_sprite` generates HTML for SVG sprite with use tag.
+
+#### [plugins/blank-slate/functions/bs_nav_menu.php](plugins/blank-slate/functions/bs_nav_menu.php) ####
+
+- Function `bs_nav_menu` calls wp_nav_menu with convenient defaults. Also strips `<ul>` and `<li>` tags.
+- Function `lia2a` removes `<li>` tags, moving attributes to child `<a>`. Used by `bs_nav_menu`.
 
 ## To Do List ##
 
@@ -77,6 +82,7 @@ $fields : Array keys are field names. Array values are fields' labels.
 - blank-slate / theme / images.php / img_caption_shortcode - Remove altogether?
 - format-meta - Add Source Name. Save all format meta as one array?
 - Add Open Graph meta tags via wp_head hook
+- bs_nav_menu : Add role="navigation" to <nav>
 
 #### Blank Slate theme ####
 
