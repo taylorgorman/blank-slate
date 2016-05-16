@@ -27,10 +27,7 @@
 
 ## Tour de Files ##
 
-#### [plugins/blank-slate/admin/users.php](plugins/blank-slate/admin/users.php) ####
-
-- Filter `manage_users_columns` to remove posts column from user list screen.
-- Filter `user_contactmethods` to add and remove fields on user edit screen.
+Files listed in the order they're `require_once`'d.
 
 #### [plugins/blank-slate/functions/bs_list_contextually.php](plugins/blank-slate/functions/bs_list_contextually.php) ####
 
@@ -45,14 +42,19 @@
 
 - Function `bs_svg_sprite` generates HTML for SVG sprite with use tag.
 
-#### [plugins/blank-slate/themes/meta.php](plugins/blank-slate/themes/meta.php) ####
+#### [plugins/blank-slate/admin/users.php](plugins/blank-slate/admin/users.php) ####
 
-- Filter `wp_title` to add blog name, description, page number.
-- Function `bs_description` intended for description meta tag. Apply filter `bs_description`.
+- Filter `manage_users_columns` to remove posts column from user list screen.
+- Filter `user_contactmethods` to add and remove fields on user edit screen.
 
 #### [plugins/blank-slate/widgets/section-navigation.php](plugins/blank-slate/widgets/section-navigation.php) ####
 
 - Widget Section Navigation makes list with `bs_list_contextually`.
+
+#### [plugins/blank-slate/theme/meta.php](plugins/blank-slate/theme/meta.php) ####
+
+- Filter `wp_title` to add blog name, description, page number.
+- Function `bs_description` intended for description meta tag. Apply filter `bs_description`.
 
 ## To Do List ##
 

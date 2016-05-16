@@ -56,8 +56,9 @@ require_once 'functions/highest_ancestor.php';
 require_once 'functions/get_author_posts_link.php';
 require_once 'functions/get_post_thumbnail_url.php';
 require_once 'functions/bs_paginate_links.php';
-require_once 'functions/bs_svg_sprite.php';
+require_once 'functions/bs_list_contextually.php';
 require_once 'functions/bs_nav_menu.php';
+require_once 'functions/bs_svg_sprite.php';
 
 require_once 'functions/time.php';
 
@@ -73,10 +74,16 @@ require_once 'admin/media.php';
 require_once 'admin/users.php';
 require_once 'admin/settings-blank-slate.php';
 require_once 'admin/settings-contact.php';
+require_once 'admin/featured-icon.php';
 
 require_once 'dashboard/general.php';
 require_once 'dashboard/dashboard-widget.php';
 require_once 'dashboard/right-now.php';
+
+/*
+** Add widgets
+*/
+require_once 'widgets/section-navigation.php';
 
 /*
 ** Modify theme output
@@ -91,10 +98,6 @@ require_once 'theme/support.php';
 require_once 'theme/images.php';
 require_once 'theme/format-meta.php';
 if ( ! empty($bs_settings['layout_classes']) ) require_once 'theme/layouts.php';
-
-require_once 'media/featured-icon.php';
-
-require_once 'sidebar/section-navigation.php';
 
 
 /*
