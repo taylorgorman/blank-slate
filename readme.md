@@ -6,6 +6,36 @@
 - This Website **plugin** configures WordPress for this site. Settings go here so the site doesn't fall apart if the theme changes. Also needs a cleverer name.
 - Blank Slate **theme** is a starting point for development. Rename it and go forth.
 
+## Functions ##
+
+`bs_list_contextually( string|array $args )`  
+**Source file:** [plugins/blank-slate/functions/bs_list_contextually.php](plugins/blank-slate/functions/bs_list_contextually.php)
+
+`$args` *(string|array) (Optional)*
+
+---
+
+`bs_nav_menu( string $menu_name, string|array $args )`  
+**Source file:** [plugins/blank-slate/functions/bs_nav_menu.php](plugins/blank-slate/functions/bs_nav_menu.php)
+
+`$menu_name` *(string) (Required)*
+`$args` *(string|array) (Optional)*
+
+---
+
+`lia2a(  )`  
+**Source file:** [plugins/blank-slate/functions/bs_nav_menu.php](plugins/blank-slate/functions/bs_nav_menu.php)
+
+---
+
+`bs_svg_sprite(  )`  
+**Source file:** [plugins/blank-slate/functions/bs_svg_sprite.php](plugins/blank-slate/functions/bs_svg_sprite.php)
+
+---
+
+`bs_description(  )`  
+**Source file:** [plugins/blank-slate/theme/meta.php](plugins/blank-slate/theme/meta.php)
+
 ## Filters ##
 
 `apply_filters( 'bs_add_user_fields', array $fields )`  
@@ -24,31 +54,6 @@
 
 `apply_filters( 'bs_description', string $description’ )`  
 **Source file:** [plugins/blank-slate/functions/meta.php](plugins/blank-slate/functions/meta.php)
-
-## Functions ##
-
-`bs_list_contextually( *mixed* $args )`  
-**Source file:** [plugins/blank-slate/functions/bs_list_contextually.php](plugins/blank-slate/functions/bs_list_contextually.php)
-
----
-
-`bs_nav_menu( *string* $menu_name, *mixed* $args )`  
-**Source file:** [plugins/blank-slate/functions/bs_nav_menu.php](plugins/blank-slate/functions/bs_nav_menu.php)
-
----
-
-`lia2a( *string* $string )`  
-**Source file:** [plugins/blank-slate/functions/bs_nav_menu.php](plugins/blank-slate/functions/bs_nav_menu.php)
-
----
-
-`bs_svg_sprite(  )`  
-**Source file:** [plugins/blank-slate/functions/bs_svg_sprite.php](plugins/blank-slate/functions/bs_svg_sprite.php)
-
----
-
-`bs_description(  )`  
-**Source file:** [plugins/blank-slate/theme/meta.php](plugins/blank-slate/theme/meta.php)
 
 ## Files ##
 
