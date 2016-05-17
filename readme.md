@@ -123,7 +123,32 @@
 - format-meta - Add Source Name. Save all format meta as one array?
 - Add Open Graph meta tags via wp_head hook
 - bs_nav_menu : Add role="navigation" to <nav>
+- Move admin notices above screen tabs?
+- Media categories, add filter to list screen
+- Scheduled post types
+    - What if I want an events calendar and a conferences post type and something else, but they need to be separate with separate views, but I want them all future dated? This.
+    - Admin screen to select which post types are scheduled.
+    - Adds "Occurs on" date picker right below "Published on" and mimics its functionality.
+    - Sorts posts by occurs on date, everywhere.
+    - That's it. Location, times, and whatever else should be handled by ACF and calendar view should be handled by the theme. Maybe the plugin somehow offers a function for calendar view? But doesn't change by default.
+- Add address 2 line to Settings/Contact
+- Layout classes
+    - Just put a class on the body.
+    - Are for changing some styles.
+    - Can select multiple, so checkboxes.
+    - is_layout_class()
+- Layout templates
+    - Are like page templates, but for all post types. For drastically changing markup.
+    - Select only one, so select input.
+    - is_layout_template()
+- Add classes to nav.section subnav that tell what it contains
+    - post-type-page, tax-category, etc
+- Set up Settings/Contact so add_settings_field() works on it
+    - Then This Website can add to it
 
 ##### themes/blank-slate #####
 
 - Enhance toggle-class.js to work with form elements
+- Add parts/face.php
+- Remove header-int.php and footer-int.php
+- Cornerstone settings file. Goal would be to never touch Cornerstone. So could udpate it anywhere without losing site-specific settings. Would require a lot of if(!isset()).
