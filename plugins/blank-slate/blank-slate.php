@@ -38,7 +38,6 @@ $bs_settings = get_option('blank_slate_settings');
 /*
 ** Make changes to current WordPress structure
 */
-require_once 'structure/post.php';
 require_once 'structure/page.php';
 require_once 'structure/roles.php';
 
