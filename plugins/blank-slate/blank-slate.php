@@ -1,14 +1,14 @@
 <?php
 /*
-**	Plugin Name: Blank Slate
-**	Plugin URI:  http://taylorpatrickgorman.com/wordpress-plugins/blank-slate
-**	Version:     0.1.0
-**	Description: Configures WordPress to a predetermined base
-**	Author:      Taylor Gorman & Chris Roche
-**	Author URI:  http://taylorpatrickgorman.com
+**  Plugin Name:  Blank Slate
+**  Plugin URI:   http://taylorpatrickgorman.com/wordpress-plugins/blank-slate/
+**  Version:      0.1.0
+**  Description:  Configures WordPress to a predetermined base
+**  Author:       Taylor Gorman & Chris Roche
+**  Author URI:   http://taylorpatrickgorman.com
 **
-** License:     GPL2
-** License URI: https://www.gnu.org/licenses/gpl-2.0.html
+**  License:      GPL2
+**  License URI:  https://www.gnu.org/licenses/gpl-2.0.html
 */
 
 
