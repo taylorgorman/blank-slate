@@ -1,68 +1,74 @@
-# Blank Slate #
+# Blank Slate
 
-#### What's in the box ####
+### What's in the box
 
 - Blank Slate **plugin** configures WordPress to be better universally.
 - This Website **plugin** configures WordPress for this site. Settings go here so the site doesn't fall apart if the theme changes. Also needs a cleverer name.
 - Blank Slate **theme** is a starting point for development. Rename it and go forth.
 
-## Files ##
+## Files
 
 *Files listed in the order they're `require_once`'d.*
 
-#### [plugins/blank-slate/structure/page.php](plugins/blank-slate/structure/page.php) ####
+#### [plugins/blank-slate/structure/page.php](plugins/blank-slate/structure/page.php)
 
 - Modifies Page post type.
 - Adds excerpt.
 - Removes trackbacks, comments, & author.
 
-#### [plugins/blank-slate/structure/roles.php](plugins/blank-slate/structure/roles.php) ####
+#### [plugins/blank-slate/structure/roles.php](plugins/blank-slate/structure/roles.php)
 
 - Adds `edit_theme_options` capability to editor role so editors can modify widgets and menus.
 
-#### [plugins/blank-slate/abstract/post-type.php](plugins/blank-slate/abstract/post-type.php) ####
+#### [plugins/blank-slate/abstract/post-type.php](plugins/blank-slate/abstract/post-type.php)
 
 - Function `bs_register_post_type` to simplify and call `register_post_type`
 - DEPRICATED Class `bs_post_type` to register post type and do a crap ton of other stuff.
 
-#### [plugins/blank-slate/abstract/taxonomy.php](plugins/blank-slate/abstract/taxonomy.php) ####
+#### [plugins/blank-slate/abstract/taxonomy.php](plugins/blank-slate/abstract/taxonomy.php)
 
-- 
+- Function `bs_register_taxonomy` to simplify and call `register_taxonomy`
 
-#### [plugins/blank-slate/abstract/scheduled.php](plugins/blank-slate/abstract/scheduled.php) ####
+#### [plugins/blank-slate/abstract/scheduled.php](plugins/blank-slate/abstract/scheduled.php)
 
-- 
+- UNFINISHED Adds feature to turn any post type into a scheduled post type.
 
-#### [plugins/blank-slate/functions/bs_list_contextually.php](plugins/blank-slate/functions/bs_list_contextually.php) ####
+#### [plugins/blank-slate/functions/bs_list_contextually.php](plugins/blank-slate/functions/bs_list_contextually.php)
 
 - Function `bs_list_contextually` gets list items based on context. Acts like, and uses, `wp_list_pages` and `wp_list_categories`.
 
-#### [plugins/blank-slate/functions/bs_nav_menu.php](plugins/blank-slate/functions/bs_nav_menu.php) ####
+#### [plugins/blank-slate/functions/highest_ancestor.php](plugins/blank-slate/functions/highest_ancestor.php)
+
+- Function `get_highest_ancestor`.
+- Function `highest_ancestor` echoes `get_highest_ancestor`.
+- Function `is_highest_ancestor`.
+
+#### [plugins/blank-slate/functions/bs_nav_menu.php](plugins/blank-slate/functions/bs_nav_menu.php)
 
 - Function `bs_nav_menu` calls `wp_nav_menu` with convenient defaults. Also strips `<ul>` and `<li>` tags.
 - Function `lia2a` removes `<li>` tags, moving attributes to child `<a>`. Used by `bs_nav_menu`.
 
-#### [plugins/blank-slate/functions/bs_svg_sprite.php](plugins/blank-slate/functions/bs_svg_sprite.php) ####
+#### [plugins/blank-slate/functions/bs_svg_sprite.php](plugins/blank-slate/functions/bs_svg_sprite.php)
 
 - Function `bs_svg_sprite` generates HTML for SVG sprite with use tag.
 
-#### [plugins/blank-slate/admin/users.php](plugins/blank-slate/admin/users.php) ####
+#### [plugins/blank-slate/admin/users.php](plugins/blank-slate/admin/users.php)
 
 - Filters `manage_users_columns` to remove posts column from user list screen.
 - Filters `user_contactmethods` to add and remove fields on user edit screen.
 
-#### [plugins/blank-slate/widgets/section-navigation.php](plugins/blank-slate/widgets/section-navigation.php) ####
+#### [plugins/blank-slate/widgets/section-navigation.php](plugins/blank-slate/widgets/section-navigation.php)
 
 - Widget Section Navigation makes list with `bs_list_contextually`.
 
-#### [plugins/blank-slate/theme/meta.php](plugins/blank-slate/theme/meta.php) ####
+#### [plugins/blank-slate/theme/meta.php](plugins/blank-slate/theme/meta.php)
 
 - Filters `wp_title` to add blog name, description, page number.
 - Function `bs_description` intended for description meta tag. Apply filter `bs_description`.
 
-## To Do List ##
+## To Do List
 
-##### plugins/blank-slate #####
+##### plugins/blank-slate
 
 - Put custom fields back. Can use this if not ACF.
 - Move Excerpt box above Content
@@ -129,7 +135,7 @@
 - Set layout classes in Blank Slate settings. Currently hard coded.
     - Or maybe not? Since layout classes are supposed to affect the theme. So anyone who modifies the classes will need to modify the theme files, too. So maybe make this a hook for This Website.
 
-##### themes/blank-slate #####
+##### themes/blank-slate
 
 - Enhance toggle-class.js to work with form elements
 - Add parts/face.php
