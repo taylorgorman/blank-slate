@@ -1,6 +1,6 @@
 <?php
 
-function get_highest_ancestor($args=0) {
+function get_highest_ancestor( $args=0 ) {
 
 	$d = array(
 		'id'     => 0
@@ -22,7 +22,7 @@ function get_highest_ancestor($args=0) {
 	// Static front page
 	} elseif ( is_front_page() ) {
 
-		$front_page = get_post(get_option('page_on_front'));
+		$front_page = get_post( get_option('page_on_front') );
 		$ancestor = array(
 			'id'     => $front_page->ID
 		,	'title'  => $front_page->post_title
@@ -33,7 +33,7 @@ function get_highest_ancestor($args=0) {
 	// Static posts page
 	} elseif ( is_home() ) {
 
-		$home = get_post(get_option('page_for_posts'));
+		$home = get_post( get_option('page_for_posts') );
 		$ancestor = array(
 			'id'     => $home->ID
 		,	'title'  => $home->post_title
@@ -54,7 +54,7 @@ function get_highest_ancestor($args=0) {
 		$page = $post;
 
 		while ( $page->post_parent > 0 )
-			$page = get_post($page->post_parent);
+			$page = get_post( $page->post_parent );
 
 		$ancestor = array(
 			'id'     => $page->ID
@@ -65,7 +65,7 @@ function get_highest_ancestor($args=0) {
 
 	} elseif ( is_singular() || is_post_type_archive() || is_tax() ) {
 
-		$pt_obj = get_post_type_object($posttype);
+		$pt_obj = get_post_type_object( $posttype );
 		$ancestor = array(
 			'id'     => 0
 		,	'title'  => $pt_obj->label
@@ -107,12 +107,12 @@ function get_highest_ancestor($args=0) {
 	} else {
 
 		$ancestor = array(
-			'title' => wp_title('', false)
+			'title' => wp_title( '', false )
 		);
 
 	}
 
-	$ancestor = wp_parse_args($ancestor, $d);
+	$ancestor = wp_parse_args( $ancestor, $d );
 	return $ancestor;
 
 }
@@ -128,7 +128,7 @@ function is_highest_ancestor() {
 
 	global $post;
 
-	if ( is_page() && $post->post_parent == 0)
+	if ( is_page() && $post->post_parent == 0 )
 		return true;
 
 	if ( is_post_type_archive() )
