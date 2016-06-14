@@ -10,19 +10,19 @@
 
 *Functions listed in alphabetical order.*
 
-#### `bs_description(  )` ####  
+##### `bs_description(  )`  
 **Source file:** [plugins/blank-slate/theme/meta.php](plugins/blank-slate/theme/meta.php)
 
 ---
 
-#### `bs_list_contextually( string|array $args )` ####  
+##### `bs_list_contextually( string|array $args )`  
 **Source file:** [plugins/blank-slate/functions/bs_list_contextually.php](plugins/blank-slate/functions/bs_list_contextually.php)
 
 `$args` *(string|array) (optional)*
 
 ---
 
-#### `bs_nav_menu( string $menu_name, string|array $args )` ####  
+##### `bs_nav_menu( string $menu_name, string|array $args )`  
 **Source file:** [plugins/blank-slate/functions/bs_nav_menu.php](plugins/blank-slate/functions/bs_nav_menu.php)
 
 `$menu_name` *(string) (required)*  
@@ -30,7 +30,7 @@
 
 ---
 
-**`bs_register_post_type( string|array $args )`**  
+##### `bs_register_post_type( string|array $args )`  
 **Source file:** [plugins/blank-slate/abstract/post-type.php](plugins/blank-slate/abstract/post-type.php)
 
 `$args` *(string|array) (required)*
@@ -57,33 +57,33 @@ Plugs directly into `register_post_type`'s args parameter. A good way to overrid
 
 ---
 
-**`bs_svg_sprite(  )`**  
+##### `bs_svg_sprite(  )`  
 **Source file:** [plugins/blank-slate/functions/bs_svg_sprite.php](plugins/blank-slate/functions/bs_svg_sprite.php)
 
 ---
 
-**`lia2a(  )`**  
+##### `lia2a(  )`  
 **Source file:** [plugins/blank-slate/functions/bs_nav_menu.php](plugins/blank-slate/functions/bs_nav_menu.php)
 
 ## Filters ##
 
 *Filters listed in alphabetical order.*
 
-`apply_filters( 'bs_add_user_fields', array $fields )`  
+##### `apply_filters( 'bs_add_user_fields', array $fields )`  
 **Source file:** [plugins/blank-slate/admin/users.php](plugins/blank-slate/admin/users.php)
 
 `$fields` *(array)* : Keys are field names. Values are fields' labels.
 
 ---
 
-`apply_filters( 'bs_remove_user_fields', array $fields )`  
+##### `apply_filters( 'bs_remove_user_fields', array $fields )`  
 **Source file:** [plugins/blank-slate/admin/users.php](plugins/blank-slate/admin/users.php)
 
 `$fields` *(array)* : No keys. Values are field names. Inspect the inputs in the admin to get the names.
 
 ---
 
-`apply_filters( 'bs_description', string $description’ )`  
+##### `apply_filters( 'bs_description', string $description’ )`  
 **Source file:** [plugins/blank-slate/functions/meta.php](plugins/blank-slate/functions/meta.php)
 
 ## Files ##
