@@ -22,7 +22,7 @@
 
 ---
 
-`bs_nav_menu( string $menu_name, string|array $args )`  
+<big>**`bs_nav_menu( string $menu_name, string|array $args )`**</big>  
 **Source file:** [plugins/blank-slate/functions/bs_nav_menu.php](plugins/blank-slate/functions/bs_nav_menu.php)
 
 `$menu_name` *(string) (required)*  
