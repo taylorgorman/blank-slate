@@ -117,14 +117,10 @@ function get_highest_ancestor($args=0) {
 
 }
 
-function highest_ancestor($echo=0) {
+function highest_ancestor( $echo='title' ) {
 
 	$ancestor = get_highest_ancestor();
-
-	if ($echo)
-		echo $ancestor[$echo];
-	else
-		echo $ancestor['title'];
+	echo $ancestor[$echo];
 
 }
 
