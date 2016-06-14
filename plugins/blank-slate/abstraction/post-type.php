@@ -87,7 +87,8 @@ function bs_register_post_type( $args ) {
 
 /*
 ** DO IT WITH AN OBJECT.
-** Keeping this around for a while just in case.
+** Keeping this around for a while just for reference.
+** Would comment the whole thing out, but there's too many other comments.
 */
 abstract class bs_post_type {
 
