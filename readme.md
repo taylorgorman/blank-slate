@@ -22,20 +22,24 @@
 
 #### [plugins/blank-slate/abstract/post-type.php](plugins/blank-slate/abstract/post-type.php)
 
-- Function `bs_register_post_type` to simplify and call `register_post_type`
+- Function `bs_register_post_type` to simplify and call `register_post_type` with practical defaults.
 - DEPRICATED Class `bs_post_type` to register post type and do a crap ton of other stuff.
 
 #### [plugins/blank-slate/abstract/taxonomy.php](plugins/blank-slate/abstract/taxonomy.php)
 
-- Function `bs_register_taxonomy` to simplify and call `register_taxonomy`
+- Function `bs_register_taxonomy` to simplify and call `register_taxonomy` with practical defaults.
 
 #### [plugins/blank-slate/abstract/scheduled.php](plugins/blank-slate/abstract/scheduled.php)
 
 - UNFINISHED Adds feature to turn any post type into a scheduled post type.
 
-#### [plugins/blank-slate/functions/bs_list_contextually.php](plugins/blank-slate/functions/bs_list_contextually.php)
+#### [plugins/blank-slate/functions/get_author_posts_link.php](plugins/blank-slate/functions/get_author_posts_link.php)
 
-- Function `bs_list_contextually` gets list items based on context. Acts like, and uses, `wp_list_pages` and `wp_list_categories`.
+- Function `get_author_posts_link` does just that. This should be in WP Core.
+
+#### [plugins/blank-slate/functions/get_post_thumbnail_url.php](plugins/blank-slate/functions/get_post_thumbnail_url.php)
+
+- Function `get_post_thumbnail_url` does just that. Tbh, this should be in WP Core, too.
 
 #### [plugins/blank-slate/functions/highest_ancestor.php](plugins/blank-slate/functions/highest_ancestor.php)
 
@@ -43,19 +47,75 @@
 - Function `highest_ancestor` echoes `get_highest_ancestor`.
 - Function `is_highest_ancestor`.
 
-#### [plugins/blank-slate/functions/bs_nav_menu.php](plugins/blank-slate/functions/bs_nav_menu.php)
+#### [plugins/blank-slate/functions/bs_list_contextually.php](plugins/blank-slate/functions/bs_list_contextually.php)
 
-- Function `bs_nav_menu` calls `wp_nav_menu` with convenient defaults. Also strips `<ul>` and `<li>` tags.
-- Function `lia2a` removes `<li>` tags, moving attributes to child `<a>`. Used by `bs_nav_menu`.
+- Function `bs_list_contextually` is situationally aware and uses `wp_list_categories` and `wp_list_pages`.
 
 #### [plugins/blank-slate/functions/bs_svg_sprite.php](plugins/blank-slate/functions/bs_svg_sprite.php)
 
 - Function `bs_svg_sprite` generates HTML for SVG sprite with use tag.
 
+#### [plugins/blank-slate/functions/bs_nav_menu.php](plugins/blank-slate/functions/bs_nav_menu.php)
+
+- Function `bs_nav_menu` to simplify and call `wp_nav_menu` with practical defaults. Also strips `<ul>` and `<li>` tags.
+- Function `lia2a` removes `<li>` tags, moving attributes to child `<a>`. Used by `bs_nav_menu`.
+
+#### [plugins/blank-slate/functions/bs_paginate_links.php](plugins/blank-slate/functions/bs_paginate_links.php)
+
+- Function `bs_paginate_links` to simplify and call `paginate_links` with practical defaults.
+
+#### [plugins/blank-slate/admin/general.php](plugins/blank-slate/admin/general.php)
+
+-
+
+#### [plugins/blank-slate/admin/bar.php](plugins/blank-slate/admin/bar.php)
+
+-
+
+#### [plugins/blank-slate/admin/menu.php](plugins/blank-slate/admin/menu.php)
+
+-
+
+#### [plugins/blank-slate/admin/tinymce.php](plugins/blank-slate/admin/tinymce.php)
+
+-
+
+#### [plugins/blank-slate/admin/new-user-email.php](plugins/blank-slate/admin/new-user-email.php)
+
+-
+
+#### [plugins/blank-slate/admin/media.php](plugins/blank-slate/admin/media.php)
+
+-
+
 #### [plugins/blank-slate/admin/users.php](plugins/blank-slate/admin/users.php)
 
 - Filters `manage_users_columns` to remove posts column from user list screen.
 - Filters `user_contactmethods` to add and remove fields on user edit screen.
+
+#### [plugins/blank-slate/admin/settings-blank-slate.php](plugins/blank-slate/admin/settings-blank-slate.php)
+
+-
+
+#### [plugins/blank-slate/admin/settings-contact.php](plugins/blank-slate/admin/settings-contact.php)
+
+-
+
+#### [plugins/blank-slate/admin/featured-icon.php](plugins/blank-slate/admin/featured-icon.php)
+
+-
+
+#### [plugins/blank-slate/dashboard/general.php](plugins/blank-slate/dashboard/general.php)
+
+-
+
+#### [plugins/blank-slate/dashboard/dashboard-widget.php](plugins/blank-slate/dashboard/dashboard-widget.php)
+
+-
+
+#### [plugins/blank-slate/dashboard/right-now.php](plugins/blank-slate/dashboard/right-now.php)
+
+-
 
 #### [plugins/blank-slate/widgets/section-navigation.php](plugins/blank-slate/widgets/section-navigation.php)
 
@@ -65,6 +125,42 @@
 
 - Filters `wp_title` to add blog name, description, page number.
 - Function `bs_description` intended for description meta tag. Apply filter `bs_description`.
+
+#### [plugins/blank-slate/theme/wp_head.php](plugins/blank-slate/theme/wp_head.php)
+
+-
+
+#### [plugins/blank-slate/theme/scripts.php](plugins/blank-slate/theme/scripts.php)
+
+-
+
+#### [plugins/blank-slate/theme/excerpt.php](plugins/blank-slate/theme/excerpt.php)
+
+-
+
+#### [plugins/blank-slate/theme/content.php](plugins/blank-slate/theme/content.php)
+
+-
+
+#### [plugins/blank-slate/theme/classes.php](plugins/blank-slate/theme/classes.php)
+
+-
+
+#### [plugins/blank-slate/theme/support.php](plugins/blank-slate/theme/support.php)
+
+-
+
+#### [plugins/blank-slate/theme/images.php](plugins/blank-slate/theme/images.php)
+
+-
+
+#### [plugins/blank-slate/theme/format-meta.php](plugins/blank-slate/theme/format-meta.php)
+
+-
+
+#### [plugins/blank-slate/theme/layouts.php](plugins/blank-slate/theme/layouts.php)
+
+-
 
 ## To Do List
 
