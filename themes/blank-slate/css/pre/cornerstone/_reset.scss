@@ -178,6 +178,14 @@ textarea {
 .table {
 	@extend %to-e;
 }
+.logged-in-show,
+.logged-in .logged-in-hide {
+	display: none;
+}
+.logged-in .logged-in-show {
+	display: initial;
+}
+
 
 /*
 ** Print
