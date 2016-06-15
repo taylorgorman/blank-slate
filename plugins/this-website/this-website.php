@@ -12,6 +12,15 @@
 */
 
 /*
+** Prevent update from WordPress Plugin Repo
+*/
+add_filter( 'site_transient_update_plugins', function ( $value ) {
+	unset( $value->response['blank-slate/blank-slate.php'] );
+	return $value;
+} );
+
+
+/*
 ** Do something here to fail activation if Blank Slate isn't activated
 ** Create require_blank_slate() function in Blank Slate? Make it a filter here?
 */
