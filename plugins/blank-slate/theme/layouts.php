@@ -30,9 +30,12 @@ add_action( 'add_meta_boxes', function() {
 function get_layouts( $post_id=0 ) {
 
 	// Find the post ID
-	if ( $post_id == 0 ) {
+	if ( ! $post_id ) {
 		global $post;
 		$post_id = $post->ID;
+	}
+	if ( ! $post_id ) {
+		return false;
 	}
 
 	// Get data
@@ -58,10 +61,9 @@ function layouts_metabox_content( $post ) {
 
 	// Display fields
 	foreach ( array(
-		'centered-excerpt'
-	,	'excerpt-in-header'
-	,	'excerpt-beside-header'
-	,	'title-in-excerpt'
+		'these-need'
+	,	'to-be-dynamic'
+	,	'somehow'
 	) as $class ) {
 
 		echo '<label>';
@@ -101,7 +103,7 @@ add_filter( 'body_class', function( $classes ) {
 
 	// Add layout classes to existing body classes
 	if ( ! empty($data) )
-		$classes = array_merge($classes, $data['classes']);
+		$classes = array_merge($classes, $data);
 
 	// Return
 	return array_unique($classes);
@@ -119,7 +121,7 @@ function is_layout_class( $class_name ) {
 
 	$data = get_layouts($post->ID);
 
-	if ( $data['classes'][$class_name] )
+	if ( in_array($class_name, $data) )
 		return true;
 	else
 		return false;
