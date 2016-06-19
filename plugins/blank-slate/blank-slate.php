@@ -72,10 +72,7 @@ require_once 'admin/users.php';
 require_once 'admin/settings-blank-slate.php';
 require_once 'admin/settings-contact.php';
 require_once 'admin/featured-icon.php';
-
-require_once 'dashboard/general.php';
-require_once 'dashboard/dashboard-widget.php';
-require_once 'dashboard/right-now.php';
+require_once 'admin/dashboard-widgets.php';
 
 /*
 ** Add widgets
