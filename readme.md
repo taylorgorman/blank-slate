@@ -19,4 +19,4 @@ I've not made a parent theme. This theme doesn't have recognizable styles or mar
 
 ### Cornerstone
 
-This really could be its own project and repo, but I found it tedious to maintain separate repos and combine them everytime I wanted to start a new project. So I buried it here because I made all of this so I can do whatever the hell I want. Cornerstone is my reaction to Zurb's Foundation. I felt Foundation did way more than I needed and got in my way more often than helped.
+This really could be its own project and repo, but I found it tedious to maintain separate repos and combine them everytime I wanted to start a new project. So I buried it here because I made all of this so I can do whatever the hell I want. Cornerstone is my reaction to Zurb's Foundation. I felt Foundation did way more than I needed and got in my way more often than it helped.
