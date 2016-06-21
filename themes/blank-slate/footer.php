@@ -1,6 +1,6 @@
 <?
-$email = get_option('contact_email');
-$name = get_option('company_name');
+$email = get_option( 'contact_email' );
+$name = get_option( 'company_name', get_bloginfo('name') );
 ?>
 </main>
 
