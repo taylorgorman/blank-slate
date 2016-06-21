@@ -1,4 +1,16 @@
 <?
+/*
+** Menus
+*/
+add_action( 'after_setup_theme', function(){
+
+	register_nav_menu( 'main', 'Main navigation' );
+
+} );
+
+/*
+** Scripts & styles
+*/
 add_action('wp_enqueue_scripts', function(){
 
 	wp_enqueue_style(

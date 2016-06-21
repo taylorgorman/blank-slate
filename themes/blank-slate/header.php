@@ -25,7 +25,7 @@
 		<a itemprop="url" href="<?= home_url() ?>"><img itemprop="logo" src="<?= get_stylesheet_directory_uri().'/img/logo.svg' ?>" alt="<? bloginfo('name'); ?>"></a>
 	</div>
 
-	<? bs_nav_menu('Main'); ?>
+	<? wp_nav_menu( array('theme_location'=>'main') ); ?>
 
 	<a href="#" class="mobile-menu-toggle" data-toggle-class="mobile-menu-active" data-toggle-target="html"></a>
 

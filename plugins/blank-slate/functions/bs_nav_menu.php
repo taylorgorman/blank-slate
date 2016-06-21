@@ -1,56 +1,33 @@
 <?php
 /*
-** Display requested nav menu, but strip out <ul>s and <li>s
-**
-** @param  string $menu_name  Same as 'menu' in wp_nav_menu arguments. Allows simple retrieval of menu with just the one argument
-** @param  array  $args       Passed directly to wp_nav_menu
+** Cleaner defaults for wp_nav_menu
 */
-function bs_nav_menu( $menu_name = '', $args = array() ) {
+add_filter( 'wp_nav_menu_args', function( $args ){
 
-	$vars = wp_parse_args( $args, array(
-		'menu'            => $menu_name
-	,	'container'       => 'nav'
-	,	'container_class' => sanitize_title($menu_name)
-	,	'depth'           => 1
-	,	'fallback_cb'     => false
-	,	'items_wrap'      => PHP_EOL.'%3$s'
-	) );
+	$args['fallback_cb']     = false;
+	$args['container']       = 'nav';
+	$args['items_wrap']      = PHP_EOL.'%3$s';
 
-	// Force return for now
-	$vars['echo'] = false;
+	if ( ! empty($args['theme_location']) )
+		$args['container_class'] .= ' menu-'.$args['theme_location'];
 
-	// If menu doesn't exist, bail
-	if ( ! $menu = wp_nav_menu($vars) )
-		return false;
+	if ( ! empty($args['menu']) )
+		$args['container_class'] .= ' menu-'.$args['menu'];
 
-	// Remove <li>'s, clean up
-	$menu = lia2a($menu);
-	$menu = trim($menu).PHP_EOL;
+	$args['container_class'] = trim($args['container_class']);
 
-	// Default echo or return if requested
-	if ( isset($args['echo']) && !$args['echo'] )
-		return $menu;
-	else
-		echo $menu;
+	return $args;
 
-}
+} );
 
 /*
-** Convert <li><a></a></li> pattern to <a></a> pattern, transferring all <li> attributes to the <a>
-**
-** @param   string $s  String to manipulate.
-**
-** @return  string     Manipulated string
+** Strip <li>'s from wp_nav_menu HTML output
 */
-function lia2a($string) {
+add_filter( 'wp_nav_menu_items', function( $items ){
 
-	if (!is_string($string))
-		return $string;
+	$find    = array( '><a', '</li>', '<li' );
+	$replace = array( '',    '',      '<a'  );
 
-	$find = array('><a','</a>','<li','</li');
-	$replace = array('','','<a','</a');
-	$return = str_replace($find, $replace, $string);
+	return str_replace( $find, $replace, $items );
 
-	return $return;
-
-}
+} );
