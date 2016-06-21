@@ -1,7 +1,7 @@
 <?
 get_header('int');
 
-if (have_posts()) { while (have_posts()) { the_post(); ?>
+if ( have_posts() ) { while ( have_posts() ) { the_post(); ?>
 
 	<article <? post_class(); ?> role="article" aria-labelledby="article-<? the_id(); ?>-title">
 
