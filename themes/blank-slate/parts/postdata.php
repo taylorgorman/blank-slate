@@ -1,5 +1,5 @@
 
-<div class="post-data">
+<header class="post-data">
 
 	<h1 class="post-title" id="article-<? the_id(); ?>-title">
 		<a href="<? the_permalink(); ?>"><? the_title(); ?></a>
@@ -7,4 +7,4 @@
 
 	<p class="details">Posted on <? the_time('F j, Y'); ?></p>
 
-</div>
+</header>
