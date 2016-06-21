@@ -67,12 +67,13 @@ require_once 'admin/bar.php';
 require_once 'admin/menu.php';
 require_once 'admin/tinymce.php';
 require_once 'admin/new-user-email.php';
+require_once 'admin/featured-icon.php';
+
+require_once 'admin/dashboard-widgets.php';
 require_once 'admin/media.php';
 require_once 'admin/users.php';
 require_once 'admin/settings-blank-slate.php';
 require_once 'admin/settings-contact.php';
-require_once 'admin/featured-icon.php';
-require_once 'admin/dashboard-widgets.php';
 
 /*
 ** Add widgets
