@@ -5,4 +5,5 @@
 ** to files in /functions
 */
 
-require_once 'functions/theme-setup.php';
+require_once 'functions/enqueues.php';
+require_once 'functions/menus.php';
