@@ -19,7 +19,7 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" <? body_class(); ?>>
 
-<header class="global" itemscope itemtype="http://schema.org/WPHeader" role="banner">
+<header class="global" itemscope itemtype="http://schema.org/WPHeader">
 
 	<div class="logo" itemscope itemtype="http://schema.org/Organization">
 		<a itemprop="url" href="<?= home_url() ?>"><img itemprop="logo" src="<?= get_stylesheet_directory_uri().'/img/logo.svg' ?>" alt="<? bloginfo('name'); ?>"></a>
@@ -31,4 +31,4 @@
 
 </header>
 
-<main class="ctst" role="main">
+<main class="ctst">
