@@ -1,10 +1,9 @@
 /*
-** Change any value,
-** But not variable names,
-** OR 123DEATH!
+** Vendors
 */
+$font_awesome: false;
 
-/* ``````````````````````````````````````````````````
+/*
 ** Grid
 */
 $grid_column_count: 12;
@@ -15,7 +14,7 @@ $col_pad_v: 1em;
 $col_pad_h: 1em;
 
 
-/* ``````````````````````````````````````````````````
+/*
 ** Media queries
 **
 ** List in descending order
@@ -36,7 +35,7 @@ $bp_default: 'dk';
 $bp_stack_columns: 'mblg';
 
 
-/* ``````````````````````````````````````````````````
+/*
 ** Typography
 */
 $fz: 16px;
@@ -65,7 +64,7 @@ $fw_h_n: $fw_sans_n;
 $fw_h_l: $fw_sans_l;
 
 
-/* ``````````````````````````````````````````````````
+/*
 ** Colors
 */
 $blue: blue;
