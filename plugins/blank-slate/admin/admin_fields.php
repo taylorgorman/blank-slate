@@ -15,7 +15,7 @@ function admin_fields( $args = array() ) {
 	,	'fields'        => array()
 	) );
 
-	// Default field data
+	// Default field args
 	$field_defaults = array(
 		'type'        => 'text'
 	,	'label'       => ''
@@ -26,7 +26,7 @@ function admin_fields( $args = array() ) {
 	,	'cols'        => ''
 	);
 
-	// Markup after fields
+	// Markup before fields
 	echo $settings['before_fields'];
 
 	// Build fields
@@ -37,18 +37,18 @@ function admin_fields( $args = array() ) {
 		if ( empty($field['label']) )
 			continue;
 
-		// Name derived from label
+		// Name fallback to label
 		if ( empty($field['name']) )
 			$field['name'] = sanitize_title($field['label']);
 
-		// Build field names and ids
+		// Full name and id
 		$field['id'] = $field['name'];
 		if ( $settings['group_name'] ) {
 			$field['fullname'] = $settings['group_name'].'['.$field['name'].']';
 			$field['id'] = $settings['group_name'].'-'.$field['id'];
 		}
 
-		// Fallback to group value
+		// Value fallback to group value
 		if ( empty($field['value']) && ! empty($settings['group_value'][$field['name']]) )
 			$field['value'] = $settings['group_value'][$field['name']];
 
@@ -61,6 +61,7 @@ function admin_fields( $args = array() ) {
 		// Field markup
 		switch ( $field['type'] ) {
 
+			case 'radio' :
 			case 'checkbox' :
 				$field_markup = '';
 				foreach ( $field['options'] as $option ) {
@@ -69,7 +70,7 @@ function admin_fields( $args = array() ) {
 					if ( empty($option['value']) )
 						$option['value'] = sanitize_title($option['label']);
 
-					$field_markup .= '<label><input type="checkbox"';
+					$field_markup .= '<label><input type="'. $field['type'] .'"';
 					$field_markup .= ' name="'. $field['fullname'] .'[]"';
 					$field_markup .= ' value="'. $option['value'] .'"';
 					if ( ! empty($settings['group_value'][$field['name']]) )
