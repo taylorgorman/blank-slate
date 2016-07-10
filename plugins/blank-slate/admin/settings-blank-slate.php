@@ -3,7 +3,7 @@
 ** Register settings
 */
 add_action('admin_init', function(){
-	register_setting( 'blank_slate_settings', 'blank_slate_settings' );
+	register_setting( 'blank_slate_settings', 'blank_slate' );
 });
 
 /*
@@ -23,85 +23,62 @@ add_submenu_page( 'options-general.php', 'Blank Slate Settings', 'Blank Slate', 
 		<form method="post" action="options.php">
 		<?
 		settings_fields('blank_slate_settings');
-		$v = wp_parse_args( get_option('blank_slate_settings') );
+		$blank_slate_db = wp_parse_args(get_option('blank_slate'));
+
+		admin_fields(array(
+			'before_fields' => '<table class="form-table">'
+		,	'during_fields' => '<tr><th>%1$s</th><td><fieldset>%2$s%3$s</fieldset></td></tr>'
+		,	'after_fields'  => '</table>'
+		,	'group_name'    => 'blank_slate'
+		,	'group_value'   => $blank_slate_db
+		,	'fields'        => array(
+				array(
+					'type'    => 'checkbox'
+				,	'label'   => 'Layout Classes'
+				,	'name'    => 'layouts'
+				,	'options' => array(
+						array(
+							'label' => 'Add to body classes'
+						,	'value' => 'body'
+						)
+					,	array(
+							'label' => 'Add to post classes'
+						,	'value' => 'post'
+						)
+					)
+				)
+			,	array(
+					'type'    => 'checkbox'
+				,	'label'   => 'Post Formats'
+				,	'options' => array(
+						array(
+							'label' => 'Gallery'
+						)
+					,	array(
+							'label' => 'Quote'
+						)
+					,	array(
+							'label' => 'Video'
+						)
+					)
+				)
+			,	array(
+					'type'    => 'checkbox'
+				,	'label'   => 'Scheduled Post Types'
+				,	'options' => array(
+						array(
+							'label' => 'Custom PT'
+						)
+					,	array(
+							'label' => 'Etc'
+						)
+					)
+				)
+			)
+		));
+
+		submit_button();
 		?>
-
-		<table class="form-table">
-		<?
-		foreach( array(
-			array(
-				'type'    => 'checkbox'
-			,	'label'   => 'Layout Classes'
-			,	'name'    => 'layouts'
-			,	'options' => array(
-					array(
-						'label' => 'Add to body classes'
-					,	'value' => 'body'
-					)
-				,	array(
-						'label' => 'Add to post classes'
-					,	'value' => 'post'
-					)
-				)
-			)
-		,	array(
-				'type'    => 'checkbox'
-			,	'label'   => 'Post Formats'
-			,	'name'    => 'formats'
-			,	'options' => array(
-					array(
-						'label' => 'Gallery'
-					,	'value' => 'gallery'
-					)
-				,	array(
-						'label' => 'Quote'
-					,	'value' => 'quote'
-					)
-				,	array(
-						'label' => 'Video'
-					,	'value' => 'video'
-					)
-				)
-			)
-		,	array(
-				'type'    => 'checkbox'
-			,	'label'   => 'Scheduled Post Types'
-			,	'name'    => 'scheduled'
-			,	'options' => array(
-					array(
-						'label' => 'Custom PT'
-					,	'value' => 'custom'
-					)
-				,	array(
-						'label' => 'Etc'
-					,	'value' => 'etc'
-					)
-				)
-			)
-		) as $field ) {
-
-			?>
-			<tr>
-				<th><?= $field['label'] ?></th>
-				<td>
-					<p><? foreach ( $field['options'] as $i ) { ?>
-					<label><input type="checkbox"
-						name="<?= 'blank_slate_settings['.$field['name'].'][]' ?>"
-						value="<?= $i['value'] ?>"
-						<? if ( ! empty($v[$field['name']]) ) checked(in_array($i['value'], $v[$field['name']])); ?>>
-						<?= $i['label'] ?>
-					</label><br>
-					<? } ?></p>
-					<? if ( ! empty($field['desc']) ) echo '<p class="description">'. $field['desc'] .'</p>'; ?>
-				</td>
-			</tr>
-			<?
-
-		}
-		?>
-		</table>
-
-		<? submit_button(); echo '<pre>'.print_r($v,1).'</pre>'; ?>
 		</form>
 
 	</div>
