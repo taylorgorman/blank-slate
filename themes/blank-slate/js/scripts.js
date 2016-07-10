@@ -313,8 +313,3 @@ jQuery(function($){
 <input type="radio" name="decision" value="Yes" data-toggle-class="active">
 
 */
-
-
-// @codekit-append "_easing.js"
-// @codekit-append "_scroll-to-hash.js"
-// @codekit-append "_toggle-class.js"

@@ -2,7 +2,7 @@
 /*
 ** Like the_author_posts_link, but returns instead of displays.
 **
-** @param  object $post
+** @param  object  $post
 */
 function get_author_posts_link( $post = false ) {
 

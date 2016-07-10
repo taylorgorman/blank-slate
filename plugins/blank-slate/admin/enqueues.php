@@ -1,15 +1,5 @@
 <?php
 /*
-** Prevent users that can't update core from seeing update notice
-add_action( 'after_setup_theme', function(){
-
-	if ( ! current_user_can('update_core') )
-		add_filter( 'pre_site_transient_update_core', function($a) { return null; } );
-
-} );
-*/
-
-/*
 ** Enqueue scripts and styles? Want to check into this later.
 */
 add_action( 'admin_enqueue_scripts', function(){

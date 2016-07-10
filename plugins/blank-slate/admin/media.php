@@ -1,8 +1,11 @@
-<?
+<?php
+/*
+** In admin, don't let users see each other's media
+** if they don't have post edit priveleges.
+*/
 add_filter( 'pre_get_posts', function( $query ){
 
 	$current_user = wp_get_current_user();
-	//echo $current_user->data->user_login;
 
 	if (
 		is_admin() &&

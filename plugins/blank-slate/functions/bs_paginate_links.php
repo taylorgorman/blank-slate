@@ -1,5 +1,8 @@
 <?php
-
+/*
+** WordPress's paginate_links() is a bit crippled
+** and can't stand on its own.
+*/
 function bs_paginate_links( $args=0 ) {
 
 	global $wp_query;
