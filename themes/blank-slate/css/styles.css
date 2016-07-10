@@ -156,12 +156,12 @@ body, input, textarea, select, button {
 /*
 ** Partials
 */
-.centered:not(.table):before, .row:not(.table):before, .centered:not(.table):after, .row:not(.table):after {
+.centered:not(.table):before, .row:not(.table):before, article.hentry:before, .centered:not(.table):after, .row:not(.table):after, article.hentry:after {
   content: "";
   display: table;
 }
 
-.centered:not(.table):after, .row:not(.table):after {
+.centered:not(.table):after, .row:not(.table):after, article.hentry:after {
   clear: both;
 }
 
