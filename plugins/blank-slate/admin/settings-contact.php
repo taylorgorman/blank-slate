@@ -2,9 +2,9 @@
 /*
 ** Register settings
 */
-add_action('admin_init', function(){
+add_action( 'admin_init', function(){
 	register_setting( 'contact_info_settings', 'contact_info' );
-});
+} );
 
 /*
 ** Create subpage
@@ -70,22 +70,25 @@ add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish
 		<form method="post" action="options.php">
 		<?
 		settings_fields('contact_info_settings');
-		$v = get_option('contact_info');
+		$contact_info_db = get_option('contact_info');
+		//echo '<pre>'.print_r($contact_info_db,1).'</pre>';
 
 		admin_fields(array(
 			array(
-				'label' => 'Company Name'
+				'label'       => 'Company Name'
 			,	'placeholder' => get_bloginfo('name')
-			,	'cols'  => 2
-			,	'desc' => 'Fallback is Site Title in <a href="/wp-admin/options-general.php">Settings / General</a>.'
+			,	'value'       => $contact_info_db['company-name']
+			,	'cols'        => 2
+			,	'desc'        => 'Fallback is Site Title in <a href="/wp-admin/options-general.php">Settings / General</a>.'
 			)
 		,	array(
-				'label' => 'Catch-all Email'
+				'label'       => 'Catch-all Email'
 			,	'placeholder' => get_bloginfo('admin_email')
-			,	'cols'  => 2
-			,	'desc' => 'Fallback is E-mail Address in <a href="/wp-admin/options-general.php">Settings / General</a>.'
+			,	'value'       => $contact_info_db['catch-all-email']
+			,	'cols'        => 2
+			,	'desc'        => 'Fallback is E-mail Address in <a href="/wp-admin/options-general.php">Settings / General</a>.'
 			)
-		));
+		), 'contact_info');
 		?>
 
 		<h3><input type="number" name="contact_info[locations-count]" value="<?= get_contactinfo('locations-count') ?>" style="width:3em">
@@ -97,40 +100,47 @@ add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish
 			admin_fields(array(
 				array(
 					'label' => 'Location '.$i.' Name'
-				,	'name' => 'location-name-'.$i
+				,	'name'  => 'location-name-'.$i
+				,	'value' => $contact_info_db['location-name-'.$i]
 				,	'cols'  => 2
 				)
 			,	array(
 					'label' => 'Street Address'
-				,	'name' => 'street-address-'.$i
+				,	'name'  => 'street-address-'.$i
+				,	'value' => $contact_info_db['street-address-'.$i]
 				,	'cols'  => 2
 				)
 			,	array(
 					'label' => 'City'
-				,	'name' => 'city-'.$i
+				,	'name'  => 'city-'.$i
+				,	'value' => $contact_info_db['city-'.$i]
 				,	'cols'  => 2
 				)
 			,	array(
 					'label' => 'State'
-				,	'name' => 'state-'.$i
+				,	'name'  => 'state-'.$i
+				,	'value' => $contact_info_db['state-'.$i]
 				,	'cols'  => 4
 				)
 			,	array(
 					'label' => 'Zip'
-				,	'name' => 'zip-'.$i
+				,	'name'  => 'zip-'.$i
+				,	'value' => $contact_info_db['zip-'.$i]
 				,	'cols'  => 4
 				)
 			,	array(
 					'label' => 'Phone'
-				,	'name' => 'phone-'.$i
+				,	'name'  => 'phone-'.$i
+				,	'value' => $contact_info_db['phone-'.$i]
 				,	'cols'  => 2
 				)
 			,	array(
 					'label' => 'Fax'
-				,	'name' => 'fax-'.$i
+				,	'name'  => 'fax-'.$i
+				,	'value' => $contact_info_db['fax-'.$i]
 				,	'cols'  => 2
 				)
-			));
+			), 'contact_info');
 		}
 		?>
 
@@ -141,20 +151,25 @@ add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish
 		admin_fields(array(
 			array(
 				'label' => 'Facebook URL'
+			,	'value' => $contact_info_db['facebook-url']
 			)
 		,	array(
 				'label' => 'Twitter Username'
+			,	'value' => $contact_info_db['twitter-username']
 			)
 		,	array(
 				'label' => 'Instagram Username'
+			,	'value' => $contact_info_db['instagram-username']
 			)
 		,	array(
 				'label' => 'Tumblr URL'
+			,	'value' => $contact_info_db['tumblr-url']
 			)
 		,	array(
 				'label' => 'Linkedin URL'
+			,	'value' => $contact_info_db['linkedin-url']
 			)
-		));
+		), 'contact_info');
 
 		submit_button();
 		?>
@@ -162,6 +177,7 @@ add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish
 
 	</div>
 	<?
+	//echo '<pre>'.print_r($_POST,1).'</pre>';
 
 } );
 } );

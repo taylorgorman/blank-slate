@@ -29,54 +29,75 @@
 **
 */
 
-function admin_fields( $fields ) {
+function admin_fields( $fields=array(), $group_name='' ) {
 
 	// Markup before fields
 	echo '<div class="form-table">';
 
 	// Default field data
-	$defaults = array(
-		'type' => 'text'
-	,	'label' => ''
-	,	'name' => ''
+	$field_defaults = array(
+		'type'        => 'text'
+	,	'label'       => ''
+	,	'name'        => ''
+	,	'value'       => ''
 	,	'placeholder' => ''
-	,	'desc' => ''
-	,	'cols' => 0
+	,	'desc'        => ''
+	,	'cols'        => ''
 	);
 
 	foreach ( $fields as $field ) {
 
-		$v = wp_parse_args($field, $defaults);
+		$field = wp_parse_args($field, $field_defaults);
 
 		// Label is required
-		if ( empty($v['label']) )
+		if ( empty($field['label']) )
 			continue;
 
 		// Name derived from label
-		if ( empty($v['name']) )
-			$v['name'] = sanitize_title($v['label']);
+		if ( empty($field['name']) )
+			$field['name'] = sanitize_title($field['label']);
+
+		// Name derived from label
+		if ( ! empty($field['cols']) )
+			$field['cols'] = 'cols'.$field['cols'];
+
+		// Before field markup ?>
+		<div class="field<?= ' '.$field['cols'] ?>">
+		<?
 
 		// Display markup for different input types
-		switch ( $v['type'] ) {
+		switch ( $field['type'] ) {
 
 			case 'checkbox' :
 				/*
-				$markup = '<label for="'. $id .'"><input type="checkbox" name="contact_info['. $id .']" id="'. $id .'" value="1" '. checked('1', $values[$id], 0) .' />';
+				$markup = '<label for="'. $id .'"><input type="checkbox" name="contact_info['. $id .']" id="'. $id .'" value="1" '. checked('1', $fieldalues[$id], 0) .' />';
 				if ( $desc ) $markup .= $desc;
 				$markup .= '</label>';
 				*/
 			break;
 
 			default :
-			?>
-			<div class="field cols<?= $v['cols'] ?>">
-				<label for="<?= $v['name'] ?>"><?= $v['label'] ?></label>
-				<input type="<?= $v['type'] ?>" name="contact_info[<?= $v['name'] ?>]" id="<?= $v['name'] ?>" placeholder="<?= $v['placeholder'] ?>" value="<?= get_contactinfo($v['name'], 0) ?>" <? if ( $v['desc'] ) echo 'aria-describedby="'. $v['name'] .'-description"'; ?>>
-				<? if ( $v['desc'] ) echo '<p class="description" id="'. $v['name'] .'-description">'. $v['desc'] .'</p>'; ?>
-			</div>
-			<?
+				$field['id'] = $field['name'];
+				if ( $group_name ) {
+					$field['name'] = $group_name.'['.$field['name'].']';
+					$field['id'] = $group_name.'-'.$field['id'];
+				}
+				?>
+				<label for="<?= $field['id'] ?>"><?= $field['label'] ?></label>
+				<input
+					type="<?= $field['type'] ?>"
+					name="<?= $field['name'] ?>"
+					id="<?= $field['id'] ?>"
+					placeholder="<?= $field['placeholder'] ?>"
+					value="<?= $field['value'] ?>"
+					<? if ( $field['desc'] ) echo 'aria-describedby="'. $field['id'] .'-description"'; ?>
+				><?
+				if ( $field['desc'] ) echo '<p class="description" id="'. $field['id'] .'-description">'. $field['desc'] .'</p>';
 
 		}
+		// After field markup ?>
+		</div>
+		<?
 
 	}
 
