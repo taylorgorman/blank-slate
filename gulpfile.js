@@ -14,15 +14,15 @@ var dir = {
 ,	'dev'  : 'pre/'
 };
 var files = {
-	'sass' : dir.dev + '**/*.scss'
-,	'js'   : dir.dev + '**/*.js'
-,	'img'  : '**/*'
+	'sass' : 'css/' + dir.dev + '**/*.scss'
+,	'js'   : 'js/' + dir.dev + '**/*.js'
+,	'img'  : 'img/**/*'
 };
 
 /*
 ** gulp
 */
-gulp.task( 'default', ['css', 'js', 'img'] );
+gulp.task( 'default', ['sass', 'js', 'img'] );
 
 /*
 ** gulp deploy
@@ -31,7 +31,7 @@ gulp.task( 'default', ['css', 'js', 'img'] );
 ** and require docs's and git's plugins inside them
 ** so they aren't unnecessarily loaded during dev.
 **
-gulp.task( 'deploy', ['css', 'js', 'img', 'docs', 'git'] );
+gulp.task( 'deploy', ['sass', 'js', 'img', 'docs', 'git'] );
 */
 
 /*
@@ -39,9 +39,9 @@ gulp.task( 'deploy', ['css', 'js', 'img', 'docs', 'git'] );
 */
 gulp.task( 'watch', function( ){
 
-	gulp.watch( dir.dev + 'css/**/*', ['css'] );
-	gulp.watch( dir.dev + 'js/**/*', ['js'] );
-	gulp.watch( dir.dev + 'img/**/*', ['img'] );
+	gulp.watch( dir.base + files.sass, ['sass'] );
+	gulp.watch( dir.base + files.js, ['js'] );
+	//gulp.watch( dir.dev + 'img/**/*', ['img'] );
 
 } );
 
@@ -51,10 +51,9 @@ gulp.task( 'watch', function( ){
 ** Works for any css/src/ folder in this project, no matter where
 ** TODO: Do this for every folder in bases.
 */
-gulp.task( 'css', function( ){
+gulp.task( 'sass', function( ){
 
-	return gulp.src( dir.base + 'css/' + files.sass )
-	.pipe( plug.count('## .sass files found') )
+	return gulp.src( dir.base + files.sass )
 
 	// Compile SASS and save
 	.pipe( plug.sass({
@@ -62,8 +61,8 @@ gulp.task( 'css', function( ){
 	}) )
 	.pipe( plug.autoprefixer() )
 	.pipe( plug.lineEndingCorrector() )
-	.pipe( plug.count('## .css files saved') )
 	.pipe( gulp.dest( dir.base + 'css/' ) )
+	//.pipe( plug.count('## .css files saved') )
 
 	// Save minified versions
 	.pipe( plug.rename({ suffix: '.min' }) )
@@ -81,13 +80,13 @@ gulp.task( 'css', function( ){
 */
 gulp.task( 'js', function( ){
 
-	return gulp.src( dir.base + 'js/' + files.js )
-	.pipe( plug.count('## .js files found') )
+	return gulp.src( dir.base + files.js )
 
+	// Concatenate
 	.pipe( plug.concat('scripts.js') )
 	.pipe( plug.lineEndingCorrector() )
 	.pipe( gulp.dest( dir.base + 'js/' ) )
-	.pipe( plug.count('## .js files saved') )
+	//.pipe( plug.count('## .js files saved') )
 
 	// Minified versions
 	.pipe( plug.rename({ suffix: '.min' }) )
