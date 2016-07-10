@@ -7,15 +7,15 @@ add_action( 'wp_enqueue_scripts', function(){
 	if ( is_admin() )
 		return;
 
-	$google_url = '//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
-	$test_url = @fopen('http:'.$google_url, 'r');
+	$jquery_url = '//code.jquery.com/jquery-2.2.4.min.js';
+	$test_url = @fopen( 'http:'.$jquery_url, 'r' );
 
 	// Google CDN failed, keep using WordPress's
 	if ( false === $test_url )
-		return;
+		$jquery_url = includes_url( '/js/jquery/jquery.js' );
 
-	// Google CDN ok
-	wp_deregister_script('jquery');
-	wp_register_script('jquery', $google_url, false, false, true);
+	// Put it in the footer
+	wp_deregister_script( 'jquery' );
+	wp_register_script( 'jquery', $jquery_url, false, false, true );
 
 } );
