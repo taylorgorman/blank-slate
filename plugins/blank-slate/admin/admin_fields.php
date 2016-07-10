@@ -29,10 +29,16 @@
 **
 */
 
-function admin_fields( $fields=array(), $group_name='' ) {
+function admin_fields( $args = array() ) {
 
-	// Markup before fields
-	echo '<div class="form-table">';
+	// Parse function args
+	$opt = wp_parse_args( $args, array(
+		'before_fields' => '<div class="form-table">'
+	,	'during_fields' => '<div class="field">%1$s%2$s%3$s</div>' // 1:label, 2:input, 3:description
+	,	'after_fields'  => '</div>'
+	,	'group_name'    => ''
+	,	'fields'        => array()
+	) );
 
 	// Default field data
 	$field_defaults = array(
@@ -45,9 +51,11 @@ function admin_fields( $fields=array(), $group_name='' ) {
 	,	'cols'        => ''
 	);
 
-	foreach ( $fields as $field ) {
+	// Markup after fields
+	echo $opt['before_fields'];
 
-		$field = wp_parse_args($field, $field_defaults);
+	foreach ( $opt['fields'] as $field ) {
+		$field = wp_parse_args( $field, $field_defaults );
 
 		// Label is required
 		if ( empty($field['label']) )
@@ -56,14 +64,6 @@ function admin_fields( $fields=array(), $group_name='' ) {
 		// Name derived from label
 		if ( empty($field['name']) )
 			$field['name'] = sanitize_title($field['label']);
-
-		// Name derived from label
-		if ( ! empty($field['cols']) )
-			$field['cols'] = 'cols'.$field['cols'];
-
-		// Before field markup ?>
-		<div class="field<?= ' '.$field['cols'] ?>">
-		<?
 
 		// Display markup for different input types
 		switch ( $field['type'] ) {
@@ -77,31 +77,37 @@ function admin_fields( $fields=array(), $group_name='' ) {
 			break;
 
 			default :
+
+				// Build field names and ids
 				$field['id'] = $field['name'];
-				if ( $group_name ) {
-					$field['name'] = $group_name.'['.$field['name'].']';
-					$field['id'] = $group_name.'-'.$field['id'];
+				if ( $opt['group_name'] ) {
+					$field['name'] = $opt['group_name'].'['.$field['name'].']';
+					$field['id'] = $opt['group_name'].'-'.$field['id'];
 				}
-				?>
-				<label for="<?= $field['id'] ?>"><?= $field['label'] ?></label>
-				<input
-					type="<?= $field['type'] ?>"
-					name="<?= $field['name'] ?>"
-					id="<?= $field['id'] ?>"
-					placeholder="<?= $field['placeholder'] ?>"
-					value="<?= $field['value'] ?>"
-					<? if ( $field['desc'] ) echo 'aria-describedby="'. $field['id'] .'-description"'; ?>
-				><?
-				if ( $field['desc'] ) echo '<p class="description" id="'. $field['id'] .'-description">'. $field['desc'] .'</p>';
+
+				$label_markup = '<label for="'. $field['id'] .'">'. $field['label'] .'</label>';
+
+				$field_markup = '<input';
+				$field_markup .= ' type="'. $field['type'] .'"';
+				$field_markup .= ' name="'. $field['name'] .'"';
+				$field_markup .= ' id="'. $field['id'] .'"';
+				$field_markup .= ' placeholder="'. $field['placeholder'] .'"';
+				$field_markup .= ' value="'. $field['value'] .'"';
+				if ( $field['desc'] ) $field_markup .= ' aria-describedby="'. $field['id'] .'-description"';
+				$field_markup .= '>';
+
+				$desc_markup = $field['desc'] ? '<p class="description" id="'. $field['id'] .'-description">'. $field['desc'] .'</p>' : '';
 
 		}
-		// After field markup ?>
-		</div>
-		<?
+
+		// Print field markup
+		if ( ! empty($field['cols']) ) echo '<div class="cols'. $field['cols'] .'">';
+		printf( $opt['during_fields'], $label_markup, $field_markup, $desc_markup );
+		if ( ! empty($field['cols']) ) echo '</div>';
 
 	}
 
 	// Markup after fields
-	echo '</div>';
+	echo $opt['after_fields'];
 
 }
