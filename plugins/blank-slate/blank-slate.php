@@ -65,7 +65,7 @@ require_once 'admin/media.php';
 require_once 'admin/users.php';
 require_once 'admin/settings-blank-slate.php';
 require_once 'admin/settings-contact.php';
-if ( ! empty($bs_settings['layouts_body']) || ! empty($bs_settings['layouts_post']) )
+if ( ! empty($bs_settings['layouts']) )
 	require_once 'admin/layouts.php';
 
 //require_once 'admin/new-user-email.php';

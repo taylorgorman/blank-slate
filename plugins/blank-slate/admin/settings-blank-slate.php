@@ -30,28 +30,52 @@ add_submenu_page( 'options-general.php', 'Blank Slate Settings', 'Blank Slate', 
 		<?
 		foreach( array(
 			array(
-				'type'   => 'checkbox'
-			,	'label'  => 'Layout Classes'
-			,	'values' => array(
-					'layouts_body' => 'Add to body classes'
-				,	'layouts_post' => 'Add to post classes'
+				'type'    => 'checkbox'
+			,	'label'   => 'Layout Classes'
+			,	'name'    => 'layouts'
+			,	'options' => array(
+					array(
+						'label' => 'Add to body classes'
+					,	'value' => 'body'
+					)
+				,	array(
+						'label' => 'Add to post classes'
+					,	'value' => 'post'
+					)
 				)
 			)
 		,	array(
-				'type'   => 'checkbox'
-			,	'label'  => 'Post Formats'
-			,	'values' => array(
-					'formats_gallery' => 'Gallery'
-				,	'formats_quote'   => 'Quote'
-				,	'formats_etc'     => 'Etc'
+				'type'    => 'checkbox'
+			,	'label'   => 'Post Formats'
+			,	'name'    => 'formats'
+			,	'options' => array(
+					array(
+						'label' => 'Gallery'
+					,	'value' => 'gallery'
+					)
+				,	array(
+						'label' => 'Quote'
+					,	'value' => 'quote'
+					)
+				,	array(
+						'label' => 'Video'
+					,	'value' => 'video'
+					)
 				)
 			)
 		,	array(
-				'type'   => 'checkbox'
-			,	'label'  => 'Scheduled Post Types'
-			,	'values' => array(
-					'scheduled_custom' => 'Custom PT'
-				,	'scheduled_etc'    => 'Etc'
+				'type'    => 'checkbox'
+			,	'label'   => 'Scheduled Post Types'
+			,	'name'    => 'scheduled'
+			,	'options' => array(
+					array(
+						'label' => 'Custom PT'
+					,	'value' => 'custom'
+					)
+				,	array(
+						'label' => 'Etc'
+					,	'value' => 'etc'
+					)
 				)
 			)
 		) as $field ) {
@@ -60,8 +84,13 @@ add_submenu_page( 'options-general.php', 'Blank Slate Settings', 'Blank Slate', 
 			<tr>
 				<th><?= $field['label'] ?></th>
 				<td>
-					<p><? foreach ( $field['values'] as $name => $label ) { ?>
-					<label><input type="checkbox" name="blank_slate_settings[<?= $name ?>]" value="1" <? if ( ! empty($v[$name]) ) checked($v[$name]); ?>> <?= $label ?></label><br>
+					<p><? foreach ( $field['options'] as $i ) { ?>
+					<label><input type="checkbox"
+						name="<?= 'blank_slate_settings['.$field['name'].'][]' ?>"
+						value="<?= $i['value'] ?>"
+						<? if ( ! empty($v[$field['name']]) ) checked(in_array($i['value'], $v[$field['name']])); ?>>
+						<?= $i['label'] ?>
+					</label><br>
 					<? } ?></p>
 					<? if ( ! empty($field['desc']) ) echo '<p class="description">'. $field['desc'] .'</p>'; ?>
 				</td>
