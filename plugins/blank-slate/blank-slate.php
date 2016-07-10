@@ -36,44 +36,42 @@ $bs_settings = get_option('blank_slate_settings');
 
 
 /*
-** Make changes to current WordPress structure
+** Change WordPress
 */
 require_once 'structure/page.php';
 require_once 'structure/roles.php';
 
 /*
-** Make WordPress things simpler
-*/
-require_once 'abstraction/post-type.php';
-require_once 'abstraction/taxonomy.php';
-require_once 'abstraction/scheduled.php';
-
-/*
-** Standalone functions
+** Functions
 */
 require_once 'functions/get_author_posts_link.php';
 require_once 'functions/get_post_thumbnail_url.php';
 require_once 'functions/highest_ancestor.php';
 require_once 'functions/bs_list_contextually.php';
-require_once 'functions/bs_svg_sprite.php';
-require_once 'functions/bs_nav_menu.php';
 require_once 'functions/bs_paginate_links.php';
+require_once 'functions/bs_register_post_type.php';
+require_once 'functions/bs_register_taxonomy.php';
+require_once 'functions/bs_svg_sprite.php';
 
 /*
 ** Modify admin screens
 */
-require_once 'admin/general.php';
-require_once 'admin/bar.php';
+require_once 'admin/admin_fields.php';
+require_once 'admin/enqueues.php';
 require_once 'admin/menu.php';
 require_once 'admin/tinymce.php';
-require_once 'admin/new-user-email.php';
-require_once 'admin/featured-icon.php';
-
 require_once 'admin/dashboard-widgets.php';
 require_once 'admin/media.php';
 require_once 'admin/users.php';
 require_once 'admin/settings-blank-slate.php';
 require_once 'admin/settings-contact.php';
+if ( ! empty($bs_settings['layouts_body']) || ! empty($bs_settings['layouts_post']) )
+	require_once 'admin/layouts.php';
+
+//require_once 'admin/new-user-email.php';
+//require_once 'admin/featured-icon.php';
+//require_once 'admin/scheduled-posttypes.php';
+
 
 /*
 ** Add widgets
@@ -83,6 +81,7 @@ require_once 'widgets/section-navigation.php';
 /*
 ** Modify theme output
 */
+require_once 'theme/wp_nav_menu.php';
 require_once 'theme/meta.php';
 require_once 'theme/wp_head.php';
 require_once 'theme/scripts.php';
@@ -92,7 +91,6 @@ require_once 'theme/classes.php';
 require_once 'theme/support.php';
 require_once 'theme/images.php';
 require_once 'theme/format-meta.php';
-if ( ! empty($bs_settings['layout_classes']) ) require_once 'theme/layouts.php';
 
 
 /*
