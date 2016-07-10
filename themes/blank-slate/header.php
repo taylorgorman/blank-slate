@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" <?php language_attributes(); ?> itemscope itemtype="http://schema.org/Product">
+<html <?php language_attributes(); ?> itemscope itemtype="http://schema.org/Product">
 <head>
 
 	<meta charset="<? bloginfo('charset'); ?>">
