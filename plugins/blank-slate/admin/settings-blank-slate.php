@@ -2,9 +2,9 @@
 /*
 ** Register settings
 */
-add_action('admin_init', function(){
+add_action( 'admin_init', function(){
 	register_setting( 'blank_slate_settings', 'blank_slate' );
-});
+} );
 
 /*
 ** Create subpage

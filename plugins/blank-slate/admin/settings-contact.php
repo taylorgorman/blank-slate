@@ -51,7 +51,7 @@ add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish
 		div.form-table .field {
 			padding-top: 20px;
 		}
-		div.form-table .field input {
+		[class*=cols] .field input {
 			width: 100%;
 		}
 		@media (max-width:780px) {
@@ -77,19 +77,21 @@ add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish
 		//echo '<pre>'.print_r($contact_info_db,1).'</pre>';
 
 		admin_fields(array(
-			'group_name' => 'contact_info'
-		,	'fields'     => array(
+			'group_name'  => 'contact_info'
+		,	'group_value' => $contact_info_db
+		,	'before_fields' => '<table class="form-table">'
+		,	'during_fields' => '<tr><th>%1$s</th><td><fieldset>%2$s%3$s</fieldset></td></tr>'
+		,	'after_fields'  => '</table>'
+		,	'fields'      => array(
 				array(
 					'label'       => 'Company Name'
 				,	'placeholder' => get_bloginfo('name')
-				,	'value'       => $contact_info_db['company-name']
 				,	'cols'        => 2
 				,	'desc'        => 'Fallback is Site Title in <a href="/wp-admin/options-general.php">Settings / General</a>.'
 				)
 			,	array(
 					'label'       => 'Catch-all Email'
 				,	'placeholder' => get_bloginfo('admin_email')
-				,	'value'       => $contact_info_db['catch-all-email']
 				,	'cols'        => 2
 				,	'desc'        => 'Fallback is E-mail Address in <a href="/wp-admin/options-general.php">Settings / General</a>.'
 				)
@@ -98,6 +100,7 @@ add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish
 
 		admin_fields(array(
 			'group_name'    => 'contact_info'
+		,	'group_value'   => $contact_info_db
 		,	'before_fields' => ''
 		,	'during_fields' => '<h3>%2$s %1$s</h3>%3$s'
 		,	'after_fields'  => ''
@@ -106,7 +109,6 @@ add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish
 					'type'  => 'number'
 				,	'label' => 'Locations'
 				,	'name'  => 'locations-count'
-				,	'value' => $contact_info_db['locations-count']
 				,	'desc'  => 'Save Changes to update number of fields below.'
 				)
 			)
@@ -114,48 +116,42 @@ add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish
 
 		for ( $i = 1; $i <= get_contactinfo('locations-count'); $i++ ) {
 			admin_fields(array(
-				'group_name' => 'contact_info'
-			,	'fields'     => array(
+				'group_name'  => 'contact_info'
+			,	'group_value' => $contact_info_db
+			,	'fields'      => array(
 					array(
 						'label' => 'Location '.$i.' Name'
 					,	'name'  => 'location-name-'.$i
-					,	'value' => $contact_info_db['location-name-'.$i]
 					,	'cols'  => 2
 					)
 				,	array(
 						'label' => 'Street Address'
 					,	'name'  => 'street-address-'.$i
-					,	'value' => $contact_info_db['street-address-'.$i]
 					,	'cols'  => 2
 					)
 				,	array(
 						'label' => 'City'
 					,	'name'  => 'city-'.$i
-					,	'value' => $contact_info_db['city-'.$i]
 					,	'cols'  => 2
 					)
 				,	array(
 						'label' => 'State'
 					,	'name'  => 'state-'.$i
-					,	'value' => $contact_info_db['state-'.$i]
 					,	'cols'  => 4
 					)
 				,	array(
 						'label' => 'Zip'
 					,	'name'  => 'zip-'.$i
-					,	'value' => $contact_info_db['zip-'.$i]
 					,	'cols'  => 4
 					)
 				,	array(
 						'label' => 'Phone'
 					,	'name'  => 'phone-'.$i
-					,	'value' => $contact_info_db['phone-'.$i]
 					,	'cols'  => 2
 					)
 				,	array(
 						'label' => 'Fax'
 					,	'name'  => 'fax-'.$i
-					,	'value' => $contact_info_db['fax-'.$i]
 					,	'cols'  => 2
 					)
 				)
@@ -169,26 +165,25 @@ add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish
 		<?
 		admin_fields(array(
 			'group_name' => 'contact_info'
+		,	'group_value' => $contact_info_db
+		,	'before_fields' => '<table class="form-table">'
+		,	'during_fields' => '<tr><th>%1$s</th><td><fieldset>%2$s%3$s</fieldset></td></tr>'
+		,	'after_fields'  => '</table>'
 		,	'fields'     => array(
 				array(
 					'label' => 'Facebook URL'
-				,	'value' => $contact_info_db['facebook-url']
 				)
 			,	array(
 					'label' => 'Twitter Username'
-				,	'value' => $contact_info_db['twitter-username']
 				)
 			,	array(
 					'label' => 'Instagram Username'
-				,	'value' => $contact_info_db['instagram-username']
 				)
 			,	array(
 					'label' => 'Tumblr URL'
-				,	'value' => $contact_info_db['tumblr-url']
 				)
 			,	array(
 					'label' => 'Linkedin URL'
-				,	'value' => $contact_info_db['linkedin-url']
 				)
 			)
 		));

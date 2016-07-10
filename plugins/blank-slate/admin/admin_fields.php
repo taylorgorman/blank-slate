@@ -1,34 +1,8 @@
 <?php
 /*
 ** Form field markup
-**
-** Need layout for side-by-side labels and inputs like WordPress default. Could just detect whether any fields have cols set.
-**
-** Proposed changes to allow markup exceptions
-**
-		admin_fields(array(
-			'before_fields' => '<div class="mycoolthing">'
-		,	'during_fields' => '<h2>%1$s</h2><div class="whaaaaat">%2$s</div>'
-		,	'after_fields'  => '</div>'
-		,	'fieldgroup'    => 'contact_info' // Will make field names "fieldgroup[id]"
-		,	'fields'        => array(
-				array(
-					'type' => 'text'
-				,	'label' => 'Get At This'
-				,	'name' => 'contact_info[get-at-this]'
-				,	'id' => 'get-at-this'
-				,	'placeholder' => 'Default poop'
-				,	'desc' => 'Type something, dummy'
-				,	'cols' => 2
-				)
-			,	array(
-					'label' => 'Or This'
-				)
-		)
-		));
-**
+** built specifically to accommodate WordPress admin forms
 */
-
 function admin_fields( $args = array() ) {
 
 	// Parse function args
@@ -74,6 +48,10 @@ function admin_fields( $args = array() ) {
 			$field['id'] = $settings['group_name'].'-'.$field['id'];
 		}
 
+		// Fallback to group value
+		if ( empty($field['value']) && ! empty($settings['group_value'][$field['name']]) )
+			$field['value'] = $settings['group_value'][$field['name']];
+
 		// Label markup
 		$label_markup = '<label for="'. $field['id'] .'">'. $field['label'] .'</label>';
 
@@ -95,7 +73,7 @@ function admin_fields( $args = array() ) {
 					$field_markup .= ' name="'. $field['fullname'] .'[]"';
 					$field_markup .= ' value="'. $option['value'] .'"';
 					if ( ! empty($settings['group_value'][$field['name']]) )
-						$field_markup .= ' '. checked( in_array($option['value'], $settings['group_value'][$field['name']]), true, 0 );
+						$field_markup .= ' '. checked( in_array($option['value'], $field['value']), true, 0 );
 					$field_markup .= ' /> ';
 					$field_markup .= $option['label'].'</label><br>';
 				}
@@ -107,6 +85,8 @@ function admin_fields( $args = array() ) {
 				$field_markup .= ' type="'. $field['type'] .'"';
 				$field_markup .= ' name="'. $field['fullname'] .'"';
 				$field_markup .= ' id="'. $field['id'] .'"';
+				if ( $field['type'] == 'text' )
+					$field_markup .= ' class="regular-text"';
 				$field_markup .= ' placeholder="'. $field['placeholder'] .'"';
 				$field_markup .= ' value="'. $field['value'] .'"';
 				if ( $field['desc'] ) $field_markup .= ' aria-describedby="'. $field['id'] .'-description"';
