@@ -9,7 +9,10 @@ add_filter( 'wp_nav_menu_args', function( $args ){
 	$args['items_wrap']      = PHP_EOL.'%3$s';
 
 	if ( ! empty($args['theme_location']) )
-		$args['container_class'] .= ' menu-'.$args['theme_location'];
+		$args['container_id'] = 'location-'.$args['theme_location'];
+
+	if ( ! empty($args['theme_location']) )
+		$args['container_class'] .= ' location-'.$args['theme_location'];
 
 	if ( ! empty($args['menu']) )
 		$args['container_class'] .= ' menu-'.$args['menu'];
