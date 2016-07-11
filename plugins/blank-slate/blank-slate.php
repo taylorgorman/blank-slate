@@ -32,7 +32,7 @@ define('BS_URL', plugin_dir_url(__FILE__));
 /*
 ** Settings
 */
-$bs_settings = get_option('blank_slate_settings');
+$bs_settings = get_option('blank_slate');
 
 
 /*
@@ -67,11 +67,11 @@ require_once 'admin/settings-blank-slate.php';
 require_once 'admin/settings-contact.php';
 if ( ! empty($bs_settings['layouts']) )
 	require_once 'admin/layouts.php';
+if ( ! empty($bs_settings['scheduled-post-types']) )
+	require_once 'admin/scheduled-posttypes.php';
 
 //require_once 'admin/new-user-email.php';
 //require_once 'admin/featured-icon.php';
-//require_once 'admin/scheduled-posttypes.php';
-
 
 /*
 ** Add widgets
@@ -88,9 +88,10 @@ require_once 'theme/scripts.php';
 require_once 'theme/excerpt.php';
 require_once 'theme/content.php';
 require_once 'theme/classes.php';
-require_once 'theme/support.php';
+require_once 'theme/theme_support.php';
 require_once 'theme/images.php';
-require_once 'theme/format-meta.php';
+if ( ! empty($bs_settings['post-formats']) )
+	require_once 'theme/format-meta.php';
 
 
 /*
