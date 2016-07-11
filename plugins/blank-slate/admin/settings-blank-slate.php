@@ -15,7 +15,10 @@ add_submenu_page( 'options-general.php', 'Blank Slate Settings', 'Blank Slate', 
 	?>
 	<style>
 		.error {color: red}
+		.dashicons {opacity:.25; margin:0 .25em}
+		input:checked + .dashicons {opacity:.7}
 	</style>
+
 	<div class="wrap">
 
 		<h2>Blank Slate Settings</h2>
@@ -34,8 +37,34 @@ add_submenu_page( 'options-general.php', 'Blank Slate Settings', 'Blank Slate', 
 		,	'fields'        => array(
 				array(
 					'type'    => 'checkbox'
+				,	'label'   => 'Post Formats'
+				//,	'cols'    => 2
+				,	'options' => array(
+						array(
+							'label' => '<i class="dashicons dashicons-format-gallery"></i> Gallery'
+						)
+					,	array(
+							'label' => '<i class="dashicons dashicons-admin-links"></i> Link'
+						)
+					,	array(
+							'label' => '<i class="dashicons dashicons-format-image"></i> Image'
+						)
+					,	array(
+							'label' => '<i class="dashicons dashicons-format-quote"></i> Quote'
+						)
+					,	array(
+							'label' => '<i class="dashicons dashicons-format-video"></i> Video'
+						)
+					,	array(
+							'label' => '<i class="dashicons dashicons-format-audio"></i> Audio'
+						)
+					)
+				)
+			,	array(
+					'type'    => 'checkbox'
 				,	'label'   => 'Layout Classes'
 				,	'name'    => 'layouts'
+				//,	'cols'    => 2
 				,	'options' => array(
 						array(
 							'label' => 'Add to body classes'
@@ -49,31 +78,8 @@ add_submenu_page( 'options-general.php', 'Blank Slate Settings', 'Blank Slate', 
 				)
 			,	array(
 					'type'    => 'checkbox'
-				,	'label'   => 'Post Formats'
-				,	'options' => array(
-						array(
-							'label' => 'Gallery'
-						)
-					,	array(
-							'label' => 'Link'
-						)
-					,	array(
-							'label' => 'Image'
-						)
-					,	array(
-							'label' => 'Quote'
-						)
-					,	array(
-							'label' => 'Video'
-						)
-					,	array(
-							'label' => 'Audio'
-						)
-					)
-				)
-			,	array(
-					'type'    => 'checkbox'
 				,	'label'   => 'Scheduled Post Types'
+				//,	'cols'    => 2
 				,	'options' => array(
 						array(
 							'label' => 'Custom PT'
