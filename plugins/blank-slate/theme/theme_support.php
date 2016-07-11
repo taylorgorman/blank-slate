@@ -7,11 +7,15 @@
 add_action( 'after_setup_theme', function(){
 
 	$default_features = array(
-			'post-formats'         => array( 'gallery', 'link', 'image', 'quote', 'video', 'audio' )
-		,	'post-thumbnails'      => true
-		,	'menus'                => true
-		,	'html5'                => array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'widgets' )
+		'post-thumbnails'      => true
+	,	'menus'                => true
+	,	'html5'                => array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'widgets' )
 	);
+
+	// Add post formats based on Blank Slate Settings
+	$bs_settings = get_option('blank_slate');
+	if ( ! empty($bs_settings['post-formats']) && is_array($bs_settings['post-formats']) )
+		$default_features['post-formats'] = $bs_settings['post-formats'];
 
 	// Allow site core plugin to modify features
 	$features = apply_filters( 'bs_theme_support', $default_features );

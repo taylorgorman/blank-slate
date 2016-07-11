@@ -55,10 +55,19 @@ add_submenu_page( 'options-general.php', 'Blank Slate Settings', 'Blank Slate', 
 							'label' => 'Gallery'
 						)
 					,	array(
+							'label' => 'Link'
+						)
+					,	array(
+							'label' => 'Image'
+						)
+					,	array(
 							'label' => 'Quote'
 						)
 					,	array(
 							'label' => 'Video'
+						)
+					,	array(
+							'label' => 'Audio'
 						)
 					)
 				)
