@@ -14,58 +14,9 @@ add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish
 
 	?>
 	<style>
-		input#contact_info-locations-count {
-			width: 3em;
-		}
-		.description code {
-			font-size: 12px;
-		}
-		[class*=cols] {
-			float: left;
-			box-sizing: border-box;
-			padding-right: 20px;
-			width: 100%;
-		}
-		.cols2 {
-			width: 50%;
-		}
-		.cols3 {
-			width: 33.3%;
-		}
-		.cols4 {
-			width: 25%;
-		}
-		div.form-table {
-			overflow: hidden;
-			max-width: 50em;
-			padding-bottom: 15px;
-		}
-		h3 + p.description {
-			margin-top: -.75em;
-		}
-		div.form-table label {
-			font-weight: 600;
-			display: block;
-			padding: 0 0 4px 2px;
-		}
-		div.form-table .field {
-			padding-top: 20px;
-		}
-		[class*=cols] .field input {
-			width: 100%;
-		}
-		@media (max-width:780px) {
-			div.form-table .field {
-				padding-top: 15px;
-			}
-		}
-		@media (max-width:500px) {
-			[class*=cols] {
-				width: 100%;
-				padding-right: 10px;
-			}
-		}
+		input#contact_info-locations-count {width:3em}
 	</style>
+
 	<div class="wrap">
 
 		<h2>Contact Settings</h2>
