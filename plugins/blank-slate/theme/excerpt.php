@@ -19,8 +19,8 @@ add_filter( 'the_excerpt', function( $excerpt ){
 /*
 ** Enforce trimming and stripping regardless of excerpt or content
 **
-** get_the_excerpt() will trim the content, but not the excerpt, so you won't have consistent lengths if one post has a giant excerpt.
-** get_the_excerpt() doesn't allow setting length on the fly
+** get_trimmed_excerpt() will trim the content, but not the excerpt, so you won't have consistent lengths if one post has a giant excerpt.
+** get_trimmed_excerpt() doesn't allow setting length on the fly
 ** I can't do this with filters because I'd need new parameters for the_excerpt() or get_the_excerpt()
 **
 ** @param reqired  int           $length  Maximum number of words. Falls back to excerpt_length filter

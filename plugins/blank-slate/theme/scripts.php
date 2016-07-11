@@ -1,6 +1,6 @@
 <?php
 /*
-** Call jQuery from Google
+** Call jQuery from CDN
 */
 add_action( 'wp_enqueue_scripts', function(){
 
