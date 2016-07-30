@@ -21,14 +21,12 @@
 /*
 ** Typography
 */
-@import url(//fonts.googleapis.com/css?family=Droid+Sans);
-@import url(//fonts.googleapis.com/css?family=Droid+Serif);
 .ctst h1, .ctst h2, .ctst h3, .ctst h4, .ctst h5, .ctst h6, .ctst .h1, .ctst .h2, .ctst .h3, .ctst .h4, .ctst .h5, .ctst .h6 {
-  font-family: 'Droid Sans', sans-serif;
+  font-family: sans-serif;
 }
 
 body, input, textarea, select, button {
-  font-family: 'Droid Serif', serif;
+  font-family: serif;
 }
 
 /*
