@@ -4,20 +4,28 @@
 */
 add_filter( 'wp_nav_menu_args', function( $args ){
 
-	$args['fallback_cb']     = false;
-	$args['container']       = 'nav';
-	$args['items_wrap']      = PHP_EOL.'%3$s';
+	// Bootstrap: ul > li > a
+	if ( strpos($args['menu_class'], 'navbar-') !== false ) {
 
-	if ( ! empty($args['theme_location']) )
-		$args['container_id'] = 'location-'.$args['theme_location'];
+		$args['container'] = false;
 
-	if ( ! empty($args['theme_location']) )
-		$args['container_class'] .= ' location-'.$args['theme_location'];
+	// Otherwise: nav > li > a (wp_nav_menu_items filter will remove li's)
+	} else {
 
-	if ( ! empty($args['menu']) )
-		$args['container_class'] .= ' menu-'.$args['menu'];
+		$args['container']  = 'nav';
+		$args['items_wrap'] = '%3$s';
 
+	}
+
+	// Other defaults
+	$args['fallback_cb'] = '__return_false';
+	$args['container_id'] = 'menu-location-'.$args['theme_location'];
+	if ( empty( $args['container'] ) ) {
+		$args['menu_id'] = $args['container_id'];
+		$args['menu_class'] .= ' '.$args['container_id'];
+	}
 	$args['container_class'] = trim($args['container_class']);
+	$args['menu_class'] = trim($args['menu_class']);
 
 	return $args;
 
@@ -26,11 +34,16 @@ add_filter( 'wp_nav_menu_args', function( $args ){
 /*
 ** Strip <li>'s from wp_nav_menu HTML output
 */
-add_filter( 'wp_nav_menu_items', function( $items ){
+add_filter( 'wp_nav_menu_items', function( $items, $args ){
 
+	// Bootstrap: do nothing
+	if ( strpos($args->menu_class, 'navbar-') !== false )
+		return $items;
+
+	// Otherwise: remove li's
 	$find    = array( '><a', '</li>', '<li' );
 	$replace = array( '',    '',      '<a'  );
 
 	return str_replace( $find, $replace, $items );
 
-} );
+}, 10, 2 );
