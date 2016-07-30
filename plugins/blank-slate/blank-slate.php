@@ -51,7 +51,6 @@ require_once 'functions/bs_list_contextually.php';
 require_once 'functions/bs_paginate_links.php';
 require_once 'functions/bs_register_post_type.php';
 require_once 'functions/bs_register_taxonomy.php';
-require_once 'functions/bs_svg_sprite.php';
 
 /*
 ** Modify admin screens
