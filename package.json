@@ -32,5 +32,8 @@
   "bugs": {
     "url": "https://github.com/taylorgorman/Blank-Slate/issues"
   },
-  "homepage": "https://github.com/taylorgorman/Blank-Slate#readme"
+  "homepage": "https://github.com/taylorgorman/Blank-Slate#readme",
+  "dependencies": {
+    "gulp-plumber": "^1.1.0"
+  }
 }

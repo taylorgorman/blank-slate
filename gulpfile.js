@@ -105,6 +105,7 @@ gulp.task( 'js', function( ){
 gulp.task( 'img', function( ){
 
 	return gulp.src( dir.base + 'img/' + files.img )
+
 	.pipe( plug.cache(plug.imagemin({
 		optimizationLevel : 3
 	,	progressive       : true
