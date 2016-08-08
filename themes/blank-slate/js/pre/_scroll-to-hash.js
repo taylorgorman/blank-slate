@@ -4,8 +4,7 @@ jQuery(function($){
 	function scroll_to_hash( hash ) {
 
 		// Bail if we don't have a valid hash
-		if (hash.length == 0)
-			return false;
+		if (hash.length == 0) { return false; }
 
 		var $target = $(hash);
 
@@ -13,16 +12,16 @@ jQuery(function($){
 		$target = $target.length ? $target : $('[name=' + hash.slice(1) +']');
 
 		// If no element, abort
-		if ( !$target.length )
-			return false;
+		if ( !$target.length ) { return false; }
 
 		// Get our target in pixels
 		var scroll_target = $target.offset().top;
 
 		// Offset by fixed header height, if we have one
 		var $fixed_header = $('header.fixed');
-		if ( $fixed_header.length )
+		if ( $fixed_header.length ) {
 			scroll_target = scroll_target - $fixed_header.outerHeight(true);
+		}
 
 		// Do the scrolling
 		$('html,body').animate({
