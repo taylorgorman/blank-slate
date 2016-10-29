@@ -47,7 +47,7 @@ jQuery(function($){
 
 	// Links that start with #
 	// and don't have .noscroll class (so you can cancel this with that class)
-	$('a[href^=#]:not(.noscroll)').on('click', function() {
+	$('a[href^="#"]:not(.noscroll)').on('click', function() {
 
 		scroll_to_hash(this.hash);
 
