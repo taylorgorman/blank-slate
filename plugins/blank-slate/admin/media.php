@@ -5,14 +5,15 @@
 */
 add_filter( 'pre_get_posts', function( $query ){
 
-	$current_user = wp_get_current_user();
+	if (
+		! is_admin() ||
+		$query->get('post_type') != 'attachment'
+	) return;
 
 	if (
-		is_admin() &&
-		$query->get('post_type') == 'attachment' &&
 		! current_user_can('edit_others_posts')
 	) {
-		$query->set('author', $current_user->data->ID);
+		$query->set( 'author', get_current_user_id() );
 	}
 
 } );
