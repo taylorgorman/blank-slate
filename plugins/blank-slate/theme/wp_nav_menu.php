@@ -4,20 +4,11 @@
 */
 add_filter( 'wp_nav_menu_args', function( $args ){
 
-	// Bootstrap: ul > li > a
-	if ( strpos($args['menu_class'], 'navbar-') !== false ) {
+	// Wrap with nav instead of ul
+	$args['container']  = 'nav';
+	$args['items_wrap'] = '%3$s';
 
-		$args['container'] = false;
-
-	// Otherwise: nav > li > a (wp_nav_menu_items filter will remove li's)
-	} else {
-
-		$args['container']  = 'nav';
-		$args['items_wrap'] = '%3$s';
-
-	}
-
-	// Other defaults
+	// Cmon WordPress. Be better than The Gap.
 	$args['fallback_cb'] = '__return_false';
 	$args['container_id'] = 'menu-location-'.$args['theme_location'];
 	if ( empty( $args['container'] ) ) {
@@ -57,9 +48,10 @@ add_filter( 'wp_nav_menu_objects', function( $sorted_menu_items, $args ){
 
 		}
 
-		/*
-		** Add Bootstrap dropdown classes
-		*/
+		// Add Bootstrap navbar item class
+		$item->classes[] = 'nav-item nav-link';
+
+		// Add Bootstrap dropdown classes
 		if ( strpos($args->menu_class, 'navbar-') !== false ) {
 			if ( in_array( 'menu-item-has-children', $item->classes ) ) {
 				$item->classes[] = 'dropdown';
@@ -74,9 +66,7 @@ add_filter( 'wp_nav_menu_objects', function( $sorted_menu_items, $args ){
 
 add_filter( 'wp_nav_menu_items', function( $items, $args ){
 
-	/*
-	** Add Bootstrap dropdown classes
-	*/
+	// Add Bootstrap dropdown classes
 	if ( strpos($args->menu_class, 'navbar-') !== false ) {
 
 		$items = str_replace( 'class="sub-menu', 'class="sub-menu dropdown-menu', $items );
@@ -93,16 +83,10 @@ add_filter( 'wp_nav_menu_items', function( $items, $args ){
 
 	}
 
-	/*
-	** Strip <li>'s from wp_nav_menu HTML output
-	*/
-	else {
-
-		$find    = array( '><a', '</li>', '<li' );
-		$replace = array( '',    '',      '<a'  );
-		$items = str_replace( $find, $replace, $items );
-
-	}
+	// Strip <li>'s from wp_nav_menu HTML output
+	$find    = array( '><a', '</li>', '<li' );
+	$replace = array( '',    '',      '<a'  );
+	$items = str_replace( $find, $replace, $items );
 
 	return $items;
 
