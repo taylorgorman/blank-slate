@@ -56,7 +56,7 @@ require_once 'functions/bs_register_taxonomy.php';
 ** Modify admin screens
 */
 require_once 'admin/admin_fields.php';
-require_once 'admin/enqueues.php';
+//require_once 'admin/enqueues.php'; // This is messing up notices in list tables
 require_once 'admin/menu.php';
 require_once 'admin/tinymce.php';
 require_once 'admin/dashboard-widgets.php';
