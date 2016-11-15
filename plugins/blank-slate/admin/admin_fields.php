@@ -61,6 +61,12 @@ function admin_fields( $args = array() ) {
 		// Field markup
 		switch ( $field['type'] ) {
 
+			case 'custom' :
+				$field_markup = '';
+				foreach ( $field['markup'] as $markup )
+					$field_markup .= $markup;
+			break;
+
 			case 'radio' :
 			case 'checkbox' :
 				$field_markup = '';

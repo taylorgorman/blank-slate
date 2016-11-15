@@ -64,10 +64,9 @@ require_once 'admin/media.php';
 require_once 'admin/users.php';
 require_once 'admin/settings-blank-slate.php';
 require_once 'admin/settings-contact.php';
+require_once 'admin/post-types-sorting.php';
 if ( ! empty($bs_settings['layouts']) )
 	require_once 'admin/layouts.php';
-if ( ! empty($bs_settings['scheduled-post-types']) )
-	require_once 'admin/scheduled-posttypes.php';
 
 //require_once 'admin/new-user-email.php';
 //require_once 'admin/featured-icon.php';
