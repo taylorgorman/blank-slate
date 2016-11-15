@@ -16,7 +16,7 @@
 ** Prevent update from WordPress Plugin Repo test
 */
 add_filter( 'site_transient_update_plugins', function ( $value ) {
-	unset( $value->response['blank-slate/blank-slate.php'] );
+	if ( is_object($value) ) unset( $value->response['blank-slate/blank-slate.php'] );
 	return $value;
 } );
 
