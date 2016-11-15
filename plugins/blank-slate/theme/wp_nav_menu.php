@@ -4,11 +4,7 @@
 */
 add_filter( 'wp_nav_menu_args', function( $args ){
 
-	// Wrap with nav instead of ul
 	$args['container']  = 'nav';
-	$args['items_wrap'] = '%3$s';
-
-	// Cmon WordPress. Be better than The Gap.
 	$args['fallback_cb'] = '__return_false';
 	$args['container_id'] = 'menu-location-'.$args['theme_location'];
 	if ( empty( $args['container'] ) ) {
@@ -27,6 +23,8 @@ add_filter( 'wp_nav_menu_objects', function( $sorted_menu_items, $args ){
 	// Not on admin
 	if ( is_admin() )
 		return;
+
+	//echo '<pre>'.print_r($sorted_menu_items,1).'</pre>';
 
 	foreach ( $sorted_menu_items as $item ) {
 
@@ -49,10 +47,10 @@ add_filter( 'wp_nav_menu_objects', function( $sorted_menu_items, $args ){
 		}
 
 		// Add Bootstrap navbar item class
-		$item->classes[] = 'nav-item nav-link';
+		$item->classes[] = 'nav-item';
 
 		// Add Bootstrap dropdown classes
-		if ( strpos($args->menu_class, 'navbar-') !== false ) {
+		if ( strpos($args->menu_class, 'navbar-nav') !== false ) {
 			if ( in_array( 'menu-item-has-children', $item->classes ) ) {
 				$item->classes[] = 'dropdown';
 			}
@@ -66,12 +64,14 @@ add_filter( 'wp_nav_menu_objects', function( $sorted_menu_items, $args ){
 
 add_filter( 'wp_nav_menu_items', function( $items, $args ){
 
-	// Add Bootstrap dropdown classes
-	if ( strpos($args->menu_class, 'navbar-') !== false ) {
+	// If Bootstrap's navbar-nav
+	if ( strpos($args->menu_class, 'navbar-nav') !== false ) {
 
-		$items = str_replace( 'class="sub-menu', 'class="sub-menu dropdown-menu', $items );
+		$items = str_replace( '<a', '<a class="nav-link"', $items );
 
 		/* Uncomment to toggle dropdown on click with js
+		// Add Bootstrap dropdown classes
+		$items = str_replace( 'class="sub-menu', 'class="sub-menu dropdown-menu', $items );
 		$parent_pos = strpos( $items, 'menu-item-has-children' );
 		while ( $parent_pos !== false ) {
 			$a_needle = '<a';
@@ -83,10 +83,12 @@ add_filter( 'wp_nav_menu_items', function( $items, $args ){
 
 	}
 
+	/*
 	// Strip <li>'s from wp_nav_menu HTML output
 	$find    = array( '><a', '</li>', '<li' );
 	$replace = array( '',    '',      '<a'  );
 	$items = str_replace( $find, $replace, $items );
+	*/
 
 	return $items;
 
