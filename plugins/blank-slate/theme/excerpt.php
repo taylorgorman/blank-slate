@@ -8,13 +8,6 @@ add_filter( 'excerpt_more', function(){ return '&hellip;'; } );
 // Activate shortcodes
 add_filter( 'the_excerpt', 'do_shortcode' );
 
-// Wrap in .excerpt div
-add_filter( 'the_excerpt', function( $excerpt ){
-
-	return '<div class="excerpt">'. $excerpt .'</div>';
-
-} );
-
 
 /*
 ** Enforce trimming and stripping regardless of excerpt or content
