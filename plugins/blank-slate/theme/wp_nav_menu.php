@@ -58,7 +58,7 @@ add_filter( 'wp_nav_menu_objects', function( $sorted_menu_items, $args ){
 				$item->classes[] = 'nav-item';
 			}
 			// Dropdown container
-			if ( in_array( 'menu-item-has-children', $item->classes ) ) {
+			if ( in_array( 'menu-item-has-children', $item->classes ) && $args->depth !== 1 ) {
 				$item->classes[] = 'dropdown';
 			}
 
@@ -91,7 +91,7 @@ add_filter( 'nav_menu_link_attributes', function( $atts, $item, $args, $depth ){
 		$atts['class'] .= 'nav-link ';
 
 	// Dropdown toggle
-	if ( in_array( 'menu-item-has-children', $item->classes ) ) {
+	if ( in_array( 'menu-item-has-children', $item->classes ) && $args->depth !== 1 ) {
 		$atts['class']        .= 'dropdown-toggle ';
 		$atts['data-toggle']   = 'dropdown';
 		$atts['aria-haspopup'] = 'true';
