@@ -44,7 +44,6 @@ require_once 'structure/roles.php';
 /*
 ** Functions
 */
-require_once 'functions/get_author_posts_link.php';
 require_once 'functions/get_post_thumbnail_url.php';
 require_once 'functions/highest_ancestor.php';
 require_once 'functions/bs_list_contextually.php';
