@@ -52,6 +52,7 @@ require_once 'functions/bs_register_post_type.php';
 require_once 'functions/bs_register_taxonomy.php';
 require_once 'functions/date_range.php';
 require_once 'functions/minutes_to_read.php';
+require_once 'functions/is_any_tax.php';
 
 /*
 ** Modify admin screens
