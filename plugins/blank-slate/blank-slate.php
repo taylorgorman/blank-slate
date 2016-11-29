@@ -53,6 +53,7 @@ require_once 'functions/bs_register_taxonomy.php';
 require_once 'functions/date_range.php';
 require_once 'functions/minutes_to_read.php';
 require_once 'functions/is_any_tax.php';
+require_once 'functions/get_jetpack_related_posts.php';
 
 /*
 ** Modify admin screens
