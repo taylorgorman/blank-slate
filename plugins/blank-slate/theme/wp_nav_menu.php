@@ -51,7 +51,7 @@ add_filter( 'wp_nav_menu_objects', function( $sorted_menu_items, $args ){
 		}
 
 		// Bootstrap navbar-nav
-		if ( strpos($args->menu_class, 'navbar-nav') !== false ) {
+		if ( strpos($args->menu_class, 'nav') !== false ) {
 
 			// All <li>
 			if ( ! $item->menu_item_parent ) {
@@ -78,7 +78,7 @@ add_filter( 'nav_menu_link_attributes', function( $atts, $item, $args, $depth ){
 	//echo '<pre>$ATTS: '; print_r($atts); echo '<br>$ITEM: '; print_r($item); echo '<br>$ARGS: '; print_r($args); echo '<br>$DEPTH: '; print_r($depth); echo '</pre>';
 
 	// Bail if not Bootstrap navbar-nav
-	if ( strpos($args->menu_class, 'navbar-nav') === false )
+	if ( strpos($args->menu_class, 'nav') === false )
 		return $atts;
 
 	// Establish
@@ -113,7 +113,7 @@ add_filter( 'nav_menu_link_attributes', function( $atts, $item, $args, $depth ){
 add_filter( 'wp_nav_menu_items', function( $items, $args ){
 
 	// Bail if not Bootstrap navbar-nav
-	if ( strpos($args->menu_class, 'navbar-nav') === false )
+	if ( strpos($args->menu_class, 'nav') === false )
 		return $items;
 
 	// Dropdown <ul>
