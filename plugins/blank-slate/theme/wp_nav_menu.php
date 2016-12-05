@@ -114,7 +114,7 @@ add_filter( 'wp_nav_menu_items', function( $items, $args ){
 
 	// Bail if not Bootstrap navbar-nav
 	if ( strpos($args->menu_class, 'navbar-nav') === false )
-		return $atts;
+		return $items;
 
 	// Dropdown <ul>
 	$items = str_replace( 'class="sub-menu', 'class="sub-menu dropdown-menu', $items );
