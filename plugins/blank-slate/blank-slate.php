@@ -54,6 +54,7 @@ require_once 'functions/date_range.php';
 require_once 'functions/minutes_to_read.php';
 require_once 'functions/is_any_tax.php';
 require_once 'functions/get_jetpack_related_posts.php';
+require_once 'functions/the_field_markup.php';
 
 /*
 ** Modify admin screens
