@@ -8,7 +8,7 @@ add_filter( 'pre_get_posts', function( $query ){
 
 	$blank_slate_db = get_option('blank_slate');
 
-	if ( empty($blank_slate_db['orderby'][$query->get('post_type')]) )
+	if ( ! is_string($query->get('post_type')) || empty($blank_slate_db['orderby'][$query->get('post_type')]) )
 		return;
 
 	$query->set('meta_key', $blank_slate_db['orderby'][$query->get('post_type')]);
