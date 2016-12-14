@@ -136,6 +136,12 @@ add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish
 			,	array(
 					'label' => 'Linkedin URL'
 				)
+			,	array(
+					'label' => 'Vimeo URL'
+				)
+			,	array(
+					'label' => 'YouTube URL'
+				)
 			)
 		));
 
@@ -217,6 +223,8 @@ function get_socialurls( $network='' ) {
 	,	'instagram' => 'https://instagram.com/'.get_contactinfo('instagram-username')
 	,	'tumblr' => get_contactinfo('tumblr-url')
 	,	'linkedin' => get_contactinfo('linkedin-url')
+	,	'vimeo' => get_contactinfo('vimeo-url')
+	,	'youtube' => get_contactinfo('youtube-url')
 	);
 
 	if ( empty($network) )
