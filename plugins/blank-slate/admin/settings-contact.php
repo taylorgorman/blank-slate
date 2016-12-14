@@ -228,7 +228,7 @@ function get_socialurls( $network='' ) {
 	);
 
 	if ( empty($network) )
-		return $urls;
+		return array_filter($urls);
 
 	if ( empty($urls[$network]) )
 		return false;
