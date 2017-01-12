@@ -1,4 +1,4 @@
-<?
+<?php
 if ( ! function_exists('wp_new_user_notification') ) {
 function wp_new_user_notification( $user_id, $plaintext_password='' ) {
 

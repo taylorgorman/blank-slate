@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 ** Needs to be moved to Blank Slate
 */
@@ -38,9 +38,9 @@ function featured_icon_content( $post ) {
 	?>
 	<p><strong>Image ID</strong></p>
 	<p><label class="screen-reader-text" for="image_ID">Order</label>
-	<input type="text" id="image_ID" name="image_ID" value="<?= $image_ID ?>"></p>
+	<input type="text" id="image_ID" name="image_ID" value="<?php echo $image_ID; ?>"></p>
 	<p class="description">In time this will have a media picker like the Featured Image box.</p>
-	<?
+	<?php
 
 }
 

@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 ** Add meta box to every post type edit screen
 */
@@ -43,18 +43,18 @@ function format_meta_content( $post ) {
 	<tr>
 		<th><label>Custom URL</label></th>
 		<td>
-			<input type="text" name="format_meta[permalink]" value="<?= $format_meta['permalink'] ?>" class="regular-text">
+			<input type="text" name="format_meta[permalink]" value="<?php echo $format_meta['permalink']; ?>" class="regular-text">
 			<p class="description">This URL will override the permalink for this post. Include "http://" or the link will not work.</p>
 		</td>
 	</tr>
 	<tr>
 		<th><label>Source Name</label></th>
 		<td>
-			<input type="text" name="format_meta[source_name]" value="<?= $format_meta['source_name'] ?>" class="regular-text">
+			<input type="text" name="format_meta[source_name]" value="<?php echo $format_meta['source_name']; ?>" class="regular-text">
 		</td>
 	</tr>
 	</table>
-	<?
+	<?php
 
 }
 

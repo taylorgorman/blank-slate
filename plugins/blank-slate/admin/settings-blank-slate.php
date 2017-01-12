@@ -24,7 +24,7 @@ add_submenu_page( 'options-general.php', 'Blank Slate Settings', 'Blank Slate', 
 		<h2>Blank Slate Settings</h2>
 
 		<form method="post" action="options.php">
-		<?
+		<?php
 		/*
 		** Set and get form data
 		*/
@@ -126,7 +126,7 @@ add_submenu_page( 'options-general.php', 'Blank Slate Settings', 'Blank Slate', 
 		</form>
 
 	</div>
-	<?
+	<?php
 
 } );
 } );

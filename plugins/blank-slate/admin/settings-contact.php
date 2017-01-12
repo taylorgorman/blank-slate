@@ -22,7 +22,7 @@ add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish
 		<h2>Contact Settings</h2>
 
 		<form method="post" action="options.php">
-		<?
+		<?php
 		settings_fields('contact_info_settings');
 		$contact_info_db = get_option('contact_info');
 		//echo '<pre>'.print_r($contact_info_db,1).'</pre>';
@@ -113,7 +113,7 @@ add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish
 		<h3>Social Networks</h3>
 		<p class="description">Make sure to include the http:// for all URLs.</p>
 
-		<?
+		<?php
 		admin_fields(array(
 			'group_name' => 'contact_info'
 		,	'group_value' => $contact_info_db
@@ -150,7 +150,7 @@ add_submenu_page( 'options-general.php', 'Contact Settings', 'Contact', 'publish
 		</form>
 
 	</div>
-	<?
+	<?php
 	//echo '<pre>'.print_r($_POST,1).'</pre>';
 
 } );

@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 ** Create layout taxonomy
 */
