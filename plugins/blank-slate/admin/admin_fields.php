@@ -61,18 +61,36 @@ function admin_fields( $args = array() ) {
 		// Field markup
 		switch ( $field['type'] ) {
 
+			// Custom markup
 			case 'custom' :
 				$field_markup = '';
 				foreach ( $field['markup'] as $markup )
 					$field_markup .= $markup;
 			break;
 
+			// Select markup
+			case 'select' :
+
+				$field_markup = '<select name="'. $field['fullname'] .'">';
+				foreach ( $field['options'] as $option ) {
+
+					// Value fallback to label
+					if ( empty($option['value']) )
+						$option['value'] = sanitize_title($option['label']);
+
+					$field_markup .= '<option value="'. $option['value'] .'">'. $option['label'] .'</option>';
+				}
+				$field_markup = '</select>';
+
+			break;
+
+			// Radio and checkbox markup
 			case 'radio' :
 			case 'checkbox' :
 				$field_markup = '';
 				foreach ( $field['options'] as $option ) {
 
-					// Name derived from label
+					// Value fallback to label
 					if ( empty($option['value']) )
 						$option['value'] = sanitize_title($option['label']);
 
@@ -86,6 +104,7 @@ function admin_fields( $args = array() ) {
 				}
 			break;
 
+			// Input markup
 			default :
 
 				$field_markup = '<input';
