@@ -58,7 +58,7 @@ add_filter( 'wp_nav_menu_objects', function( $sorted_menu_items, $args ){
 				$item->classes[] = 'nav-item';
 			}
 			// Dropdown container
-			if ( in_array( 'menu-item-has-children', $item->classes ) && $args->depth !== 1 ) {
+			if ( strpos($args->menu_class, 'nav-dropdown') !== false && in_array( 'menu-item-has-children', $item->classes ) && $args->depth !== 1 ) {
 				$item->classes[] = 'dropdown';
 			}
 
@@ -81,19 +81,19 @@ add_filter( 'nav_menu_link_attributes', function( $atts, $item, $args, $depth ){
 	if ( strpos($args->menu_class, 'nav') === false )
 		return $atts;
 
-	$is_navbar_nav = ( strpos($args->menu_class, 'navbar-nav') !== false );
+	$is_nav_dropdown = ( strpos($args->menu_class, 'nav-dropdown') !== false );
 
 	// Establish
 	$atts['class'] = '';
 
 	// Dropdown or everything else
-	if ( $is_navbar_nav && $item->menu_item_parent )
+	if ( $is_nav_dropdown && $item->menu_item_parent )
 		$atts['class'] .= 'dropdown-item ';
 	else
 		$atts['class'] .= 'nav-link ';
 
 	// Dropdown toggle
-	if ( $is_navbar_nav && in_array( 'menu-item-has-children', $item->classes ) && $args->depth !== 1 ) {
+	if ( $is_nav_dropdown && in_array( 'menu-item-has-children', $item->classes ) && $args->depth !== 1 ) {
 		$atts['class']        .= 'dropdown-toggle ';
 		$atts['data-toggle']   = 'dropdown';
 		$atts['aria-haspopup'] = 'true';
@@ -114,12 +114,9 @@ add_filter( 'nav_menu_link_attributes', function( $atts, $item, $args, $depth ){
 */
 add_filter( 'wp_nav_menu_items', function( $items, $args ){
 
-	// Bail if not Bootstrap navbar-nav
-	if ( strpos($args->menu_class, 'navbar-nav') === false )
-		return $items;
-
 	// Dropdown <ul>
-	$items = str_replace( 'class="sub-menu', 'class="sub-menu dropdown-menu', $items );
+	if ( strpos($args->menu_class, 'nav-dropdown') !== false )
+		$items = str_replace( 'class="sub-menu', 'class="sub-menu dropdown-menu', $items );
 
 	// Return
 	return $items;
