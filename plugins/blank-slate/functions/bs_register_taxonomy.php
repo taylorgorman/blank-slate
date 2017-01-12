@@ -19,7 +19,7 @@ function bs_register_taxonomy( $args ) {
 
 	// ID and plural default to singular
 	if ( empty($v['ID']) )
-		$v['ID'] = $v['singular_name'];
+		$v['ID'] = sanitize_title($v['singular_name']);
 	if ( empty($v['plural_name']) )
 		$v['plural_name'] = $v['singular_name'];
 
