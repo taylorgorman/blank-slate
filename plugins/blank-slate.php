@@ -38,62 +38,62 @@ $bs_settings = get_option('blank_slate');
 /*
 ** Change WordPress
 */
-require_once 'structure/page.php';
-require_once 'structure/roles.php';
+require_once 'blank-slate/structure/page.php';
+require_once 'blank-slate/structure/roles.php';
 
 /*
 ** Functions
 */
-require_once 'functions/get_post_thumbnail_url.php';
-require_once 'functions/highest_ancestor.php';
-require_once 'functions/bs_list_contextually.php';
-require_once 'functions/bs_paginate_links.php';
-require_once 'functions/bs_register_post_type.php';
-require_once 'functions/bs_register_taxonomy.php';
-require_once 'functions/date_range.php';
-require_once 'functions/minutes_to_read.php';
-require_once 'functions/is_any_tax.php';
-require_once 'functions/get_jetpack_related_posts.php';
-require_once 'functions/the_field_markup.php';
+require_once 'blank-slate/functions/get_post_thumbnail_url.php';
+require_once 'blank-slate/functions/highest_ancestor.php';
+require_once 'blank-slate/functions/bs_list_contextually.php';
+require_once 'blank-slate/functions/bs_paginate_links.php';
+require_once 'blank-slate/functions/bs_register_post_type.php';
+require_once 'blank-slate/functions/bs_register_taxonomy.php';
+require_once 'blank-slate/functions/date_range.php';
+require_once 'blank-slate/functions/minutes_to_read.php';
+require_once 'blank-slate/functions/is_any_tax.php';
+require_once 'blank-slate/functions/get_jetpack_related_posts.php';
+require_once 'blank-slate/functions/the_field_markup.php';
 
 /*
 ** Modify admin screens
 */
-require_once 'admin/admin_fields.php';
-//require_once 'admin/enqueues.php'; // This is messing up notices in list tables
-require_once 'admin/menu.php';
-require_once 'admin/tinymce.php';
-require_once 'admin/dashboard-widgets.php';
-require_once 'admin/media.php';
-require_once 'admin/users.php';
-require_once 'admin/settings-blank-slate.php';
-require_once 'admin/settings-contact.php';
-require_once 'admin/post-types-sorting.php';
+require_once 'blank-slate/admin/admin_fields.php';
+//require_once 'blank-slate/admin/enqueues.php'; // This is messing up notices in list tables
+require_once 'blank-slate/admin/menu.php';
+require_once 'blank-slate/admin/tinymce.php';
+require_once 'blank-slate/admin/dashboard-widgets.php';
+require_once 'blank-slate/admin/media.php';
+require_once 'blank-slate/admin/users.php';
+require_once 'blank-slate/admin/settings-blank-slate.php';
+require_once 'blank-slate/admin/settings-contact.php';
+require_once 'blank-slate/admin/post-types-sorting.php';
 if ( ! empty($bs_settings['layouts']) )
-	require_once 'admin/layouts.php';
+	require_once 'blank-slate/admin/layouts.php';
 
-//require_once 'admin/new-user-email.php';
-//require_once 'admin/featured-icon.php';
+//require_once 'blank-slate/admin/new-user-email.php';
+//require_once 'blank-slate/admin/featured-icon.php';
 
 /*
 ** Add widgets
 */
-require_once 'widgets/section-navigation.php';
+require_once 'blank-slate/widgets/section-navigation.php';
 
 /*
 ** Modify theme output
 */
-require_once 'theme/wp_nav_menu.php';
-require_once 'theme/meta.php';
-require_once 'theme/wp_head.php';
-require_once 'theme/scripts.php';
-require_once 'theme/excerpt.php';
-require_once 'theme/content.php';
-require_once 'theme/classes.php';
-require_once 'theme/theme_support.php';
-require_once 'theme/images.php';
+require_once 'blank-slate/theme/wp_nav_menu.php';
+require_once 'blank-slate/theme/meta.php';
+require_once 'blank-slate/theme/wp_head.php';
+require_once 'blank-slate/theme/scripts.php';
+require_once 'blank-slate/theme/excerpt.php';
+require_once 'blank-slate/theme/content.php';
+require_once 'blank-slate/theme/classes.php';
+require_once 'blank-slate/theme/theme_support.php';
+require_once 'blank-slate/theme/images.php';
 if ( ! empty($bs_settings['post-formats']) )
-	require_once 'theme/format-meta.php';
+	require_once 'blank-slate/theme/format-meta.php';
 
 
 /*
