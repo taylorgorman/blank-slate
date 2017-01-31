@@ -2,9 +2,9 @@
 /*
 **  Plugin Name:  Blank Slate
 **  Plugin URI:   http://taylorpatrickgorman.com/wordpress-plugins/blank-slate/
-**  Version:      0.1.0
+**  Version:      1.0.0
 **  Description:  Configures WordPress to a predetermined base
-**  Author:       Taylor Gorman & Chris Roche
+**  Author:       Taylor Gorman
 **  Author URI:   http://taylorpatrickgorman.com
 **
 **  License:      GPL2
