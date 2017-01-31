@@ -1,4 +1,0 @@
-
-</section>
-
-<? get_footer(); ?>
