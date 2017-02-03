@@ -5,7 +5,7 @@
 ** @param  integer  $post_id
 ** @param  string   $size
 */
-function get_post_thumbnail_url( $size='thumbnail', $post_id=0 ) {
+function get_post_thumbnail_url( $post_id=0, $size='thumbnail' ) {
 
 	// Works within the loop
 	if ( $post_id == 0 ) {
